@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Tab from "./Tab";
 
 class Navbar extends Component {
   render() {
@@ -65,152 +66,73 @@ class Navbar extends Component {
             </div>
             <div className="navbar-collapse collapse" id="navbar-collapse">
               <ul className="nav navbar-nav">
-                <li className="active nav-item">
-                  <a href="index.html">Home</a>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="dropdown-toggle"
-                    data-toggle="dropdown"
-                    data-hover="dropdown"
-                    data-delay="0"
-                    data-close-others="false"
-                    href="#"
-                  >
-                    About Us <i className="fa fa-angle-down" />
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a href="#">Facilities</a>
-                    </li>
-                    <li>
-                      <a href="#">Mission Statement</a>
-                    </li>
-                    <li>
-                      <a href="#">Administration & Staff</a>
-                    </li>
-                    <li>
-                      <a href="#">Principals Welcome</a>
-                    </li>
-                    <li className="dropdown-submenu">
-                      <a className="trigger" tabindex="-1" href="#">
-                        Menu Levels <i className="fa fa-angle-right" />
-                      </a>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <a tabindex="-1" href="#">
-                            Submenu Level 2
-                          </a>
-                        </li>
-                        <li className="dropdown-submenu">
-                          <a className="trigger" href="#">
-                            Submenu Level 2 <i className="fa fa-angle-right" />
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <a href="#">Submenu Level 3</a>
-                            </li>
-                            <li>
-                              <a href="#">Submenu Level 3</a>
-                            </li>
-                          </ul>
-                        </li>
-                        <li>
-                          <a href="#">Submenu Level 2</a>
-                        </li>
-                        <li>
-                          <a href="#">Submenu Level 2</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item dropdown open">
-                  <a className="dropdown-toggle" href="#">
-                    Academia <i className="fa fa-angle-down" />
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a href="#">Core Subjects</a>
-                    </li>
-                    <li>
-                      <a href="#">Sciences</a>
-                    </li>
-                    <li>
-                      <a href="#">Languages</a>
-                    </li>
-                    <li>
-                      <a href="#">Technology</a>
-                    </li>
-                    <li>
-                      <a href="#">Humanities</a>
-                    </li>
-                    <li>
-                      <a href="#">Business</a>
-                    </li>
-                    <li>
-                      <a href="#">Transistion Year</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="dropdown-toggle"
-                    data-toggle="dropdown"
-                    data-hover="dropdown"
-                    data-delay="0"
-                    data-close-others="false"
-                    href="#"
-                  >
-                    Extra Curricular <i className="fa fa-angle-down" />
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a href="#">Sports</a>
-                    </li>
-                    <li>
-                      <a href="#">Community Initiatives</a>
-                    </li>
-                    <li>
-                      <a href="#">Gaisce</a>
-                    </li>
-                    <li>
-                      <a href="#">BOI Secondary Programme</a>
-                    </li>
-                    <li>
-                      <a href="#">Debating</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item dropdown">
-                  <a
-                    className="dropdown-toggle"
-                    data-toggle="dropdown"
-                    data-hover="dropdown"
-                    data-delay="0"
-                    data-close-others="false"
-                    href="#"
-                  >
-                    Enrolement <i className="fa fa-angle-down" />
-                  </a>
-                  <ul className="dropdown-menu">
-                    <li>
-                      <a href="#">Enrolement Policy</a>
-                    </li>
-                    <li>
-                      <a href="#">Enrolement Application Form</a>
-                    </li>
-                  </ul>
-                </li>
-                <li className="nav-item">
-                  <a href="gallery.html">Gallery</a>
-                </li>
-                <li className="nav-item">
-                  <a href="#">Parents</a>
-                </li>
-                <li className="nav-item">
-                  <a href="contact.html">Contact</a>
-                </li>
+                <Tab title={"Home"} active />
+                <Tab title={"About"}>
+                  <li>
+                    <a href="#">Facilities</a>
+                  </li>
+                  <li>
+                    <a href="#">Mission Statement</a>
+                  </li>
+                  <li>
+                    <a href="#">Administration & Staff</a>
+                  </li>
+                  <li>
+                    <a href="#">Principals Welcome</a>
+                  </li>
+                </Tab>
+                <Tab title={"Academia"}>
+                  <li>
+                    <a href="#">Core Subjects</a>
+                  </li>
+                  <li>
+                    <a href="#">Sciences</a>
+                  </li>
+                  <li>
+                    <a href="#">Languages</a>
+                  </li>
+                  <li>
+                    <a href="#">Technology</a>
+                  </li>
+                  <li>
+                    <a href="#">Humanities</a>
+                  </li>
+                  <li>
+                    <a href="#">Business</a>
+                  </li>
+                  <li>
+                    <a href="#">Transistion Year</a>
+                  </li>
+                </Tab>
+
+                <Tab title={"Extra Curricular"}>
+                  <li>
+                    <a href="#">Sports</a>
+                  </li>
+                  <li>
+                    <a href="#">Community Initiatives</a>
+                  </li>
+                  <li>
+                    <a href="#">Gaisce</a>
+                  </li>
+                  <li>
+                    <a href="#">BOI Secondary Programme</a>
+                  </li>
+                  <li>
+                    <a href="#">Debating</a>
+                  </li>
+                </Tab>
+                <Tab title={"Enrolement"}>
+                  <li>
+                    <a href="#">Enrolement Policy</a>
+                  </li>
+                  <li>
+                    <a href="#">Enrolement Application Form</a>
+                  </li>
+                </Tab>
+                <Tab title={"Gallery"} />
+                <Tab title={"Parents"} />
+                <Tab title={"Contact"} />
               </ul>
             </div>
           </div>

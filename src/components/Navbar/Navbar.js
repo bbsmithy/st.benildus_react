@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Tab from "./Tab";
+import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
@@ -8,29 +9,29 @@ class Navbar extends Component {
         <header className="header">
           <div className="header-main container">
             <h1 className="logo col-md-4 col-sm-4">
-              <a href="index.html">
+              <Link to={"/"}>
                 <img
                   id="logo"
-                  width="225px"
+                  width="200px"
                   src={
                     "http://www.stbenilduscollege.com/wp-content/themes/stbenildus/img/fullheader.png"
                   }
                   alt="Logo"
                 />
-              </a>
+              </Link>
             </h1>
             <div className="info col-md-8 col-sm-8">
               <ul className="menu-top navbar-right hidden-xs">
                 <li className="divider">
-                  <a href="index.html">Home</a>
+                  <Link to={"/"}>Home</Link>
                 </li>
                 <li className="divider">
                   <a href="faq.html">FAQ</a>
                 </li>
                 <li>
-                  <a style={{ color: "white" }} href="contact.html">
+                  <Link to={"/contact"} style={{ color: "white" }}>
                     Contact
-                  </a>
+                  </Link>
                 </li>
               </ul>
               <br />
@@ -40,9 +41,7 @@ class Navbar extends Component {
                 </p>
                 <p className="email">
                   <i className="fa fa-envelope" />
-                  <a href="#" style={{ color: "white" }}>
-                    enquires@website.com
-                  </a>
+                  <p style={{ color: "white" }}>enquires@website.com</p>
                 </p>
               </div>
             </div>
@@ -66,22 +65,23 @@ class Navbar extends Component {
             </div>
             <div className="navbar-collapse collapse" id="navbar-collapse">
               <ul className="nav navbar-nav">
-                <Tab title={"Home"} active />
-                <Tab title={"About"}>
+                <Tab title={"Home"} active={this.props.active} />
+                <Tab title={"About"} active={this.props.active}>
                   <li>
-                    <a href="#">Facilities</a>
+                    <Link to={"/about/mission_statement"}>
+                      Mission Statement
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">Mission Statement</a>
-                  </li>
-                  <li>
-                    <a href="#">Administration & Staff</a>
+                    <Link to={"/about/administration_staff"}>
+                      Administration & Staff
+                    </Link>
                   </li>
                   <li>
                     <a href="#">Principals Welcome</a>
                   </li>
                 </Tab>
-                <Tab title={"Academia"}>
+                <Tab title={"Academia"} active={this.props.active}>
                   <li>
                     <a href="#">Core Subjects</a>
                   </li>
@@ -105,7 +105,7 @@ class Navbar extends Component {
                   </li>
                 </Tab>
 
-                <Tab title={"Extra Curricular"}>
+                <Tab title={"Extra Curricular"} active={this.props.active}>
                   <li>
                     <a href="#">Sports</a>
                   </li>
@@ -130,9 +130,9 @@ class Navbar extends Component {
                     <a href="#">Enrolement Application Form</a>
                   </li>
                 </Tab>
-                <Tab title={"Gallery"} />
-                <Tab title={"Parents"} />
-                <Tab title={"Contact"} />
+                <Tab title={"Gallery"} active={this.props.active} />
+                <Tab title={"Parents"} active={this.props.active} />
+                <Tab title={"Contact"} active={this.props.active} />
               </ul>
             </div>
           </div>

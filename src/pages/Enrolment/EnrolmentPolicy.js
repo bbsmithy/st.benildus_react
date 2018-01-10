@@ -3,17 +3,17 @@ import React, { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Page from "../../components/Page/Page";
 
-class PrincipalsWelcome extends Component {
+class EnrolmentPolicy extends Component {
 render() {
     return (
     <div>
-        <Navbar active={'PrincipalsWelcome'}/>
-        <Page title={'PrincipalsWelcome'} current={'PrincipalsWelcome'}>
+        <Navbar active={'EnrolmentPolicy'}/>
+        <Page title={'EnrolmentPolicy'} current={'EnrolmentPolicy'}>
         <h1>Content here please</h1>
         </Page>
     </div>
     );
 }
 }
-export default PrincipalsWelcome;
+export default EnrolmentPolicy;
             

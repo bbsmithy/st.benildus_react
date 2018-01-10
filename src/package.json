@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "node-mkdirp": "^0.0.1"
+    "node-mkdirp": "^0.0.1",
+    "react-iframe": "^1.1.0",
+    "react-social-embed": "^0.0.3",
+    "react-twitter-widgets": "^1.7.1"
   }
 }

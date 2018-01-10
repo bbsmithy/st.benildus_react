@@ -651,6 +651,17 @@ ul.custom-list-style li {
 .content {
   background-color: white;
   padding-top: 15px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.shadow {
+  background-color: white;
+  padding-top: 15px;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+    0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 /* ======= Header ======= */
 .header {
@@ -1110,10 +1121,6 @@ ul.custom-list-style li {
 .page-wrapper dl dd {
   margin-bottom: 5px;
 }
-.page-wrapper .page-content h1 {
-  font-size: 26px;
-  font-weight: normal;
-}
 .page-wrapper .page-content h2 {
   font-size: 24px;
   font-weight: normal;
@@ -1485,32 +1492,32 @@ ul.custom-list-style li {
 #promo-slider {
   padding-top: 15px;
 }
-.home-page .content {
+.content {
   background-color: white;
 }
-.home-page h1.section-heading {
+h1.section-heading {
   font-size: 22px;
   font-weight: 300;
   line-height: 2;
   margin-top: 0;
   color: #2f506c;
 }
-.home-page h1.section-heading .line {
+h1.section-heading .line {
   border-top: 2px solid #003d7d;
   display: inline-block;
   padding: 0 15px;
   padding-top: 5px;
 }
-.home-page section {
+section {
   background: white;
   overflow: hidden;
   margin-bottom: 30px;
 }
-.home-page .section-content {
+.section-content {
   padding: 15px;
   padding-top: 0;
 }
-.home-page .carousel-controls a .fa {
+.carousel-controls a .fa {
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
@@ -1524,171 +1531,171 @@ ul.custom-list-style li {
   margin-right: 0;
   font-size: 15px;
 }
-.home-page .carousel-controls a.next .fa {
+.carousel-controls a.next .fa {
   padding-top: 2px;
   padding-right: 1px;
 }
-.home-page .carousel-controls a.prev .fa {
+.carousel-controls a.prev .fa {
   padding-top: 2px;
   padding-right: 1px;
 }
-.home-page .carousel-controls a:hover .fa {
+.carousel-controls a:hover .fa {
   background: #6091ba;
 }
-.home-page .promo {
+.promo {
   margin-bottom: 30px;
   padding-top: 15px;
 }
-.home-page .promo h1.section-heading {
+.promo h1.section-heading {
   margin-top: 0;
   font-size: 24px;
   color: #2f506c;
 }
-.home-page .promo p {
+.promo p {
   color: #777;
 }
-.home-page .promo .btn-cta {
+.promo .btn-cta {
   font-size: 20px;
   margin-top: 30px;
   font-family: "Open Sans", arial, sans-serif;
 }
-.home-page .news {
+.news {
   position: relative;
 }
-.home-page .news .carousel-controls {
+.news .carousel-controls {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-.home-page .news h2.title {
+.news h2.title {
   font-size: 18px;
   margin-top: 0;
 }
-.home-page .news h2.title a {
+.news h2.title a {
   color: #444;
 }
-.home-page .news h2.title a:hover {
+.news h2.title a:hover {
   color: #365d7e;
 }
-.home-page .news .news-item {
+.news .news-item {
   padding-left: 115px;
   position: relative;
   margin-bottom: 20px;
 }
-.home-page .news .thumb {
+.news .thumb {
   position: absolute;
   left: 0;
   top: 0;
 }
-.home-page .events .section-content {
+.events .section-content {
   min-height: 520px;
 }
-.home-page .events .event-item {
+.events .event-item {
   position: relative;
   padding-left: 55px;
   border-bottom: 1px solid #e8e8e8;
   padding-bottom: 10px;
 }
-.home-page .events .event-item .date-label {
+.events .event-item .date-label {
   background: #fff;
   position: absolute;
   left: 0;
 }
-.home-page .events .event-item h2.title {
+.events .event-item h2.title {
   margin-bottom: 20px;
   font-size: 16px;
 }
-.home-page .events .event-item p {
+.events .event-item p {
   margin-bottom: 5px;
 }
-.home-page .events .event-item .fa {
+.events .event-item .fa {
   margin-right: 5px;
   font-size: 14px;
   min-width: 16px;
   color: #666;
 }
-.home-page .events .event-item .fa.fa-map-marker {
+.events .event-item .fa.fa-map-marker {
   font-size: 18px;
 }
-.home-page .events .read-more {
+.events .read-more {
   margin-top: 15px;
 }
-.home-page .events .details p {
+.events .details p {
   color: #666;
 }
-.home-page .course-finder .course-finder-form {
+.course-finder .course-finder-form {
   margin-bottom: 15px;
 }
-.home-page .course-finder .keywords {
+.course-finder .keywords {
   padding-left: 0;
 }
-.home-page .course-finder .keywords input {
+.course-finder .keywords input {
   width: 200px;
   margin-right: 5px;
 }
-.home-page .video {
+.video {
   position: relative;
 }
-.home-page .video .carousel-controls {
+.video .carousel-controls {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-.home-page .video .video-iframe {
+.video .video-iframe {
   max-width: 100%;
   width: 100%;
   height: 287px;
   margin-bottom: 5px;
 }
-.home-page .links .fa {
+.links .fa {
   margin-right: 5px;
 }
-.home-page .testimonials {
+.testimonials {
   position: relative;
 }
-.home-page .testimonials .carousel-controls {
+.testimonials .carousel-controls {
   position: absolute;
   right: 10px;
   top: 10px;
 }
-.home-page .testimonials .fa {
+.testimonials .fa {
   color: #6091ba;
   margin-right: 5px;
   font-size: 18px;
 }
-.home-page .testimonials .people {
+.testimonials .people {
   margin-top: 10px;
 }
-.home-page .testimonials .people .name {
+.testimonials .people .name {
   color: #6091ba;
 }
-.home-page .testimonials .people .title {
+.testimonials .people .title {
   color: #999;
 }
-.home-page .awards {
+.awards {
   background: #fff;
 }
-.home-page .awards .logos {
+.awards .logos {
   margin: 0;
   padding: 0;
 }
-.home-page .awards .logos li {
+.awards .logos li {
   list-style: none;
   margin-right: 0;
   text-align: center;
 }
-.home-page .awards .logos li img {
+.awards .logos li img {
   -webkit-opacity: 0.6;
   -moz-opacity: 0.6;
   opacity: 0.6;
   margin: 0 auto;
 }
-.home-page .awards .logos li img:hover {
+.awards .logos li img:hover {
   -webkit-opacity: 1;
   -moz-opacity: 1;
   opacity: 1;
 }
-.home-page .awards .carousel-control {
+.awards .carousel-control {
   background: none;
   width: auto;
   top: 20px;
@@ -1702,11 +1709,11 @@ ul.custom-list-style li {
   -ms-transition: all 0.4s ease-in-out;
   -o-transition: all 0.4s ease-in-out;
 }
-.home-page .awards .carousel-control .fa {
+.awards .carousel-control .fa {
   color: #e8e8e8;
   font-weight: bold;
 }
-.home-page .awards .carousel-control:hover .fa {
+.awards .carousel-control:hover .fa {
   color: #999;
 }
 /* ======= Courses Page ======= */
@@ -1789,6 +1796,9 @@ ul.custom-list-style li {
   .wrapper {
     min-height: inherit;
     margin-bottom: 0;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12),
+      0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   }
   .wrapper:after {
     content: none;
@@ -1913,33 +1923,33 @@ ul.custom-list-style li {
   .flexslider .flex-control-nav {
     display: none;
   }
-  .home-page .promo .btn-cta {
+  .promo .btn-cta {
     margin-top: 0;
   }
-  .home-page .news .thumb {
+  .news .thumb {
     width: 60px;
     height: 60px;
   }
-  .home-page .news .news-item {
+  .news .news-item {
     padding-left: 75px;
   }
-  .home-page .course-finder .keywords {
+  .course-finder .keywords {
     padding-left: 15px;
     margin-top: 10px;
   }
-  .home-page .course-finder .keywords input {
+  .course-finder .keywords input {
     width: 180px;
   }
-  .home-page .video .video-iframe {
+  .video .video-iframe {
     height: auto;
   }
-  .home-page .testimonials .carousel .item {
+  .testimonials .carousel .item {
     min-height: inherit;
   }
-  .home-page .events .section-content {
+  .events .section-content {
     min-height: inherit;
   }
-  .home-page .awards .carousel-control {
+  .awards .carousel-control {
     top: 50px;
   }
   .footer .footer-content .subscribe-form .form-control {
@@ -1986,7 +1996,7 @@ ul.custom-list-style li {
     max-width: inherit;
     overflow: visible;
   }
-  .home-page .course-finder .keywords input {
+  .course-finder .keywords input {
     float: left !important;
   }
 }
@@ -2008,10 +2018,10 @@ ul.custom-list-style li {
   .footer-col-inner {
     margin-bottom: 15px;
   }
-  .home-page .testimonials .carousel .item {
+  .testimonials .carousel .item {
     min-height: inherit;
   }
-  .home-page .events .section-content {
+  .events .section-content {
     min-height: inherit;
   }
   .footer #tweet {
@@ -2023,10 +2033,10 @@ ul.custom-list-style li {
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
-  .home-page .events .section-content {
+  .events .section-content {
     min-height: 520px;
   }
-  .home-page .video .video-iframe {
+  .video .video-iframe {
     height: 287px;
   }
   .footer .bottom-bar .social li {
@@ -2042,6 +2052,7 @@ ul.custom-list-style li {
   html,
   body {
     height: 100%;
+    background-color: #f8f8f8;
   }
   body {
     font-size: 13px;
@@ -2065,7 +2076,7 @@ ul.custom-list-style li {
 }
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
-  .home-page .course-finder .keywords input {
+  .course-finder .keywords input {
     width: 255px;
   }
 }

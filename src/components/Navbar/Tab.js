@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Tab extends Component {
   constructor() {
@@ -10,33 +11,52 @@ class Tab extends Component {
 
   render() {
     if (this.props.children) {
-      return (
-        <li
-          className={this.state.style}
-          onMouseLeave={() => {
-            this.setState({ style: "nav-item dropdown" });
-          }}
-          onMouseEnter={() => {
-            this.setState({ style: "nav-item dropdown open" });
-          }}
-        >
-          <a className="dropdown-toggle" href="#">
-            {this.props.title} <i className="fa fa-angle-down" />
-          </a>
-          <ul className="dropdown-menu">{this.props.children}</ul>
-        </li>
-      );
+      if (this.props.active === this.props.title) {
+        return (
+          <li
+            className={`${this.state.style} active`}
+            onMouseLeave={() => {
+              this.setState({ style: "nav-item dropdown" });
+            }}
+            onMouseEnter={() => {
+              this.setState({ style: "nav-item dropdown open" });
+            }}
+          >
+            <a className="dropdown-toggle" href="#">
+              {this.props.title} <i className="fa fa-angle-down" />
+            </a>
+            <ul className="dropdown-menu">{this.props.children}</ul>
+          </li>
+        );
+      } else {
+        return (
+          <li
+            className={this.state.style}
+            onMouseLeave={() => {
+              this.setState({ style: "nav-item dropdown" });
+            }}
+            onMouseEnter={() => {
+              this.setState({ style: "nav-item dropdown open" });
+            }}
+          >
+            <a className="dropdown-toggle" href="#">
+              {this.props.title} <i className="fa fa-angle-down" />
+            </a>
+            <ul className="dropdown-menu">{this.props.children}</ul>
+          </li>
+        );
+      }
     } else {
-      if (this.props.active) {
+      if (this.props.active === this.props.title) {
         return (
           <li className="nav-item active">
-            <a href="index.html">{this.props.title}</a>
+            <Link to={"/"}>{this.props.title}</Link>
           </li>
         );
       } else {
         return (
           <li className="nav-item">
-            <a href="index.html">{this.props.title}</a>
+            <Link to={"/"}>{this.props.title}</Link>
           </li>
         );
       }

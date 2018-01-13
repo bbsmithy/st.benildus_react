@@ -1,19 +1,17 @@
-
 import React, { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Page from "../../components/Page/Page";
 
 class Humanities extends Component {
-render() {
+  render() {
     return (
-    <div>
-        <Navbar active={'Humanities'}/>
-        <Page title={'Humanities'} current={'Humanities'}>
-        <h1>Content here please</h1>
+      <div>
+        <Navbar active={"Academia"} />
+        <Page title={"Humanities"} current={"Humanities"}>
+          <h1>Content here please</h1>
         </Page>
-    </div>
+      </div>
     );
-}
+  }
 }
 export default Humanities;
-            

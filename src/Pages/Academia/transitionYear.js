@@ -1,19 +1,17 @@
-
 import React, { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Page from "../../components/Page/Page";
 
 class TransitionYear extends Component {
-render() {
+  render() {
     return (
-    <div>
-        <Navbar active={'TransitionYear'}/>
-        <Page title={'TransitionYear'} current={'TransitionYear'}>
-        <h1>Content here please</h1>
+      <div>
+        <Navbar active={"Academia"} />
+        <Page title={"TransitionYear"} current={"TransitionYear"}>
+          <h1>Content here please</h1>
         </Page>
-    </div>
+      </div>
     );
-}
+  }
 }
 export default TransitionYear;
-            

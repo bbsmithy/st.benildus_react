@@ -65,8 +65,8 @@ class Navbar extends Component {
             </div>
             <div className="navbar-collapse collapse" id="navbar-collapse">
               <ul className="nav navbar-nav">
-                <Tab title={"Home"} active={this.props.active} />
-                <Tab title={"About"} active={this.props.active}>
+                <Tab title={"Home"} root={"/"} active={this.props.active} />
+                <Tab title={"About"} root={"/about"} active={this.props.active}>
                   <li>
                     <Link to={"/about/mission_statement"}>
                       Mission Statement
@@ -78,12 +78,18 @@ class Navbar extends Component {
                     </Link>
                   </li>
                   <li>
-                    <a href="#">Principals Welcome</a>
+                    <Link to={"/about/principals_welcome"}>
+                      Principals Welcome
+                    </Link>
                   </li>
                 </Tab>
-                <Tab title={"Academia"} active={this.props.active}>
+                <Tab
+                  title={"Academia"}
+                  root={"/academia"}
+                  active={this.props.active}
+                >
                   <li>
-                    <a href="#">Core Subjects</a>
+                    <Link to={"/academia/core"}>Core Subjects</Link>
                   </li>
                   <li>
                     <a href="#">Sciences</a>
@@ -105,7 +111,11 @@ class Navbar extends Component {
                   </li>
                 </Tab>
 
-                <Tab title={"Extra Curricular"} active={this.props.active}>
+                <Tab
+                  title={"Extra Curricular"}
+                  root={"/extra_curricular"}
+                  active={this.props.active}
+                >
                   <li>
                     <a href="#">Sports</a>
                   </li>
@@ -122,7 +132,11 @@ class Navbar extends Component {
                     <a href="#">Debating</a>
                   </li>
                 </Tab>
-                <Tab title={"Enrolement"}>
+                <Tab
+                  title={"Enrolement"}
+                  root={"/gallery"}
+                  active={this.props.active}
+                >
                   <li>
                     <a href="#">Enrolement Policy</a>
                   </li>
@@ -130,9 +144,21 @@ class Navbar extends Component {
                     <a href="#">Enrolement Application Form</a>
                   </li>
                 </Tab>
-                <Tab title={"Gallery"} active={this.props.active} />
-                <Tab title={"Parents"} active={this.props.active} />
-                <Tab title={"Contact"} active={this.props.active} />
+                <Tab
+                  title={"Gallery"}
+                  root={"/gallery"}
+                  active={this.props.active}
+                />
+                <Tab
+                  title={"Parents"}
+                  root={"/parents"}
+                  active={this.props.active}
+                />
+                <Tab
+                  title={"Contact"}
+                  root={"/parents"}
+                  active={this.props.active}
+                />
               </ul>
             </div>
           </div>

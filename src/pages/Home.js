@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import Page from "../components/Page/Page";
+import Carousel from "../components/Carousel/Carousel";
+import VideoCarousel from "../components/Carousel/VideoCarousel";
+
 import TwitterTimeline from "react-twitter-embedded-timeline";
 import Iframe from "react-iframe";
 
@@ -9,6 +12,12 @@ class Home extends Component {
     return (
       <div>
         <Navbar active={"Home"} />
+        <div
+          className={"shadow"}
+          style={{ padding: 0, marginLeft: 55, marginRight: 55 }}
+        >
+          <Carousel />
+        </div>
         <div className="content container">
           <div className="page-wrapper">
             {this.props.title && (
@@ -33,7 +42,7 @@ class Home extends Component {
                     <h1 class="section-heading">
                       Welcome to St.Benildus College
                     </h1>
-                    <p>
+                    <p style={{ fontSize: 14 }}>
                       At St. Benildus College you will find a learning
                       environment for your son that is second to none – students
                       and teachers working together in an atmosphere of mutual
@@ -53,76 +62,104 @@ class Home extends Component {
               </div>
 
               <div className="row page-row">
-                <div className="col-md-9">
-                  <section class="video">
+                <div className="col-md-3">
+                  <section class="testimonials">
                     <h1 class="section-heading text-highlight">
-                      <span class="line">Video Tour</span>
+                      <span class="line"> Testimonials</span>
                     </h1>
                     <div class="carousel-controls">
-                      <a class="prev" href="#videos-carousel" data-slide="prev">
+                      <a
+                        class="prev"
+                        href="#testimonials-carousel"
+                        data-slide="prev"
+                      >
                         <i class="fa fa-caret-left" />
                       </a>
-                      <a class="next" href="#videos-carousel" data-slide="next">
+                      <a
+                        class="next"
+                        href="#testimonials-carousel"
+                        data-slide="next"
+                      >
                         <i class="fa fa-caret-right" />
                       </a>
                     </div>
                     <div class="section-content">
                       <div
-                        id="videos-carousel"
-                        class="videos-carousel carousel slide"
+                        id="testimonials-carousel"
+                        class="testimonials-carousel carousel slide"
                       >
                         <div class="carousel-inner">
                           <div class="item active">
-                            <iframe
-                              class="video-iframe"
-                              src="https://www.youtube.com/embed/WdtIGmlmOdg?rel=0&amp;wmode=transparent"
-                              frameborder="0"
-                              allowfullscreen=""
-                            />
-                          </div>
-
-                          <div class="item">
-                            <iframe
-                              class="video-iframe"
-                              src="https://www.youtube.com/embed/Ew2pUx3cF_0?rel=0&amp;wmode=transparent"
-                              frameborder="0"
-                              allowfullscreen=""
-                            />
-                          </div>
-
-                          <div class="item">
-                            <iframe
-                              class="video-iframe"
-                              src="https://www.youtube.com/embed/eLGjFvIMWSI?rel=0&amp;wmode=transparent"
-                              frameborder="0"
-                              allowfullscreen=""
-                            />
-                          </div>
-
-                          <div class="item">
-                            <iframe
-                              class="video-iframe"
-                              src="https://www.youtube.com/embed/fW8DIlitjko?rel=0&amp;wmode=transparent"
-                              frameborder="0"
-                              allowfullscreen=""
-                            />
-                          </div>
-
-                          <div class="item">
-                            <iframe
-                              class="video-iframe"
-                              src="https://www.youtube.com/embed/gvcHIHPTh1k?rel=0&amp;wmode=transparent"
-                              frameborder="0"
-                              allowfullscreen=""
-                            />
+                            <blockquote class="quote">
+                              <p>
+                                <i class="fa fa-quote-left" />I’m very happy
+                                interdum eget ipsum. Nunc pulvinar ut nulla eget
+                                sollicitudin. In hac habitasse platea dictumst.
+                                Integer mattis varius ipsum, posuere posuere est
+                                porta vel. Integer metus ligula, blandit ut
+                                fermentum a, rhoncus in ligula. Duis luctus.
+                              </p>
+                            </blockquote>
+                            <div class="row">
+                              <p class="people col-md-9 col-sm-3 col-xs-8">
+                                <span class="name">Marissa Spencer</span>
+                                <br />
+                                <span class="title">Curabitur commodo</span>
+                              </p>
+                              <img
+                                class="profile col-md-2"
+                                src="assets/images/testimonials/profile-1.png"
+                                alt=""
+                              />
+                            </div>
                           </div>
                           <div class="item">
-                            <iframe
-                              class="video-iframe"
-                              src="https://www.youtube.com/embed/aqCv4u8T8tg?rel=0&amp;wmode=transparent"
-                              frameborder="0"
-                              allowfullscreen=""
-                            />
+                            <blockquote class="quote">
+                              <p>
+                                <i class="fa fa-quote-left" /> I'm very pleased
+                                commodo gravida ultrices. Sed massa leo, aliquet
+                                non velit eu, volutpat vulputate odio. Interdum
+                                et malesuada fames ac ante ipsum primis in
+                                faucibus. Suspendisse porttitor metus eros, ut
+                                fringilla nulla auctor a.
+                              </p>
+                            </blockquote>
+                            <div class="row">
+                              <p class="people col-md-9 col-sm-3 col-xs-8">
+                                <span class="name">Marco Antonio</span>
+                                <br />
+                                <span class="title"> Gravida ultrices</span>
+                              </p>
+                              <img
+                                class="profile col-md-2"
+                                src="assets/images/testimonials/profile-2.png"
+                                alt=""
+                              />
+                            </div>
+                          </div>
+                          <div class="item">
+                            <blockquote class="quote">
+                              <p>
+                                <i class="fa fa-quote-left" /> I'm delighted
+                                commodo gravida ultrices. Sed massa leo, aliquet
+                                non velit eu, volutpat vulputate odio. Interdum
+                                et malesuada fames ac ante ipsum primis in
+                                faucibus. Suspendisse porttitor metus eros, ut
+                                fringilla nulla auctor a.
+                              </p>
+                            </blockquote>
+                            <div class="row">
+                              <p class="people col-md-9 col-sm-3 col-xs-8">
+                                <span class="name">Kate White</span>
+                                <br />
+                                <span class="title"> Gravida ultrices</span>
+                              </p>
+                              <img
+                                class="profile col-md-2"
+                                src="assets/images/testimonials/profile-3.png"
+                                alt=""
+                              />
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -133,7 +170,7 @@ class Home extends Component {
                       <span class="line">Events</span>
                     </h1>
                     <div class="section-content">
-                      {/* <div class="event-item">
+                      <div class="event-item">
                         <p class="date-label">
                           <span class="month">FEB</span>
                           <span class="date-number">18</span>
@@ -195,11 +232,33 @@ class Home extends Component {
                       </div>
                       <a class="read-more" href="events.html">
                         All events<i class="fa fa-chevron-right" />
-                      </a> */}
+                      </a>{" "}
+                    </div>
+                  </section>
+                </div>
+                <div className="col-md-6">
+                  <section class="video">
+                    <h1 class="section-heading text-highlight">
+                      <span class="line">Video Tour</span>
+                    </h1>
+                    <div class="carousel-controls">
+                      <a class="prev" href="#videos-carousel" data-slide="prev">
+                        <i class="fa fa-caret-left" />
+                      </a>
+                      <a class="next" href="#videos-carousel" data-slide="next">
+                        <i class="fa fa-caret-right" />
+                      </a>
+                    </div>
+                    <div class="section-content">
+                      <VideoCarousel />
+                    </div>
+                  </section>
+                  <section>
+                    <div>
                       <Iframe
                         url="https://calendar.google.com/calendar/embed?src=st.benildus.calendar%40gmail.com&amp;ctz=Europe/Dublin"
                         width="100%"
-                        height="700px"
+                        height="550"
                         id="myId"
                         className="myClassname"
                         display="initial"
@@ -216,7 +275,7 @@ class Home extends Component {
                   <Iframe
                     url="http://uniqueschoolapp.ie/site/notifications/school_id/52"
                     width="100%"
-                    height="700px"
+                    height="400px"
                     id="myId"
                     className="myClassname"
                     display="initial"

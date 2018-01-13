@@ -22,9 +22,9 @@ class Tab extends Component {
               this.setState({ style: "nav-item dropdown open" });
             }}
           >
-            <a className="dropdown-toggle" href="#">
+            <Link className="dropdown-toggle" to={this.props.root}>
               {this.props.title} <i className="fa fa-angle-down" />
-            </a>
+            </Link>
             <ul className="dropdown-menu">{this.props.children}</ul>
           </li>
         );
@@ -39,9 +39,9 @@ class Tab extends Component {
               this.setState({ style: "nav-item dropdown open" });
             }}
           >
-            <a className="dropdown-toggle" href="#">
+            <Link className="dropdown-toggle" to={this.props.root}>
               {this.props.title} <i className="fa fa-angle-down" />
-            </a>
+            </Link>
             <ul className="dropdown-menu">{this.props.children}</ul>
           </li>
         );
@@ -50,13 +50,13 @@ class Tab extends Component {
       if (this.props.active === this.props.title) {
         return (
           <li className="nav-item active">
-            <Link to={"/"}>{this.props.title}</Link>
+            <Link to={this.props.root}>{this.props.title}</Link>
           </li>
         );
       } else {
         return (
           <li className="nav-item">
-            <Link to={"/"}>{this.props.title}</Link>
+            <Link to={this.props.root}>{this.props.title}</Link>
           </li>
         );
       }

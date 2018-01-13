@@ -5,6 +5,8 @@
   "dependencies": {
     "lodash": "^4.17.4",
     "react": "^16.2.0",
+    "react-boostrap-carousel": "^3.0.0",
+    "react-bootstrap-carousel": "^2.2.1",
     "react-dom": "^16.2.0",
     "react-iframe": "^1.1.0",
     "react-router-dom": "^4.2.2",

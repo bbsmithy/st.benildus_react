@@ -1,19 +1,17 @@
-
 import React, { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Page from "../../components/Page/Page";
 
 class Sciences extends Component {
-render() {
+  render() {
     return (
-    <div>
-        <Navbar active={'Sciences'}/>
-        <Page title={'Sciences'} current={'Sciences'}>
-        <h1>Content here please</h1>
+      <div>
+        <Navbar active={"Academia"} />
+        <Page title={"Sciences"} current={"Sciences"}>
+          <h1>Content here please</h1>
         </Page>
-    </div>
+      </div>
     );
-}
+  }
 }
 export default Sciences;
-            

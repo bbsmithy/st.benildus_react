@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "react-bootstrap-carousel/dist/react-bootstrap-carousel.css";
 import { React_Bootstrap_Carousel } from "react-bootstrap-carousel";
+import Iframe from "react-iframe";
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -78,28 +79,26 @@ class Carousel extends React.Component {
           className="carousel-fade"
         >
           <div>
-            <img
-              style={{ width: "100%" }}
-              src="http://www.stbenilduscollege.com/wp-content/uploads/2016/02/SB_Front_Slide01_WEAREHAPPY.jpg"
+            <Iframe
+              url="https://www.youtube.com/embed/WdtIGmlmOdg?rel=0&amp;wmode=transparent"
+              width="100%"
+              height="300"
+              id="myId"
+              className="myClassname"
+              display="initial"
+              position="relative"
+              allowFullScreen
             />
           </div>
           <div>
-            <img
-              style={{ width: "100%" }}
-              src="http://www.stbenilduscollege.com/wp-content/uploads/2015/03/SB_Front_Slide02_WEARECHAMPIONS.jpg"
-            />
-          </div>
-          <div>
-            <img
-              style={{ width: "100%" }}
-              src="http://www.stbenilduscollege.com/wp-content/uploads/2015/03/SB_YS_2016_01a.jpg"
-            />
-          </div>
-
-          <div>
-            <img
-              style={{ width: "100%" }}
-              src="http://www.stbenilduscollege.com/wp-content/uploads/2015/03/SB_PPFootballLeinsterA_03a.jpg"
+            <Iframe
+              url="https://www.youtube.com/embed/Ew2pUx3cF_0?rel=0&amp;wmode=transparent"
+              width="100%"
+              height="300"
+              id="myId"
+              className="myClassname"
+              position="relative"
+              allowFullScreen
             />
           </div>
         </React_Bootstrap_Carousel>

@@ -24,7 +24,7 @@ export default class Page extends Component {
           <div className="page-content">
             <div className="row page-row">
               <div className="col-md-9">{this.props.children}</div>
-              <div className="col-md-3">
+              <div className="col-md-3 col-sm-12">
                 <TwitterTimeline
                   widgetId="675940410338996224"
                   chrome="noborders noheader"

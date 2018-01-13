@@ -1,19 +1,20 @@
-
 import React, { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Page from "../../components/Page/Page";
 
 class DisciplinaryProcedureExp extends Component {
-render() {
+  render() {
     return (
-    <div>
-        <Navbar active={'DisciplinaryProcedureExp'}/>
-        <Page title={'DisciplinaryProcedureExp'} current={'DisciplinaryProcedureExp'}>
-        <h1>Content here please</h1>
+      <div>
+        <Navbar active={"Parents"} />
+        <Page
+          title={"Disciplinary Procedure"}
+          current={"Disciplinary Procedure"}
+        >
+          <h1>Content here please</h1>
         </Page>
-    </div>
+      </div>
     );
-}
+  }
 }
 export default DisciplinaryProcedureExp;
-            

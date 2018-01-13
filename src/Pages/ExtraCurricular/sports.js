@@ -1,19 +1,17 @@
-
 import React, { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Page from "../../components/Page/Page";
 
 class Sports extends Component {
-render() {
+  render() {
     return (
-    <div>
-        <Navbar active={'Sports'}/>
-        <Page title={'Sports'} current={'Sports'}>
-        <h1>Content here please</h1>
+      <div>
+        <Navbar active={"Extra Curricular"} />
+        <Page title={"Sports"} current={"Sports"}>
+          <h1>Content here please</h1>
         </Page>
-    </div>
+      </div>
     );
-}
+  }
 }
 export default Sports;
-            

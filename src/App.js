@@ -18,8 +18,6 @@ import Sciences from "./pages/Academia/Sciences";
 import Technology from "./pages/Academia/Technology";
 import TransistionYear from "./pages/Academia/TransitionYear";
 
-import Contact from "./pages/Contact/Contact";
-
 import EnrolmentForm from "./pages/Enrolment/EnrolmentForm";
 import EnrolmentPolicy from "./pages/Enrolment/EnrolmentPolicy";
 
@@ -28,6 +26,15 @@ import CommunityInitiatives from "./pages/ExtraCurricular/CommunityInitiatives";
 import Debating from "./pages/ExtraCurricular/Debating";
 import Gaisce from "./pages/ExtraCurricular/Gaisce";
 import Sports from "./pages/ExtraCurricular/Sports";
+
+import BookListAndUniform from "./pages/Parents/BookListAndUniform";
+import CodeOfBehaviour from "./pages/Parents/CodeOfBehaviour";
+import DisciplinaryProcedure from "./pages/Parents/DisciplinaryProcedure";
+import ParentsAssoc from "./pages/Parents/ParentsAssoc.js";
+import PolicyProcedure from "./pages/Parents/PolicyProcedure";
+
+import Gallery from "./pages/Gallery/Gallery";
+import Contact from "./pages/Contact/Contact";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -66,9 +73,9 @@ class App extends Component {
             path="/academia/transistion_year"
             component={TransistionYear}
           />
-          {/*******Contact***********/}
-          <Route exact path="/contact" component={Contact} />
+
           {/*****Enrolement*******/}
+
           <Route
             exact
             path="/enrolement/enrolement_form/"
@@ -93,6 +100,37 @@ class App extends Component {
           />
           <Route exact path="/extra_curricular/gaisce" component={Gaisce} />
           <Route exact path="/extra_curricular/debating" component={Debating} />
+
+          {/******Parents*******/}
+          <Route
+            exact
+            path="/parents/book_list_and_uniform"
+            component={BookListAndUniform}
+          />
+          <Route
+            exact
+            path="/parents/code_of_behaviour"
+            component={CodeOfBehaviour}
+          />
+          <Route
+            exact
+            path="/parents/disciplinary_procedure"
+            component={DisciplinaryProcedure}
+          />
+          <Route
+            exact
+            path="/parents/parents_association"
+            component={ParentsAssoc}
+          />
+          <Route
+            exact
+            path="/parents/policy_procedure"
+            component={PolicyProcedure}
+          />
+          {/****Single Pages******/}
+
+          <Route exact path="/gallery" component={Gallery} />
+          <Route exact path="/contact" component={Contact} />
         </div>
       </Router>
     );

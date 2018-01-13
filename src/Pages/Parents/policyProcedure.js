@@ -1,19 +1,17 @@
-
 import React, { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Page from "../../components/Page/Page";
 
 class PolicyProcedure extends Component {
-render() {
+  render() {
     return (
-    <div>
-        <Navbar active={'PolicyProcedure'}/>
-        <Page title={'PolicyProcedure'} current={'PolicyProcedure'}>
-        <h1>Content here please</h1>
+      <div>
+        <Navbar active={"Parents"} />
+        <Page title={"Policy Procedure"} current={"Policy Procedure"}>
+          <h1>Content here please</h1>
         </Page>
-    </div>
+      </div>
     );
-}
+  }
 }
 export default PolicyProcedure;
-            

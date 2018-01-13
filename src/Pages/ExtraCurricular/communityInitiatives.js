@@ -1,19 +1,17 @@
-
 import React, { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Page from "../../components/Page/Page";
 
 class CommunityInitiatives extends Component {
-render() {
+  render() {
     return (
-    <div>
-        <Navbar active={'CommunityInitiatives'}/>
-        <Page title={'CommunityInitiatives'} current={'CommunityInitiatives'}>
-        <h1>Content here please</h1>
+      <div>
+        <Navbar active={"Extra Curricular"} />
+        <Page title={"Community Initiatives"} current={"Community Initiatives"}>
+          <h1>Content here please</h1>
         </Page>
-    </div>
+      </div>
     );
-}
+  }
 }
 export default CommunityInitiatives;
-            

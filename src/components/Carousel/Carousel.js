@@ -38,7 +38,7 @@ class Carousel extends React.Component {
   render() {
     let { leftIcon, rightIcon } = this.state;
     return (
-      <div className="container-fluid" style={{ padding: 0 }}>
+      <div style={{ padding: 0 }}>
         {/* <button
               type="button"
               className="btn btn-default"

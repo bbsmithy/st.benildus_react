@@ -1,19 +1,17 @@
-
 import React, { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Page from "../../components/Page/Page";
 
 class MissionStatement extends Component {
-render() {
+  render() {
     return (
-    <div>
-        <Navbar active={'MissionStatement'}/>
-        <Page title={'MissionStatement'} current={'MissionStatement'}>
-        <h1>Content here please</h1>
+      <div>
+        <Navbar active={"About"} />
+        <Page title={"Mission Statement"} current={"Mission Statement"}>
+          <h1>Content here please</h1>
         </Page>
-    </div>
+      </div>
     );
-}
+  }
 }
 export default MissionStatement;
-            

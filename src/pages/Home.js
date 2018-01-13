@@ -254,6 +254,44 @@ class Home extends Component {
                     </div>
                   </section>
                   <section>
+                    <h1 class="section-heading text-highlight">
+                      <span class="line">Principals Welcome</span>
+                    </h1>
+                    <div class="section-content" style={{ padding: 0 }}>
+                      <figure class="thumb col-md-4 col-sm-4 col-xs-6">
+                        <img
+                          class="img-responsive"
+                          src="http://www.stbenilduscollege.com/wp-content/uploads/2015/05/Principal-Martin-Johnson-e1432549080194-150x150.jpg"
+                          alt=""
+                        />
+                      </figure>
+                      <div class="details col-md-8 col-sm-8 col-xs-6">
+                        <p>
+                          The standards we set for ourselves are very high, both
+                          in the classroom and outside of it. We expect that our
+                          students will strive to reach their potential, and we
+                          will be there for them every step of the way. The
+                          College is very well resourced, offering a broad
+                          academic curriculum and extensive calendar of
+                          co-curricular activities, to help develop young people
+                          who are academically confident and socially aware. We
+                          are always conscious of developing potential and
+                          nurturing a strong social conscience. The guiding
+                          spirit of our school is holistic and democratic. Every
+                          student is important, every voice will be heard. We
+                          operate out of a belief that fairness and honesty are
+                          the cornerstones of trust, and we draw strength and
+                          inspiration from our history and tradition as we
+                          nurture the citizens of tomorrow. We follow the
+                          guidance of Saint Benildus, who ‘did ordinary things
+                          extraordinarily well’. Thank you for visiting our
+                          website. Please stay a while, and get in touch if you
+                          have any questions. Martin Johnson
+                        </p>
+                      </div>
+                    </div>
+                  </section>
+                  {/* <section>
                     <div>
                       <Iframe
                         url="https://calendar.google.com/calendar/embed?src=st.benildus.calendar%40gmail.com&amp;ctz=Europe/Dublin"
@@ -266,7 +304,7 @@ class Home extends Component {
                         allowFullScreen
                       />
                     </div>
-                  </section>
+                  </section> */}
                 </div>
                 <div className="col-md-3">
                   <h1 class="section-heading text-highlight">

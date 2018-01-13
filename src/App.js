@@ -24,6 +24,10 @@ import EnrolmentForm from "./pages/Enrolment/EnrolmentForm";
 import EnrolmentPolicy from "./pages/Enrolment/EnrolmentPolicy";
 
 import BOIBankProgram from "./pages/ExtraCurricular/BoiBankProg";
+import CommunityInitiatives from "./pages/ExtraCurricular/CommunityInitiatives";
+import Debating from "./pages/ExtraCurricular/Debating";
+import Gaisce from "./pages/ExtraCurricular/Gaisce";
+import Sports from "./pages/ExtraCurricular/Sports";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -72,15 +76,23 @@ class App extends Component {
           />
           <Route
             exact
-            path="/enrolement/enrolement_form/"
+            path="/enrolement/enrolement_policy/"
             component={EnrolmentPolicy}
           />
-
+          {/*****Extra Curricular*******/}
           <Route
             exact
             path="/extra_curricular/bank_of_ireland_program"
             component={BOIBankProgram}
           />
+          <Route exact path="/extra_curricular/sports" component={Sports} />
+          <Route
+            exact
+            path="/extra_curricular/community_initiatives"
+            component={CommunityInitiatives}
+          />
+          <Route exact path="/extra_curricular/gaisce" component={Gaisce} />
+          <Route exact path="/extra_curricular/debating" component={Debating} />
         </div>
       </Router>
     );

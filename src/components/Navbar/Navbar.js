@@ -85,29 +85,31 @@ class Navbar extends Component {
                 </Tab>
                 <Tab
                   title={"Academia"}
-                  root={"/academia"}
+                  root={"/academia/core"}
                   active={this.props.active}
                 >
                   <li>
                     <Link to={"/academia/core"}>Core Subjects</Link>
                   </li>
                   <li>
-                    <a href="#">Sciences</a>
+                    <Link to={"/academia/sciences"}>Sciences</Link>
                   </li>
                   <li>
-                    <a href="#">Languages</a>
+                    <Link to={"/academia/languages"}>Languages</Link>
                   </li>
                   <li>
-                    <a href="#">Technology</a>
+                    <Link to={"/academia/technology"}>Technology</Link>
                   </li>
                   <li>
-                    <a href="#">Humanities</a>
+                    <Link to={"/academia/humanities"}>Humanities</Link>
                   </li>
                   <li>
-                    <a href="#">Business</a>
+                    <Link to={"/academia/business"}>Business</Link>
                   </li>
                   <li>
-                    <a href="#">Transistion Year</a>
+                    <Link to={"/academia/transition_year"}>
+                      Transistion Year
+                    </Link>
                   </li>
                 </Tab>
 
@@ -134,14 +136,18 @@ class Navbar extends Component {
                 </Tab>
                 <Tab
                   title={"Enrolement"}
-                  root={"/gallery"}
+                  root={"/enrolement/enrolement_policy/"}
                   active={this.props.active}
                 >
                   <li>
-                    <a href="#">Enrolement Policy</a>
+                    <Link to={"/enrolement/enrolement_policy/"}>
+                      Enrolement Policy
+                    </Link>
                   </li>
                   <li>
-                    <a href="#">Enrolement Application Form</a>
+                    <Link to={"/enrolement/enrolement_form/"}>
+                      Enrolement Application Form
+                    </Link>
                   </li>
                 </Tab>
                 <Tab

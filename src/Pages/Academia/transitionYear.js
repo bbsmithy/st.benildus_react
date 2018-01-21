@@ -7,7 +7,7 @@ class TransitionYear extends Component {
     return (
       <div>
         <Navbar active={"Academia"} />
-        <Page title={"TransitionYear"} current={"TransitionYear"}>
+        <Page title={"Transition Year"} current={"TransitionYear"}>
           <h1>Content here please</h1>
         </Page>
       </div>

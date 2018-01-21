@@ -8,7 +8,13 @@ class Technology extends Component {
       <div>
         <Navbar active={"Academia"} />
         <Page title={"Technology"} current={"Technology"}>
-          <h1>Content here please</h1>
+          <ul>
+            <li>Technical Graphics (Junior Certificate)</li>
+            <li>Materials Technology (Woodwork) (Junior Certificate)</li>
+            <li>Design & Communications Graphics</li>
+            <li>Construction Studies</li>
+            <li>Computer Studies</li>
+          </ul>
         </Page>
       </div>
     );

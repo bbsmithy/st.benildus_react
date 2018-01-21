@@ -8,7 +8,19 @@ class Humanities extends Component {
       <div>
         <Navbar active={"Academia"} />
         <Page title={"Humanities"} current={"Humanities"}>
-          <h1>Content here please</h1>
+          <ul>
+            <li>Art</li>
+            <li>Classical Studies</li>
+            <li>Geography</li>
+            <li>History</li>
+            <li>Music</li>
+            <li>
+              Civic Social and Political Education (CSPE) (Junior Certificate)
+            </li>
+            <li>
+              Social Personal and Health Education (SPHE) (Junior Certificate)
+            </li>
+          </ul>
         </Page>
       </div>
     );

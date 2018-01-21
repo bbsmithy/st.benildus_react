@@ -8,7 +8,12 @@ class Business extends Component {
       <div>
         <Navbar active={"Academia"} />
         <Page title={"Business"} current={"Business"}>
-          <h1>Content here please</h1>
+          <ul>
+            <li>Business Studies (Junior Certificate)</li>
+            <li>Accounting</li>
+            <li>Business</li>
+            <li>Economics</li>
+          </ul>
         </Page>
       </div>
     );

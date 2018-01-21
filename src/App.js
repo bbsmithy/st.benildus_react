@@ -70,7 +70,7 @@ class App extends Component {
           <Route exact path="/academia/technology" component={Technology} />
           <Route
             exact
-            path="/academia/transistion_year"
+            path="/academia/transition_year"
             component={TransistionYear}
           />
 

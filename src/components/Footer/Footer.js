@@ -3,12 +3,6 @@ import Tab from "./Tab";
 import { Link } from "react-router-dom";
 
 class Navbar extends Component {
-  constructor() {
-    super();
-    this.state = {
-      responsiveNavbarStyle: "navbar-collapse collapse"
-    };
-  }
   render() {
     return (
       <div>
@@ -56,22 +50,7 @@ class Navbar extends Component {
 
         <nav className="main-nav" role="navigation">
           <div className="container">
-            <div
-              className="navbar-header"
-              onClick={() => {
-                if (this.state.collapsed) {
-                  this.setState({
-                    responsiveNavbarStyle: "navbar-collapse collapse",
-                    collapsed: false
-                  });
-                } else {
-                  this.setState({
-                    responsiveNavbarStyle: "navbar-collapse collapse in",
-                    collapsed: true
-                  });
-                }
-              }}
-            >
+            <div className="navbar-header">
               <button
                 className="navbar-toggle"
                 type="button"
@@ -84,10 +63,7 @@ class Navbar extends Component {
                 <span className="icon-bar" />
               </button>
             </div>
-            <div
-              className={this.state.responsiveNavbarStyle}
-              id="navbar-collapse"
-            >
+            <div className="navbar-collapse collapse" id="navbar-collapse">
               <ul className="nav navbar-nav">
                 <Tab title={"Home"} root={"/"} active={this.props.active} />
                 <Tab title={"About"} root={"/about"} active={this.props.active}>

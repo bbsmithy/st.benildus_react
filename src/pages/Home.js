@@ -308,6 +308,16 @@ class Home extends Component {
                 </div>
                 <div className="col-md-3">
                   <h1 class="section-heading text-highlight">
+                    <span class="line">Twitter</span>
+                  </h1>
+                  <div>
+                    <TwitterTimeline
+                      widgetId="675940410338996224"
+                      chrome="noborders noheader"
+                      limit={3}
+                    />
+                  </div>
+                  <h1 class="section-heading text-highlight">
                     <span class="line">App Feed</span>
                   </h1>
                   <Iframe
@@ -320,16 +330,6 @@ class Home extends Component {
                     position="relative"
                     allowFullScreen
                   />
-                  <h1 class="section-heading text-highlight">
-                    <span class="line">Twitter</span>
-                  </h1>
-                  <div>
-                    <TwitterTimeline
-                      style={{ height: "500px" }}
-                      widgetId="675940410338996224"
-                      chrome="noborders noheader"
-                    />
-                  </div>
                 </div>
               </div>
             </div>

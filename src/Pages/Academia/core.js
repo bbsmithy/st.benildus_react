@@ -7,8 +7,14 @@ class Core extends Component {
     return (
       <div>
         <Navbar active={"Academia"} />
-        <Page title={"Core"} current={"Core"}>
-          <h1>Content here please</h1>
+        <Page title={"Core Subjects"} current={"Core"}>
+          <ul>
+            <li>English</li>
+            <li>Irish</li>
+            <li>Maths</li>
+            <li>Religious Education</li>
+            <li>Physical Education</li>
+          </ul>
         </Page>
       </div>
     );

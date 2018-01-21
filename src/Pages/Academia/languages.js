@@ -8,7 +8,11 @@ class Languages extends Component {
       <div>
         <Navbar active={"Academia"} />
         <Page title={"Languages"} current={"Languages"}>
-          <h1>Content here please</h1>
+          <ul>
+            <li>French</li>
+            <li>German</li>
+            <li>Spanish</li>
+          </ul>
         </Page>
       </div>
     );

@@ -8,7 +8,13 @@ class Sciences extends Component {
       <div>
         <Navbar active={"Academia"} />
         <Page title={"Sciences"} current={"Sciences"}>
-          <h1>Content here please</h1>
+          <ul>
+            <li>Science (Junior Certificate)</li>
+            <li>Biology</li>
+            <li>Physics</li>
+            <li>Chemistry</li>
+            <li>Applied Maths</li>
+          </ul>
         </Page>
       </div>
     );

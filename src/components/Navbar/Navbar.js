@@ -31,9 +31,6 @@ class Navbar extends Component {
                 <li className="divider">
                   <Link to={"/"}>Home</Link>
                 </li>
-                <li className="divider">
-                  <a href="faq.html">FAQ</a>
-                </li>
                 <li>
                   <Link to={"/contact"} style={{ color: "white" }}>
                     Contact
@@ -43,11 +40,11 @@ class Navbar extends Component {
               <br />
               <div className="contact pull-right">
                 <p className="phone" style={{ color: "white" }}>
-                  <i className="fa fa-phone" />Call us today 0800 123 4567
+                  <i className="fa fa-phone" />Call us today 01 2986539
                 </p>
-                <p className="email">
+                <p className="email" style={{ color: "white" }}>
                   <i className="fa fa-envelope" />
-                  <p style={{ color: "white" }}>enquires@website.com</p>
+                  stbenildusoffice@stbenilduscollege.com
                 </p>
               </div>
             </div>
@@ -90,7 +87,10 @@ class Navbar extends Component {
             >
               <ul className="nav navbar-nav">
                 <Tab title={"Home"} root={"/"} active={this.props.active} />
-                <Tab title={"About"} root={"/about"} active={this.props.active}>
+                <Tab title={"About"} active={this.props.active}>
+                  <li>
+                    <Link to={"/about"}>About Us</Link>
+                  </li>
                   <li>
                     <Link to={"/about/mission_statement"}>
                       Mission Statement
@@ -101,17 +101,8 @@ class Navbar extends Component {
                       Administration & Staff
                     </Link>
                   </li>
-                  <li>
-                    <Link to={"/about/principals_welcome"}>
-                      Principals Welcome
-                    </Link>
-                  </li>
                 </Tab>
-                <Tab
-                  title={"Academia"}
-                  root={"/academia/core"}
-                  active={this.props.active}
-                >
+                <Tab title={"Academia"} active={this.props.active}>
                   <li>
                     <Link to={"/academia/core"}>Core Subjects</Link>
                   </li>
@@ -137,11 +128,7 @@ class Navbar extends Component {
                   </li>
                 </Tab>
 
-                <Tab
-                  title={"Extra Curricular"}
-                  root={"/extra_curricular/sports"}
-                  active={this.props.active}
-                >
+                <Tab title={"Extra Curricular"} active={this.props.active}>
                   <li>
                     <Link to={"/extra_curricular/sports"}>Sports</Link>
                   </li>
@@ -162,27 +149,7 @@ class Navbar extends Component {
                     <Link to={"/extra_curricular/debating"}>Debating</Link>
                   </li>
                 </Tab>
-                <Tab
-                  title={"Enrolement"}
-                  root={"/enrolement/enrolement_policy/"}
-                  active={this.props.active}
-                >
-                  <li>
-                    <Link to={"/enrolement/enrolement_policy/"}>
-                      Enrolement Policy
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={"/enrolement/enrolement_form/"}>
-                      Enrolement Application Form
-                    </Link>
-                  </li>
-                </Tab>
-                <Tab
-                  title={"Parents"}
-                  root={"/parents/book_list_and_uniform"}
-                  active={this.props.active}
-                >
+                <Tab title={"Parents"} active={this.props.active}>
                   <li>
                     <Link to={"/parents/book_list_and_uniform"}>
                       Book List and Uniform
@@ -209,6 +176,11 @@ class Navbar extends Component {
                     </Link>
                   </li>
                 </Tab>
+                <Tab
+                  title={"Enrolement"}
+                  root={"/enrolement/"}
+                  active={this.props.active}
+                />
                 <Tab
                   title={"Gallery"}
                   root={"/gallery"}

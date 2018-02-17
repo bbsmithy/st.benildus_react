@@ -7,7 +7,7 @@ class EnrolmentForm extends Component {
     return (
       <div>
         <Navbar active={"Enrolement"} />
-        <Page title={"Enrolment"} current={"Enrolment Form"}>
+        <Page title={"Enrolement"} current={"Enrolment Form"}>
           <h3>St.Benildus Enrolement Policy</h3>
           <p>
             This Policy supersedes all pre-existing policies and has been

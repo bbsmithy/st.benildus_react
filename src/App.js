@@ -76,16 +76,7 @@ class App extends Component {
 
           {/*****Enrolement*******/}
 
-          <Route
-            exact
-            path="/enrolement/enrolement_form/"
-            component={EnrolmentForm}
-          />
-          <Route
-            exact
-            path="/enrolement/enrolement_policy/"
-            component={EnrolmentPolicy}
-          />
+          <Route exact path="/enrolement" component={EnrolmentForm} />
           {/*****Extra Curricular*******/}
           <Route
             exact

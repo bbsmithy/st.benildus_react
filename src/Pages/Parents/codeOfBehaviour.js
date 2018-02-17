@@ -8,7 +8,11 @@ class CodeOfBehaviour extends Component {
       <div>
         <Navbar active={"Parents"} />
         <Page title={"Code Of Behaviour"} current={"Code Of Behaviour"}>
-          <h1>Content here please</h1>
+          <h3>
+            <a href="http://www.stbenilduscollege.com/wp-content/uploads/2017/01/Code-of-Behaviour-June-2016.pdf">
+              Click Here For School Code Of Conduct
+            </a>
+          </h3>
         </Page>
       </div>
     );

@@ -22,9 +22,9 @@ class Tab extends Component {
               this.setState({ style: "nav-item dropdown open" });
             }}
           >
-            <Link className="dropdown-toggle" to={this.props.root}>
+            <a className="dropdown-toggle">
               {this.props.title} <i className="fa fa-angle-down" />
-            </Link>
+            </a>
             <ul className="dropdown-menu">{this.props.children}</ul>
           </li>
         );
@@ -39,9 +39,9 @@ class Tab extends Component {
               this.setState({ style: "nav-item dropdown open" });
             }}
           >
-            <Link className="dropdown-toggle" to={this.props.root}>
+            <a className="dropdown-toggle">
               {this.props.title} <i className="fa fa-angle-down" />
-            </Link>
+            </a>
             <ul className="dropdown-menu">{this.props.children}</ul>
           </li>
         );

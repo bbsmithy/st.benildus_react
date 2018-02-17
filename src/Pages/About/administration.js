@@ -10,7 +10,7 @@ class Administration extends Component {
         <Navbar active={"About"} />
         <Page title={"Administration"} current={"Administration"}>
           <h4>Administration & Staff</h4>
-          <Gallery />
+          {/* <Gallery /> */}
           <p>
             St. Benildus College recognizes that quality education is a
             collaborative effort. We work together with our management,

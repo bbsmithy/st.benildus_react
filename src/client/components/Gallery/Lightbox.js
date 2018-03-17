@@ -47,22 +47,8 @@ export default class GalleryLightBox extends Component {
     return out;
   };
 
-  //   for (var i=1; i <= 20; i++)
-  // {
-  //     if (i % 15 == 0)
-  //         console.log("FizzBuzz");
-  //     else if (i % 3 == 0)
-  //         console.log("Fizz");
-  //     else if (i % 5 == 0)
-  //         console.log("Buzz");
-  //     else
-  //         console.log(i);
-  // }
-
   openLightbox = (index, event) => {
     event.preventDefault();
-    console.log(index);
-    console.log(this.state.downloadUrls);
     this.setState({
       currentImage: index,
       lightboxIsOpen: true
@@ -103,18 +89,17 @@ export default class GalleryLightBox extends Component {
   renderGallery = () => {
     const { downloadUrls } = this.state;
     if (!downloadUrls) return;
-    const imgColumns = this.chunkify(downloadUrls, 2, true);
+    const imgColumns = this.chunkify(downloadUrls, 3, true);
 
     const gallery = imgColumns.map((imageArray, i) => {
       return (
         <div
-          className={"col-md-6"}
+          className={"col-md-4"}
           style={{
             padding: 0
           }}
         >
           {imageArray.map((obj, y) => {
-            let innerIndex = y;
             let img = new Image();
             img.src = obj.src;
 
@@ -148,7 +133,32 @@ export default class GalleryLightBox extends Component {
         <div className={"col-md-9"}>{gallery}</div>
 
         <div className={"col-md-3"}>
-          <h3>Links here</h3>
+          <ul class="list-group">
+            <Link class="list-group-item active" to="/gallery/misc">
+              Around Our School
+            </Link>
+            <Link class="list-group-item" to="/gallery/misc">
+              Extra Curricular
+            </Link>
+            <Link class="list-group-item" to="/gallery/misc">
+              In The Classroom
+            </Link>
+            <Link class="list-group-item" to="/gallery/misc">
+              Music, Art & Culture
+            </Link>
+            <Link class="list-group-item" to="/gallery/misc">
+              Outstanding Achievement
+            </Link>
+            <Link class="list-group-item" to="/gallery/misc">
+              Run For Life
+            </Link>
+            <Link class="list-group-item" to="/gallery/misc">
+              Sport
+            </Link>
+            <Link class="list-group-item" to="/gallery/misc">
+              Transition Year
+            </Link>
+          </ul>
         </div>
       </div>
     );

@@ -22,11 +22,16 @@ class Home extends Component {
         </div> */}
         <div
           className="container shadow"
-          style={{ paddingLeft: 0, paddingRight: 0, paddingTop: 0 }}
+          style={{
+            paddingLeft: 0,
+            paddingRight: 0,
+            paddingTop: 0,
+            paddingBottom: 0
+          }}
         >
           <Carousel />
         </div>
-        <div className="content container">
+        <div className="content container" style={{ paddingTop: 0 }}>
           <div className="page-wrapper">
             {this.props.title && (
               <header className="page-heading clearfix">
@@ -44,8 +49,8 @@ class Home extends Component {
               </header>
             )}
             <div className="page-content">
-              <div className="row page-row">
-                <section class="promo box box-dark">
+              <div className="row">
+                <section class="promo box">
                   <div className="col-md-9">
                     <h1 className="section-heading">
                       Welcome to St.Benildus College

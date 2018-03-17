@@ -16,7 +16,6 @@ class Tab extends Component {
           <li
             className={`${this.state.style} active`}
             onMouseLeave={() => {
-              alert("Working");
               this.setState({ style: "nav-item dropdown" });
             }}
             onMouseEnter={() => {

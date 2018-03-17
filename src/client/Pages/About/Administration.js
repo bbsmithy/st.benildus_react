@@ -6,7 +6,11 @@ class Administration extends Component {
     return (
       <div>
         <Navbar active={"About"} />
-        <Page title={"Administration & Staff"} current={"Administration"}>
+        <Page
+          title={"Administration & Staff"}
+          current={"Administration"}
+          path={"/About/Administration.js"}
+        >
           <h4>Administration & Staff</h4>
           {/* <Gallery /> */}
           <p>

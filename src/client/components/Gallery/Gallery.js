@@ -76,7 +76,7 @@ export default class Sample extends Component {
       return (
         <div className="col-md-4 col-sm-4 col-xs-12 text-center">
           <div class="album-cover">
-            <Link to={"gallery/archive"}>
+            <Link to={"/gallery/archive"}>
               <img className="img-responsive" src={folder.cover} alt="" />
             </Link>
             <div className="desc">

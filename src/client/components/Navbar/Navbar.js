@@ -14,19 +14,21 @@ class Navbar extends Component {
       <div>
         <header className="header">
           <div className="header-main container">
-            <h1 className="logo col-md-4 col-sm-4">
+            <h1
+              className="logo col-md-5 col-sm-12"
+              style={{ color: "white", fontWeight: "500" }}
+            >
               <Link to={"/"}>
                 <img
                   id="logo"
-                  width="200px"
-                  src={
-                    "http://www.stbenilduscollege.com/wp-content/themes/stbenildus/img/fullheader.png"
-                  }
+                  width="80px"
+                  src={require("../../../assets/favicon.png")}
                   alt="Logo"
                 />
               </Link>
+              {"  "}St.Benildus College
             </h1>
-            <div className="info col-md-8 col-sm-8">
+            <div className="info col-md-7 col-sm-8">
               <ul className="menu-top navbar-right hidden-xs">
                 <li className="divider">
                   <Link to={"/"}>Home</Link>

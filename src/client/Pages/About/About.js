@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import Page from "../../components/Page/Page";
+import Editor from "../../../cms/components/Editor";
 
 class About extends Component {
   render() {
@@ -72,6 +73,7 @@ class About extends Component {
             academic successes of our students past and present, and the
             opportunities that we offer our students now and into the future.
           </p>
+          <Editor />
         </Page>
       </div>
     );

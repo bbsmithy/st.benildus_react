@@ -18,6 +18,12 @@ class GalleryFolder extends Component {
           title: "St.Benildus Archive"
         });
       }
+      case "misc": {
+        console.log(this.props);
+        this.setState({
+          title: "St.Benildus Archive"
+        });
+      }
       default: {
         console.log(this.props);
       }

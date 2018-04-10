@@ -18,6 +18,9 @@ class Tab extends Component {
             onMouseLeave={() => {
               this.setState({ style: "nav-item dropdown" });
             }}
+            onClick={() => {
+              this.setState({ style: "nav-item dropdown open" });
+            }}
             onMouseEnter={() => {
               this.setState({ style: "nav-item dropdown open" });
             }}
@@ -34,6 +37,9 @@ class Tab extends Component {
             className={this.state.style}
             onMouseLeave={() => {
               this.setState({ style: "nav-item dropdown" });
+            }}
+            onClick={() => {
+              this.setState({ style: "nav-item dropdown open" });
             }}
             onMouseEnter={() => {
               this.setState({ style: "nav-item dropdown open" });

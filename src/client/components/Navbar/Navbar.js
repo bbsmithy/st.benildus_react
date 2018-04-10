@@ -14,20 +14,16 @@ class Navbar extends Component {
       <div>
         <header className="header">
           <div className="header-main container">
-            <h1
-              className="logo col-md-5 col-sm-12"
-              style={{ color: "white", fontWeight: "500" }}
-            >
+            <div className="logo col-md-5 col-sm-12">
               <Link to={"/"}>
                 <img
                   id="logo"
-                  width="80px"
-                  src={require("../../../assets/favicon.png")}
+                  width="250px"
+                  src={require("../../../assets/fullheader.png")}
                   alt="Logo"
                 />
               </Link>
-              {"  "}St.Benildus College
-            </h1>
+            </div>
             <div className="info col-md-7 col-sm-8">
               <ul className="menu-top navbar-right hidden-xs">
                 <li className="divider">
@@ -97,6 +93,9 @@ class Navbar extends Component {
                     <Link to={"/about/mission_statement"}>
                       Mission Statement
                     </Link>
+                  </li>
+                  <li>
+                    <Link to={"/about/facilities"}>Facilities</Link>
                   </li>
                   <li>
                     <Link to={"/about/administration_staff"}>

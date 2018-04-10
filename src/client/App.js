@@ -7,6 +7,7 @@ import NoMatch from "./Pages/404";
 import "./App.css";
 
 import About from "./Pages/About/About";
+import Facilities from "./Pages/About/Facilities";
 import Administration from "./Pages/About/Administration";
 import MissionStatement from "./Pages/About/MissionStatement";
 import PrincipalsWelcome from "./Pages/About/PrincipalsWelcome";
@@ -52,6 +53,7 @@ class App extends Component {
           path="/about/administration_staff"
           component={Administration}
         />
+        <Route exact path="/about/facilities" component={Facilities} />
         <Route
           exact
           path="/about/mission_statement"

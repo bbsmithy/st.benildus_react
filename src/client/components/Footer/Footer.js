@@ -185,13 +185,16 @@ class Footer extends Component {
             <div className="row">
               <small className="copyright col-md-6 col-sm-12 col-xs-12">
                 Power by
-                <a href="https://slate.ie/"> LeatherBound</a>
+                <a href="https://slate.ie/" target="_blank">
+                  {" "}
+                  LeatherBound
+                </a>
               </small>
               <ul className="social pull-right col-md-6 col-sm-12 col-xs-12">
                 <li>
                   <a
                     href="https://twitter.com/benildusnews?lang=en&lang=en"
-                    target="blank"
+                    target="_blank"
                   >
                     <i className="fa fa-twitter" />
                   </a>
@@ -199,7 +202,7 @@ class Footer extends Component {
                 <li>
                   <a
                     href="https://www.youtube.com/channel/UCJffDKtQt_kmmeRceEVbGUQ"
-                    target="blank"
+                    target="_blank"
                   >
                     <i className="fa fa-youtube" />
                   </a>

@@ -51,153 +51,54 @@ class Home extends Component {
             <div className="page-content">
               <div className="row">
                 <section class="promo box">
-                  <div className="col-md-9">
+                  <div className="col-md-8">
                     <h1 className="section-heading">
                       Welcome to St.Benildus College
                     </h1>
-                    <p style={{ fontSize: 14 }}>
-                      At St. Benildus College you will find a learning
-                      environment for your son that is second to none – students
-                      and teachers working together in an atmosphere of mutual
-                      respect, toward shared goals. The standards we set for
-                      ourselves are very high, both in the classroom and outside
-                      of it. We expect that our students will strive to reach
-                      their potential, and we will be there for them every step
-                      of the way.
-                    </p>
+                    <div className="row">
+                      <div className="col-md-6">
+                        <p style={{ fontSize: 14 }}>
+                          At St. Benildus College you will find a learning
+                          environment for your son that is second to none –
+                          students and teachers working together in an
+                          atmosphere of mutual respect, toward shared goals. The
+                          standards we set for ourselves are very high, both in
+                          the classroom and outside of it. We expect that our
+                          students will strive to reach their potential, and we
+                          will be there for them every step of the way.
+                        </p>
+                      </div>
+                      <div className="col-md-6">
+                        <p style={{ fontSize: 14 }}>
+                          The guiding spirit of our school is holistic and
+                          democratic. Every student is important, every voice
+                          will be heard. We operate out of a belief that
+                          fairness and honesty are the cornerstones of trust,
+                          and we draw strength and inspiration from our history
+                          and tradition as we nurture the citizens of tomorrow.
+                          We follow the guidance of Saint Benildus, who ‘did
+                          ordinary things extraordinarily well’. Thank you for
+                          visiting our website. Please stay a while, and get in
+                          touch if you have any questions.
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-3">
-                    <Link to="gallery/archive" class="btn btn-cta shadow">
+                  <div class="col-md-4">
+                    <h1 className="section-heading">Video Tour</h1>
+                    <VideoCarousel />
+                    {/* <Link to="gallery/archive" class="btn btn-cta shadow">
                       <i class="fa fa-picture-o" />Celebrating 50 Years
-                    </Link>
+                    </Link> */}
                   </div>
                 </section>
               </div>
 
               <div className="row page-row">
                 <div className="col-md-9">
-                  <div className="row">
-                    <div className="col-md-4">
-                      <section class="testimonials">
-                        <h1 class="section-heading text-highlight">
-                          <span class="line"> Testimonials</span>
-                        </h1>
-                        <div class="carousel-controls">
-                          <a
-                            class="prev"
-                            href="#testimonials-carousel"
-                            data-slide="prev"
-                          >
-                            <i class="fa fa-caret-left" />
-                          </a>
-                          <a
-                            class="next"
-                            href="#testimonials-carousel"
-                            data-slide="next"
-                          >
-                            <i class="fa fa-caret-right" />
-                          </a>
-                        </div>
-                        <div class="section-content">
-                          <div
-                            id="testimonials-carousel"
-                            class="testimonials-carousel carousel slide"
-                          >
-                            <div class="carousel-inner">
-                              <div class="item active">
-                                <blockquote class="quote">
-                                  <p>
-                                    <i class="fa fa-quote-left" />I’m very happy
-                                    interdum eget ipsum. Nunc pulvinar ut nulla
-                                    eget sollicitudin. In hac habitasse platea
-                                    dictumst. Integer mattis varius ipsum,
-                                    posuere posuere est porta vel. Integer metus
-                                    ligula, blandit ut fermentum a, rhoncus in
-                                    ligula. Duis luctus.
-                                  </p>
-                                </blockquote>
-                                <div class="row">
-                                  <p class="people col-md-9 col-sm-3 col-xs-8">
-                                    <span class="name">Marissa Spencer</span>
-                                    <br />
-                                    <span class="title">Curabitur commodo</span>
-                                  </p>
-                                  <img
-                                    class="profile col-md-2"
-                                    src="assets/images/testimonials/profile-1.png"
-                                    alt=""
-                                  />
-                                </div>
-                              </div>
-                              <div class="item">
-                                <blockquote class="quote">
-                                  <p>
-                                    <i class="fa fa-quote-left" /> I'm very
-                                    pleased commodo gravida ultrices. Sed massa
-                                    leo, aliquet non velit eu, volutpat
-                                    vulputate odio. Interdum et malesuada fames
-                                    ac ante ipsum primis in faucibus.
-                                    Suspendisse porttitor metus eros, ut
-                                    fringilla nulla auctor a.
-                                  </p>
-                                </blockquote>
-                                <div class="row">
-                                  <p class="people col-md-9 col-sm-3 col-xs-8">
-                                    <span class="name">Marco Antonio</span>
-                                    <br />
-                                    <span class="title"> Gravida ultrices</span>
-                                  </p>
-                                  <img
-                                    class="profile col-md-2"
-                                    src="assets/images/testimonials/profile-2.png"
-                                    alt=""
-                                  />
-                                </div>
-                              </div>
-                              <div class="item">
-                                <blockquote class="quote">
-                                  <p>
-                                    <i class="fa fa-quote-left" /> I'm delighted
-                                    commodo gravida ultrices. Sed massa leo,
-                                    aliquet non velit eu, volutpat vulputate
-                                    odio. Interdum et malesuada fames ac ante
-                                    ipsum primis in faucibus. Suspendisse
-                                    porttitor metus eros, ut fringilla nulla
-                                    auctor a.
-                                  </p>
-                                </blockquote>
-                                <div class="row">
-                                  <p class="people col-md-9 col-sm-3 col-xs-8">
-                                    <span class="name">Kate White</span>
-                                    <br />
-                                    <span class="title"> Gravida ultrices</span>
-                                  </p>
-                                  <img
-                                    class="profile col-md-2"
-                                    src="assets/images/testimonials/profile-3.png"
-                                    alt=""
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                    <div className="col-md-8">
-                      <section class="video">
-                        <h1 class="section-heading text-highlight">
-                          <span class="line">Video Tour</span>
-                        </h1>
-                        <div class="section-content">
-                          <VideoCarousel />
-                        </div>
-                      </section>
-                    </div>
-                  </div>
                   <div className="row page-row">
                     <div className="col-md-12">
-                      <section>
+                      {/* <section>
                         <h1 class="section-heading text-highlight">
                           <span class="line">Principals Welcome</span>
                         </h1>
@@ -234,10 +135,10 @@ class Home extends Component {
                             </p>
                           </div>
                         </div>
-                      </section>
+                      </section> */}
                       <section>
                         <h1 class="section-heading text-highlight">
-                          <span class="line">Events</span>
+                          <span class="line">School Calender</span>
                         </h1>
                         <div class="section-content" style={{ padding: 0 }}>
                           <Iframe
@@ -265,11 +166,11 @@ class Home extends Component {
                       chrome="noborders noheader"
                     />
                   </div>
-                  <h1 class="section-heading text-highlight">
+                  {/* <h1 class="section-heading text-highlight">
                     <span class="line">App Feed</span>
                   </h1>
                   <Iframe
-                    url="http://uniqueschoolapp.ie/site/notifications/school_id/52"
+                    url="https://uniqueschoolapp.ie/site/notifications/school_id/52"
                     width="100%"
                     height="500px"
                     id="myId"
@@ -277,7 +178,7 @@ class Home extends Component {
                     display="initial"
                     position="relative"
                     allowFullScreen
-                  />
+                  /> */}
                 </div>
                 {/* <div className="col-md-3">
                   <section class="events">

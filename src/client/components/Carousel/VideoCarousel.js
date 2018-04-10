@@ -49,7 +49,7 @@ class Carousel extends React.Component {
       <Iframe
         url={url}
         width="100%"
-        height="300"
+        height="200"
         id="myId"
         className="myClassname"
         display="initial"

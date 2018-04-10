@@ -56,10 +56,9 @@ export default class MyEditor extends React.Component {
           return (
             <div
               style={{
-                marginTop: 10,
-                marginBottom: 10,
+                margin: 10,
+                marginTop: 0,
                 padding: 10,
-                borderRadius: 10,
                 backgroundColor: "#f8f8f8"
               }}
             >
@@ -77,6 +76,14 @@ export default class MyEditor extends React.Component {
             <button
               onClick={this.createParagraphEditor}
               className={"btn btn-primary pull-right"}
+              style={{ marginRight: 5, marginBottom: 10 }}
+            >
+              Save
+            </button>
+            <button
+              onClick={this.createParagraphEditor}
+              className={"btn btn-primary pull-right"}
+              style={{ margiLeft: 5, marginBottom: 10, marginRight: 10 }}
             >
               Add paragraph
             </button>

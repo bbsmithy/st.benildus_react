@@ -42,7 +42,10 @@ h6 {
 }
 p {
   color: #444;
-  font-size: 13px;
+  font-size: 14px;
+}
+li {
+  font-size: 14px;
 }
 a {
   color: #6091ba;
@@ -807,12 +810,14 @@ ul.custom-list-style li {
 }
 .main-nav .nav .nav-item {
   font-weight: 600;
-  text-transform: uppercase;
   font-family: "open sans", arial, sans-serif;
   z-index: 100;
 }
 .main-nav .nav .nav-item.dropdown {
   z-index: 101;
+}
+.dropdown-menu {
+  z-index: 25000 !important;
 }
 .main-nav .nav .nav-item a {
   color: #dce7f0;
@@ -1499,7 +1504,7 @@ ul.custom-list-style li {
 }
 h1.section-heading {
   font-size: 22px;
-  font-weight: 300;
+  font-weight: 700;
   line-height: 2;
   margin-top: 0;
   color: #2f506c;

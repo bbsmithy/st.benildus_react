@@ -35,6 +35,12 @@ import DisciplinaryProcedure from "./Pages/Parents/DisciplinaryProcedure";
 import ParentsAssoc from "./Pages/Parents/ParentsAssoc.js";
 import PolicyProcedure from "./Pages/Parents/PolicyProcedure";
 
+import GuidanceServices from "./Pages/StudentServices/GuidanceServices";
+import StudentCouncil from "./Pages/StudentServices/StudentCouncil";
+import StudyTips from "./Pages/StudentServices/StudyTips";
+
+import RunForLife from "./Pages/RunForLife/RunForLife";
+
 import Gallery from "./Pages/Gallery/Gallery";
 import GalleryFolder from "./Pages/Gallery/GalleryFolder";
 import Contact from "./Pages/Contact/Contact";
@@ -50,18 +56,18 @@ class App extends Component {
         <Route exact path="/about" component={About} />
         <Route
           exact
-          path="/about/administration_staff"
+          path="/about/administration-staff"
           component={Administration}
         />
         <Route exact path="/about/facilities" component={Facilities} />
         <Route
           exact
-          path="/about/mission_statement"
+          path="/about/mission-statement"
           component={MissionStatement}
         />
         <Route
           exact
-          path="/about/principals_welcome"
+          path="/about/principals-welcome"
           component={PrincipalsWelcome}
         />
         {/******Academia section************/}
@@ -73,7 +79,7 @@ class App extends Component {
         <Route exact path="/academia/technology" component={Technology} />
         <Route
           exact
-          path="/academia/transition_year"
+          path="/academia/transition-year"
           component={TransistionYear}
         />
 
@@ -83,46 +89,63 @@ class App extends Component {
         {/*****Extra Curricular*******/}
         <Route
           exact
-          path="/extra_curricular/bank_of_ireland_program"
+          path="/extra-curricular/bank-of-ireland-program"
           component={BOIBankProgram}
         />
-        <Route exact path="/extra_curricular/sports" component={Sports} />
+        <Route exact path="/extra-curricular/sports" component={Sports} />
         <Route
           exact
-          path="/extra_curricular/community_initiatives"
+          path="/extra-curricular/community-initiatives"
           component={CommunityInitiatives}
         />
-        <Route exact path="/extra_curricular/gaisce" component={Gaisce} />
-        <Route exact path="/extra_curricular/debating" component={Debating} />
+        <Route exact path="/extra-curricular/gaisce" component={Gaisce} />
+        <Route exact path="/extra-curricular/debating" component={Debating} />
 
         {/******Parents*******/}
         <Route
           exact
-          path="/parents/book_list_and_uniform"
+          path="/parents/book-list-and-uniform"
           component={BookListAndUniform}
         />
         <Route
           exact
-          path="/parents/code_of_behaviour"
+          path="/parents/code-of-behaviour"
           component={CodeOfBehaviour}
         />
         <Route
           exact
-          path="/parents/disciplinary_procedure"
+          path="/parents/disciplinary-procedure"
           component={DisciplinaryProcedure}
         />
         <Route
           exact
-          path="/parents/parents_association"
+          path="/parents/parents-association"
           component={ParentsAssoc}
         />
         <Route
           exact
-          path="/parents/policy_procedure"
+          path="/parents/policy-procedure"
           component={PolicyProcedure}
         />
-        {/****Single Pages******/}
 
+        <Route
+          exact
+          path="/student-services/guidance-services"
+          component={GuidanceServices}
+        />
+        <Route
+          exact
+          path="/student-services/student-council"
+          component={StudentCouncil}
+        />
+        <Route
+          exact
+          path="/student-services/study-tips-services"
+          component={StudyTips}
+        />
+
+        {/****Single Pages******/}
+        <Route exact path="/run-for-life/" component={RunForLife} />
         <Route exact path="/gallery/" component={Gallery} />
         <Route exact path="/gallery/:id" component={GalleryFolder} />
         <Route exact path="/contact" component={Contact} />

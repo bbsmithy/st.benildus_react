@@ -18,7 +18,7 @@ class Navbar extends Component {
               <Link to={"/"}>
                 <img
                   id="logo"
-                  width="250px"
+                  width="200px"
                   src={require("../../../assets/fullheader.png")}
                   alt="Logo"
                 />
@@ -90,7 +90,7 @@ class Navbar extends Component {
                     <Link to={"/about"}>About Us</Link>
                   </li>
                   <li>
-                    <Link to={"/about/mission_statement"}>
+                    <Link to={"/about/mission-statement"}>
                       Mission Statement
                     </Link>
                   </li>
@@ -98,7 +98,10 @@ class Navbar extends Component {
                     <Link to={"/about/facilities"}>Facilities</Link>
                   </li>
                   <li>
-                    <Link to={"/about/administration_staff"}>
+                    <Link to={"/about/facilities"}>Principals Welcome</Link>
+                  </li>
+                  <li>
+                    <Link to={"/about/administration-staff"}>
                       Administration & Staff
                     </Link>
                   </li>
@@ -123,7 +126,7 @@ class Navbar extends Component {
                     <Link to={"/academia/business"}>Business</Link>
                   </li>
                   <li>
-                    <Link to={"/academia/transition_year"}>
+                    <Link to={"/academia/transition-year"}>
                       Transistion Year
                     </Link>
                   </li>
@@ -131,97 +134,66 @@ class Navbar extends Component {
 
                 <Tab title={"Extra Curricular"} active={this.props.active}>
                   <li>
-                    <Link to={"/extra_curricular/sports"}>Sports</Link>
+                    <Link to={"/extra-curricular/sports"}>Sports</Link>
                   </li>
                   <li>
-                    <Link to={"/extra_curricular/community_initiatives"}>
+                    <Link to={"/extra-curricular/community-initiatives"}>
                       Community Initiatives
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/extra_curricular/gaisce"}>Gaisce</Link>
+                    <Link to={"/extra-curricular/gaisce"}>Gaisce</Link>
                   </li>
                   <li>
-                    <Link to={"/extra_curricular/bank_of_ireland_program"}>
+                    <Link to={"/extra-curricular/bank-of-ireland-program"}>
                       BOI Secondary Programme
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/extra_curricular/debating"}>Debating</Link>
-                  </li>
-                </Tab>
-                <Tab title={"Run for Life"} active={this.props.active}>
-                  <li>
-                    <Link to={"/extra_curricular/sports"}>Sports</Link>
-                  </li>
-                  <li>
-                    <Link to={"/extra_curricular/community_initiatives"}>
-                      Community Initiatives
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={"/extra_curricular/gaisce"}>Gaisce</Link>
-                  </li>
-                  <li>
-                    <Link to={"/extra_curricular/bank_of_ireland_program"}>
-                      BOI Secondary Programme
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={"/extra_curricular/debating"}>Debating</Link>
+                    <Link to={"/extra-curricular/debating"}>Debating</Link>
                   </li>
                 </Tab>
                 <Tab title={"Parents"} active={this.props.active}>
                   <li>
-                    <Link to={"/parents/book_list_and_uniform"}>
+                    <Link to={"/parents/book-list-and-uniform"}>
                       Book List and Uniform
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/parents/code_of_behaviour"}>
+                    <Link to={"/parents/code-of-behaviour"}>
                       Code Of Behaviour
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/parents/disciplinary_procedure"}>
+                    <Link to={"/parents/disciplinary-procedure"}>
                       Disciplinary Procedure
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/parents/parents_association"}>
+                    <Link to={"/parents/parents-association"}>
                       Parents Association
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/parents/policy_procedure"}>
+                    <Link to={"/parents/policy-procedure"}>
                       Policy Procedure
                     </Link>
                   </li>
                 </Tab>
                 <Tab title={"Student Services"} active={this.props.active}>
                   <li>
-                    <Link to={"/parents/book_list_and_uniform"}>
-                      Book List and Uniform
+                    <Link to={"/student-services/guidance-services/"}>
+                      Guidance Services
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/parents/code_of_behaviour"}>
-                      Code Of Behaviour
+                    <Link to={"/student-services/student-council/"}>
+                      Student Council
                     </Link>
                   </li>
                   <li>
-                    <Link to={"/parents/disciplinary_procedure"}>
-                      Disciplinary Procedure
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={"/parents/parents_association"}>
-                      Parents Association
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to={"/parents/policy_procedure"}>
-                      Policy Procedure
+                    <Link to={"/student-services/study-tips-services/"}>
+                      Study Tips & Services
                     </Link>
                   </li>
                 </Tab>
@@ -229,6 +201,11 @@ class Navbar extends Component {
                   title={"Enrolement"}
                   root={"/enrolement/"}
                   active={this.props.active}
+                />
+                <Tab
+                  title={"Run For Life"}
+                  active={this.props.active}
+                  root={"/run-for-life"}
                 />
                 <Tab
                   title={"Gallery"}

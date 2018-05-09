@@ -44,6 +44,7 @@ class Contact extends Component {
             allowFullScreen
           />
           <div class="team-wrapper col-md-12">
+            <h2>Staff Directory</h2>
             <br />
             <StaffMember
               name={"Mr. Martin Johnson"}
@@ -67,13 +68,49 @@ class Contact extends Component {
               name={"Dr. Naomi Lowe"}
               src={"Dr.Lowe.jpg"}
               email={"nlowe@stbenilduscollege.com"}
-              title={"Year Head 1st Year"}
+              title={"Year Head - 1st Year"}
             />
             <StaffMember
-              name={"Dr. Naomi Lowe"}
-              src={"Dr.Lowe.jpg"}
-              email={"nlowe@stbenilduscollege.com"}
-              title={"Year Head 1st Year"}
+              name={"Mr. Brendan Cahill"}
+              src={"Mr.Cahill.jpg"}
+              email={"bcahill@stbenilduscollege.com"}
+              title={"Year Head - 2nd Year"}
+            />
+            <StaffMember
+              name={"Mr. Brendan Hoyne"}
+              src={"Mr.Hoyne.jpg"}
+              email={"bhoyne@stbenilduscollege.com"}
+              title={"Year Head - 3rd Year"}
+            />
+            <StaffMember
+              name={"Ms. Ann Fitzpatrick"}
+              src={"Ms.Fitzpatrick.jpg"}
+              email={"afitzpatrick@stbenilduscollege.com"}
+              title={"Year Head - 4th Year"}
+            />
+            <StaffMember
+              name={"Ms. Sandra Downey"}
+              src={"Ms.Downey.jpg"}
+              email={"sdowney@stbenilduscollege.com"}
+              title={"Year Head - 5th Year"}
+            />
+            <StaffMember
+              name={"Mr. Pat Fahy"}
+              src={"Mr.Fahy.jpg"}
+              email={"pfahy@stbenilduscollege.com"}
+              title={"Year Head - 6th Year"}
+            />
+            <StaffMember
+              name={"Ms. Mary Molloy"}
+              src={"Ms.Molloy.jpg"}
+              email={"mmolloy@stbenilduscollege.com"}
+              title={"Guidance Counsellor"}
+            />
+            <StaffMember
+              name={"Ms. Ann Keaveny"}
+              src={"Ann-Keaveny.jpg"}
+              email={"stbenildusoffice@stbenilduscollege.com"}
+              title={"School Secretary"}
             />
           </div>
         </Page>

@@ -5,6 +5,7 @@ import Storage from "../../../services/storage";
 import Database from "../../../services/database";
 import { css, StyleSheet } from "aphrodite/no-important";
 import CircularProgress from "material-ui/CircularProgress";
+import { folders } from "./folders";
 
 export default class GalleryLightBox extends Component {
   constructor(props) {
@@ -134,7 +135,17 @@ export default class GalleryLightBox extends Component {
 
         <div className={"col-md-3"}>
           <ul class="list-group">
-            <Link class="list-group-item active" to="/gallery/misc">
+            {folders.map(folder => {
+              return (
+                <Link
+                  class="list-group-item active"
+                  to={`/gallery${folder.id}`}
+                >
+                  {folder.title}
+                </Link>
+              );
+            })}
+            {/* <Link class="list-group-item active" to="/gallery/misc">
               Around Our School
             </Link>
             <Link class="list-group-item" to="/gallery/misc">
@@ -157,7 +168,7 @@ export default class GalleryLightBox extends Component {
             </Link>
             <Link class="list-group-item" to="/gallery/misc">
               Transition Year
-            </Link>
+            </Link> */}
           </ul>
         </div>
       </div>

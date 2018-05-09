@@ -8,39 +8,59 @@ class Sports extends Component {
       <div>
         <Navbar active={"Extra Curricular"} />
         <Page title={"Sports"} current={"Sports"}>
-          <p>
-            The philosophy of St. Benildus College is to foster the
-            intellectual, physical, social and moral development of each pupil.
-            Through an innovative and flexible curriculum, a broad inclusive
-            education is provided in an atmosphere of mutual respect and
-            co-operation. In this context, we nurture an interest in sport among
-            our pupils.The College prioritises enjoyment in all forms of
-            physical activity, as we recognise the importance of happiness in
-            the enrichment of the complete educational experience. Sport
-            provides an excellent opportunity for students to learn leadership
-            skills, teamwork, friendship, develop confidence and an awareness of
-            the importance of lifelong activity and health. It offers the
-            opportunity for each person to achieve his own unique potential. We
-            are very proud to provide opportunities to all students irrespective
-            of ability, through our full range of sporting activites in the
-            College and the college prioritises enjoyment in all forms of
-            physical activity. The College has been very successful at the elite
-            level of sport, winning titles at local, regional and national
-            level. Amongst the sports offered to our students are:
-          </p>
+          <div className="row">
+            <div className="col-md-6">
+              <img
+                className="img img-responsive"
+                src={require("../../../assets/headerImages/Sports.jpg")}
+                style={{ width: "100%" }}
+              />
+            </div>
+            <div className="col-md-6">
+              <p>
+                The philosophy of St. Benildus College is to foster the
+                intellectual, physical, social and moral development of each
+                pupil. Through an innovative and flexible curriculum, a broad
+                inclusive education is provided in an atmosphere of mutual
+                respect and co-operation. In this context, we nurture an
+                interest in sport among our pupils.The College prioritises
+                enjoyment in all forms of physical activity, as we recognise the
+                importance of happiness in the enrichment of the complete
+                educational experience.
+              </p>
+            </div>
+          </div>
           <br />
-          <ul>
-            <li>Athletics</li>
-            <li>Badminton</li>
-            <li>Basketball</li>
-            <li>Chess</li>
-            <li>Gaelic Football</li>
-            <li>Gym Club</li>
-            <li>Hurling</li>
-            <li>Soccer</li>
-            <li>Table Tennis</li>
-            <li>Golf</li>
-          </ul>
+          <div className="row">
+            <div className="col-md-12">
+              <p>
+                Sport provides an excellent opportunity for students to learn
+                leadership skills, teamwork, friendship, develop confidence and
+                an awareness of the importance of lifelong activity and health.
+                It offers the opportunity for each person to achieve his own
+                unique potential. We are very proud to provide opportunities to
+                all students irrespective of ability, through our full range of
+                sporting activites in the College and the college prioritises
+                enjoyment in all forms of physical activity. The College has
+                been very successful at the elite level of sport, winning titles
+                at local, regional and national level. Amongst the sports
+                offered to our students are:
+              </p>
+              <ul>
+                <li>Athletics</li>
+                <li>Badminton</li>
+                <li>Basketball</li>
+                <li>Chess</li>
+                <li>Gaelic Football</li>
+                <li>Gym Club</li>
+                <li>Hurling</li>
+                <li>Soccer</li>
+                <li>Table Tennis</li>
+                <li>Golf</li>
+              </ul>
+            </div>
+          </div>
+
           <br />
           <p>
             The outreach possibilities of sporting activity are constantly

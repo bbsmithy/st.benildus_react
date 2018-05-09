@@ -8,7 +8,14 @@ class TransitionYear extends Component {
       <div>
         <Navbar active={"Academia"} />
         <Page title={"Transition Year"} current={"TransitionYear"}>
-          <h1>Content here please</h1>
+          <iframe
+            width="100%"
+            height="400"
+            src="https://www.youtube.com/embed/erWcOAXAfTk"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen
+          />
         </Page>
       </div>
     );

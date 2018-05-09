@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Lightbox from "react-images";
 import { Link } from "react-router-dom";
+import { folders } from "./folders";
 
 export default class Sample extends Component {
   constructor(props) {
@@ -60,23 +61,13 @@ export default class Sample extends Component {
   // }
 
   renderFolders() {
-    const folders = [
-      {
-        title: "St.Benildus Archive",
-        cover: require("../../../assets/archive.jpg"),
-        description:
-          "This is where we will have a description about the image archive. This is placeholder text.",
-        id: "/archive"
-      }
-    ];
-
     if (!folders) return;
 
     const gallery = folders.map(folder => {
       return (
         <div className="col-md-4 col-sm-4 col-xs-12 text-center">
           <div class="album-cover">
-            <Link to={"/gallery/archive"}>
+            <Link to={`gallery${folder.id}`}>
               <img className="img-responsive" src={folder.cover} alt="" />
             </Link>
             <div className="desc">

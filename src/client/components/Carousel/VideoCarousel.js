@@ -12,7 +12,10 @@ class Carousel extends React.Component {
     this.state = {
       videos: [
         "https://www.youtube.com/embed/Ew2pUx3cF_0?rel=0&amp;wmode=transparent",
-        "https://www.youtube.com/embed/WdtIGmlmOdg?rel=0&amp;wmode=transparent"
+        "https://www.youtube.com/embed/WdtIGmlmOdg?rel=0&amp;wmode=transparent",
+        "https://www.youtube.com/embed/aP7jwfiUOlk?rel=0&amp;wmode=transparent",
+        "https://www.youtube.com/embed/d9TWwd6TQnU?rel=0&amp;wmode=transparent",
+        "https://www.youtube.com/embed/W6YxE5SgSMo?rel=0&amp;wmode=transparent"
       ],
       currentVideo: 0
     };

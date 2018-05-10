@@ -138,7 +138,7 @@ export default class GalleryLightBox extends Component {
             {folders.map(folder => {
               return (
                 <Link
-                  class="list-group-item active"
+                  className="list-group-item active"
                   to={`/gallery${folder.id}`}
                 >
                   {folder.title}
@@ -187,7 +187,6 @@ export default class GalleryLightBox extends Component {
   componentWillMount() {
     const { folder } = this.props;
     this.getImages(folder);
-    console.log(folder);
   }
 
   openLightbox(index, event) {

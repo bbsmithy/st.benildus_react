@@ -20,13 +20,13 @@ class Footer extends Component {
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/about/mission_statement"}>
+                          <Link to={"/about/mission-statement"}>
                             <i className="fa fa-caret-right " />Mission
                             Statement
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/about/administration_staff"}>
+                          <Link to={"/about/administration-staff"}>
                             <i className="fa fa-caret-right " />Administration &
                             Staff
                           </Link>
@@ -66,29 +66,29 @@ class Footer extends Component {
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/academia/transition_year"}>
+                          <Link to={"/academia/transition-year"}>
                             <i className="fa fa-caret-right " />Transition Year
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/extra_curricular/sports"}>
+                          <Link to={"/extra-curricular/sports"}>
                             <i className="fa fa-caret-right " />Sports
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/extra_curricular/community_initiatives"}>
+                          <Link to={"/extra-curricular/community-initiatives"}>
                             <i className="fa fa-caret-right " />Community
                             Initiatives
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/extra_curricular/gaisce"}>
+                          <Link to={"/extra-curricular/gaisce"}>
                             <i className="fa fa-caret-right " />Gaisce
                           </Link>
                         </li>
                         <li>
                           <Link
-                            to={"/extra_curricular/bank_of_ireland_program"}
+                            to={"/extra-curricular/bank-of-ireland-program"}
                           >
                             <i className="fa fa-caret-right " />BOI Programme
                           </Link>
@@ -98,36 +98,36 @@ class Footer extends Component {
                     <div className="col-md-3">
                       <ul>
                         <li>
-                          <Link to={"/extra_curricular/debating"}>
+                          <Link to={"/extra-curricular/debating"}>
                             <i className="fa fa-caret-right " />Debating
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/parents/book_list_and_uniform"}>
+                          <Link to={"/parents/book-list-and-uniform"}>
                             <i className="fa fa-caret-right " />Book List and
                             Uniform
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/parents/code_of_behaviour"}>
+                          <Link to={"/parents/code-of-behaviour"}>
                             <i className="fa fa-caret-right " />Code of
                             Behaviour
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/parents/disciplinary_procedure"}>
+                          <Link to={"/parents/disciplinary-procedure"}>
                             <i className="fa fa-caret-right " />Disciplinary
                             Procedure
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/parents/parents_association"}>
+                          <Link to={"/parents/parents-association"}>
                             <i className="fa fa-caret-right " />Parents
                             Association
                           </Link>
                         </li>
                         <li>
-                          <Link to={"/parents/policy_procedure"}>
+                          <Link to={"/parents/policy-procedure"}>
                             <i className="fa fa-caret-right " />Policy Procedure
                           </Link>
                         </li>

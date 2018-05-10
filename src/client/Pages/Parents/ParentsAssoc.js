@@ -167,11 +167,6 @@ class ParentsAssoc extends Component {
                 <td />
                 <td>3rd Year</td>
               </tr>
-              <tr>
-                <td>Angelina Kelly</td>
-                <td>Vice Chair</td>
-                <td>4th Year</td>
-              </tr>
             </tbody>
           </table>
         </Page>

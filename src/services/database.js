@@ -10,7 +10,7 @@ class Database {
       this.database
         .ref(folder)
         .orderByKey()
-        .limitToFirst(15)
+        .limitToFirst(30)
         .once("value")
         .then(images => {
           const imagesVal = images.val();

@@ -73,10 +73,9 @@ export default class Sample extends Component {
             <div className="desc">
               <h4>
                 <small>
-                  <a href="#">{folder.title}</a>
+                  <a href={`gallery${folder.id}`}>{folder.title}</a>
                 </small>
               </h4>
-              <p>{folder.description}</p>
             </div>
           </div>
         </div>

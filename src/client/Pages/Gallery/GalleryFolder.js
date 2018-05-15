@@ -4,36 +4,50 @@ import Page from "../../components/Page/Page";
 import LightBox from "../../components/Gallery/Lightbox";
 
 class GalleryFolder extends Component {
-  constructor() {
-    super();
-    this.state = {
-      title: ""
-    };
-  }
-  componentWillMount() {
+  _getTitle = () => {
     switch (this.props.match.params.id) {
-      case "archive": {
-        console.log(this.props);
-        this.setState({
-          title: "St.Benildus Archive"
-        });
+      case "around-our-school": {
+        return "Around Our School";
       }
-      case "misc": {
-        console.log(this.props);
-        this.setState({
-          title: "St.Benildus Archive"
-        });
+      case "benildus-college-archive": {
+        return "St.Benildus Archive";
+      }
+      case "extra-curricular": {
+        return "Extra Curricular";
+      }
+      case "in-the-classroom": {
+        return "In the Classroom";
+      }
+      case "in-the-classroom": {
+        return "In the Classroom";
+      }
+      case "music-art-culture": {
+        return "Music, Art and Culture";
+      }
+      case "outstanding-achievement": {
+        return "Outstanding Achievements";
+      }
+      case "run-for-life": {
+        return "Run for Life";
+      }
+      case "sports": {
+        return "Sports";
+      }
+      case "transition-year": {
+        return "Transition Year";
       }
       default: {
-        console.log(this.props);
+        return "Gallery";
       }
     }
-  }
+  };
   render() {
+    const title = this._getTitle();
+
     return (
       <div>
         <Navbar active={"Gallery"} />
-        <Page title={this.state.title} fullWidth current={"Gallery"}>
+        <Page title={title} fullWidth current={"Gallery"}>
           <LightBox folder={this.props.match.params.id} />
         </Page>
       </div>

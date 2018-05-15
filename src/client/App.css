@@ -1205,7 +1205,6 @@ ul.custom-list-style li {
 }
 .page-wrapper .page-content .album-cover {
   border: 1px solid #e8e8e8;
-  margin-bottom: 30px;
 }
 .page-wrapper .page-content .album-cover:hover {
   -webkit-box-shadow: 0px 0px 5px 0px #e8e8e8;
@@ -2035,9 +2034,6 @@ section {
   .footer #tweet {
     min-height: inherit;
   }
-  .page-wrapper .album-cover {
-    min-height: 360px;
-  }
 }
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) {
@@ -2052,9 +2048,6 @@ section {
   }
   .footer #tweet {
     min-height: 100px;
-  }
-  .page-wrapper .album-cover {
-    min-height: 360px;
   }
   /* Sticky Footer */
   html,

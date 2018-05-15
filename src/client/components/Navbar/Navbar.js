@@ -98,9 +98,6 @@ class Navbar extends Component {
                     <Link to={"/about/facilities"}>Facilities</Link>
                   </li>
                   <li>
-                    <Link to={"/about/facilities"}>Principals Welcome</Link>
-                  </li>
-                  <li>
                     <Link to={"/about/administration-staff"}>
                       Administration & Staff
                     </Link>

@@ -136,13 +136,14 @@ export default class GalleryLightBox extends Component {
         <div className={"col-md-3"}>
           <ul class="list-group">
             {folders.map(folder => {
+              const linkStyle =
+                `/${this.props.folder}` === folder.id
+                  ? "list-group-item active"
+                  : "list-group-item";
               return (
-                <Link
-                  className="list-group-item active"
-                  to={`/gallery${folder.id}`}
-                >
+                <a className={linkStyle} href={`/gallery${folder.id}`}>
                   {folder.title}
-                </Link>
+                </a>
               );
             })}
             {/* <Link class="list-group-item active" to="/gallery/misc">

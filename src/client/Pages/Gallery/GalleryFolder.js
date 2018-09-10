@@ -1,43 +1,43 @@
-import React, { Component } from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import Page from "../../components/Page/Page";
-import LightBox from "../../components/Gallery/Lightbox";
+import React, { Component } from 'react';
+import Navbar from '../../components/Navbar/Navbar';
+import Page from '../../components/Page/Page';
+import LightBox from '../../components/Gallery/Lightbox';
 
 class GalleryFolder extends Component {
   _getTitle = () => {
     switch (this.props.match.params.id) {
-      case "around-our-school": {
-        return "Around Our School";
+      case 'around-our-school': {
+        return 'Around Our School';
       }
-      case "benildus-college-archive": {
-        return "St.Benildus Archive";
+      case 'benildus-college-archive': {
+        return 'St.Benildus Archive';
       }
-      case "extra-curricular": {
-        return "Extra Curricular";
+      case 'extra-curricular': {
+        return 'Extra Curricular';
       }
-      case "in-the-classroom": {
-        return "In the Classroom";
+      case 'in-the-classroom': {
+        return 'In the Classroom';
       }
-      case "in-the-classroom": {
-        return "In the Classroom";
+      case 'in-the-classroom': {
+        return 'In the Classroom';
       }
-      case "music-art-culture": {
-        return "Music, Art and Culture";
+      case 'music-art-culture': {
+        return 'Music, Art and Culture';
       }
-      case "outstanding-achievement": {
-        return "Outstanding Achievements";
+      case 'outstanding-achievement': {
+        return 'Outstanding Achievements';
       }
-      case "run-for-life": {
-        return "Run for Life";
+      case 'run-for-life': {
+        return 'Run for Life';
       }
-      case "sports": {
-        return "Sports";
+      case 'sports': {
+        return 'Sports';
       }
-      case "transition-year": {
-        return "Transition Year";
+      case 'transition-year': {
+        return 'Transition Year';
       }
       default: {
-        return "Gallery";
+        return 'Gallery';
       }
     }
   };
@@ -46,9 +46,9 @@ class GalleryFolder extends Component {
 
     return (
       <div>
-        <Navbar active={"Gallery"} />
-        <Page title={title} fullWidth current={"Gallery"}>
-          <LightBox folder={this.props.match.params.id} />
+        <Navbar active={'Gallery'} />
+        <Page title={title} fullWidth current={'Gallery'}>
+          <LightBox folder={this.props.match.params.id} showNavigation={true} editMode={false} />
         </Page>
       </div>
     );

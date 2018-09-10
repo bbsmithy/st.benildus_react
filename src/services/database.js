@@ -1,4 +1,4 @@
-import fire from "./fire";
+import fire from './fire';
 
 class Database {
   constructor() {
@@ -11,7 +11,7 @@ class Database {
         .ref(folder)
         .orderByKey()
         .limitToFirst(30)
-        .once("value")
+        .once('value')
         .then(images => {
           const imagesVal = images.val();
           const imageKeys = Object.keys(imagesVal);
@@ -29,5 +29,7 @@ class Database {
         });
     });
   };
+
+  deleteGalleryImage = () => {};
 }
 export default new Database();

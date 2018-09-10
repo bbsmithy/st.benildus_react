@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import Lightbox from "react-images";
-import { Link } from "react-router-dom";
-import { folders } from "./folders";
+import React, { Component } from 'react';
+import Lightbox from 'react-images';
+import { Link } from 'react-router-dom';
+import { folders } from './folders';
 
 export default class Sample extends Component {
   constructor(props) {
@@ -12,53 +12,6 @@ export default class Sample extends Component {
       isFetchingCoverImages: true
     };
   }
-
-  // getDownloadUrl(filePath) {
-  //   return new Promise((resolve, reject) => {
-  //     this.storage
-  //       .ref(filePath)
-  //       .getDownloadURL()
-  //       .then(file => {
-  //         resolve(file);
-  //       })
-  //       .catch(error => {
-  //         reject(error.message);
-  //       });
-  //   });
-  // }
-
-  // getCoverImages() {
-  //   const ref = this.database.ref("/archive");
-  //   const downloads = [];
-  //   ref.once("value", data => {
-  //     for (let k in data.val()) {
-  //       let downloadOp = this.getDownloadUrl(data.val()[k].filePath);
-  //       downloads.push(downloadOp);
-  //     }
-  //   });
-  //   const downloadOps = Promise.all(downloads);
-  //   downloadOps
-  //     .then(data => {
-  //       this.setState({
-  //         coverImages: data
-  //       });
-  //     })
-  //     .catch(data => {
-  //       console.log(data);
-  //     });
-  // }
-
-  // componentWillMount() {
-  //   this.getCoverImages();
-  // }
-
-  // openLightbox(index, event) {
-  //   event.preventDefault();
-  //   this.setState({
-  //     currentImage: index,
-  //     lightboxIsOpen: true
-  //   });
-  // }
 
   renderFolders() {
     if (!folders) return;

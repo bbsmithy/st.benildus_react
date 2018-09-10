@@ -1,11 +1,12 @@
-import React, { Component } from "react";
-import Lightbox from "react-images";
-import { Link } from "react-router-dom";
-import Storage from "../../../services/storage";
-import Database from "../../../services/database";
-import { css, StyleSheet } from "aphrodite/no-important";
-import CircularProgress from "material-ui/CircularProgress";
-import { folders } from "./folders";
+import React, { Component } from 'react';
+import Lightbox from 'react-images';
+import { Link } from 'react-router-dom';
+import Storage from '../../../services/storage';
+import Database from '../../../services/database';
+import { css, StyleSheet } from 'aphrodite/no-important';
+import CircularProgress from 'material-ui/CircularProgress';
+import { folders } from './folders';
+import ImageItem from './ImageItem';
 
 export default class GalleryLightBox extends Component {
   constructor(props) {
@@ -13,8 +14,15 @@ export default class GalleryLightBox extends Component {
     this.state = {
       lightboxIsOpen: false,
       currentImage: 0,
-      isFetchingCoverImages: true
+      isFetchingCoverImages: true,
+      selectedImages: []
     };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.folder !== prevProps.folder) {
+      this.getImages(this.props.folder);
+    }
   }
 
   chunkify = (a, n, balanced) => {
@@ -48,13 +56,20 @@ export default class GalleryLightBox extends Component {
     return out;
   };
 
-  openLightbox = (index, event) => {
-    event.preventDefault();
+  selectImage = imageObj => {
+    this.setState({
+      selectedImages: [imageObj, ...this.state.selectedImages]
+    });
+  };
+
+  openLightbox(index) {
+    console.log(index);
     this.setState({
       currentImage: index,
       lightboxIsOpen: true
     });
-  };
+  }
+
   closeLightbox = () => {
     this.setState({
       currentImage: 0,
@@ -95,7 +110,7 @@ export default class GalleryLightBox extends Component {
     const gallery = imgColumns.map((imageArray, i) => {
       return (
         <div
-          className={"col-md-4"}
+          className={'col-md-4'}
           style={{
             padding: 0
           }}
@@ -103,26 +118,17 @@ export default class GalleryLightBox extends Component {
           {imageArray.map((obj, y) => {
             let img = new Image();
             img.src = obj.src;
-
+            console.log(y);
             return (
-              <div
-                style={{
-                  margin: 2
+              <ImageItem
+                src={obj.src}
+                object={obj}
+                key={i}
+                onClick={() => {
+                  this.props.editMode ? this.selectImage(obj) : this.openLightbox(obj.index);
                 }}
-              >
-                <a
-                  href={obj.src}
-                  className={[classes.thumbnail, classes.landscape]}
-                  key={i}
-                  onClick={e => this.openLightbox(obj.index, e)}
-                >
-                  <img
-                    src={obj.src}
-                    style={{ backgroundColor: "#f8f8f8" }}
-                    className={"img-responsive"}
-                  />
-                </a>
-              </div>
+                editMode={this.props.editMode}
+              />
             );
           })}
         </div>
@@ -130,48 +136,23 @@ export default class GalleryLightBox extends Component {
     });
 
     return (
-      <div className={"row"}>
-        <div className={"col-md-9"}>{gallery}</div>
+      <div className={'row'}>
+        <div className={this.props.showNavigation ? 'col-md-9' : 'col-md-12'}>{gallery}</div>
 
-        <div className={"col-md-3"}>
-          <ul class="list-group">
-            {folders.map(folder => {
-              const linkStyle =
-                `/${this.props.folder}` === folder.id
-                  ? "list-group-item active"
-                  : "list-group-item";
-              return (
-                <a className={linkStyle} href={`/gallery${folder.id}`}>
-                  {folder.title}
-                </a>
-              );
-            })}
-            {/* <Link class="list-group-item active" to="/gallery/misc">
-              Around Our School
-            </Link>
-            <Link class="list-group-item" to="/gallery/misc">
-              Extra Curricular
-            </Link>
-            <Link class="list-group-item" to="/gallery/misc">
-              In The Classroom
-            </Link>
-            <Link class="list-group-item" to="/gallery/misc">
-              Music, Art & Culture
-            </Link>
-            <Link class="list-group-item" to="/gallery/misc">
-              Outstanding Achievement
-            </Link>
-            <Link class="list-group-item" to="/gallery/misc">
-              Run For Life
-            </Link>
-            <Link class="list-group-item" to="/gallery/misc">
-              Sport
-            </Link>
-            <Link class="list-group-item" to="/gallery/misc">
-              Transition Year
-            </Link> */}
-          </ul>
-        </div>
+        {this.props.showNavigation && (
+          <div className={'col-md-3'}>
+            <ul class="list-group">
+              {folders.map(folder => {
+                const linkStyle = `/${this.props.folder}` === folder.id ? 'list-group-item active' : 'list-group-item';
+                return (
+                  <a className={linkStyle} href={`/gallery${folder.id}`}>
+                    {folder.title}
+                  </a>
+                );
+              })}
+            </ul>
+          </div>
+        )}
       </div>
     );
   };
@@ -190,25 +171,9 @@ export default class GalleryLightBox extends Component {
     this.getImages(folder);
   }
 
-  openLightbox(index, event) {
-    event.preventDefault();
-    this.setState({
-      currentImage: index,
-      lightboxIsOpen: true
-    });
-  }
-
-  render = () => {
-    if (this.state.isFetchingCoverImages) {
+  renderLigthBoxOrEditor = () => {
+    if (!this.props.editMode) {
       return (
-        <div style={{ marginLeft: "30%" }}>
-          <CircularProgress color={"#003D7D"} size={80} thickness={5} />
-        </div>
-      );
-    }
-    return (
-      <div>
-        {this.renderGallery()}
         <Lightbox
           currentImage={this.state.currentImage}
           images={this.state.downloadUrls}
@@ -219,6 +184,22 @@ export default class GalleryLightBox extends Component {
           onClose={this.closeLightbox}
           onClickThumbnail={this.gotoIndex}
         />
+      );
+    }
+  };
+
+  render = () => {
+    if (this.state.isFetchingCoverImages) {
+      return (
+        <div style={{ marginLeft: '30%' }}>
+          <CircularProgress color={'#003D7D'} size={80} thickness={5} />
+        </div>
+      );
+    }
+    return (
+      <div>
+        {this.renderGallery()}
+        {this.renderLigthBoxOrEditor()}
       </div>
     );
   };
@@ -231,24 +212,24 @@ const gutter = {
 const classes = StyleSheet.create({
   gallery: {
     marginRight: -gutter.small,
-    overflow: "hidden",
+    overflow: 'hidden',
 
-    "@media (min-width: 500px)": {
+    '@media (min-width: 500px)': {
       marginRight: -gutter.large
     }
   },
 
   // anchor
   thumbnail: {
-    boxSizing: "border-box",
-    display: "block",
-    float: "left",
+    boxSizing: 'border-box',
+    display: 'block',
+    float: 'left',
     lineHeight: 0,
     paddingRight: gutter.small,
     paddingBottom: gutter.small,
-    overflow: "hidden",
+    overflow: 'hidden',
 
-    "@media (min-width: 500px)": {
+    '@media (min-width: 500px)': {
       paddingRight: gutter.large,
       paddingBottom: gutter.large
     }
@@ -256,13 +237,13 @@ const classes = StyleSheet.create({
 
   // orientation
   landscape: {
-    width: "30%"
+    width: '30%'
   },
   square: {
     paddingBottom: 0,
-    width: "40%",
+    width: '40%',
 
-    "@media (min-width: 500px)": {
+    '@media (min-width: 500px)': {
       paddingBottom: 0
     }
   },
@@ -270,10 +251,10 @@ const classes = StyleSheet.create({
   // actual <img />
   source: {
     border: 0,
-    display: "block",
-    overflow: "hidden",
-    height: "200px",
-    maxWidth: "100%",
-    width: "auto"
+    display: 'block',
+    overflow: 'hidden',
+    height: '200px',
+    maxWidth: '100%',
+    width: 'auto'
   }
 });

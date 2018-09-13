@@ -3,6 +3,7 @@ import fire from './fire';
 class Database {
   constructor() {
     this.database = fire.database();
+    this.storage = fire.storage();
   }
 
   requestGalleryImages = folder => {
@@ -18,10 +19,11 @@ class Database {
           let imageObjects = imageKeys.map((i, e) => {
             return {
               index: e,
+              key: i,
               ...imagesVal[i]
             };
           });
-          console.log(imageObjects);
+          console.log('GALLERY IMAGES', imageObjects);
           resolve(imageObjects);
         })
         .catch(err => {
@@ -30,6 +32,18 @@ class Database {
     });
   };
 
-  deleteGalleryImage = () => {};
+  deleteGalleryImages = (folder, keys) => {
+    const imageNodes = [];
+    keys.forEach(key => {
+      imageNodes.push(this.database.ref(`${folder}/${key}`).remove());
+    });
+    return Promise.all(imageNodes);
+  };
+
+  createFolder = (folderPath, folderName) => {
+    return this.database.ref(folderPath).set({
+      folderName: folderName
+    });
+  };
 }
 export default new Database();

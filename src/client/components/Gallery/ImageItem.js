@@ -11,14 +11,12 @@ export default class ItemItem extends Component {
   _onClick = e => {
     e.preventDefault();
     if (this.props.editMode) {
-      this.setState(
-        {
-          selected: !this.state.selected
-        },
-        this.props.onClick()
-      );
+      this.props.onClick(this.props.object, !this.state.selected);
+      this.setState({
+        selected: !this.state.selected
+      });
     } else {
-      this.props.onClick();
+      this.props.onClick(this.props.object);
     }
 
     //  this.selectImage(obj, e) : this.props.openWithLightbox(props.index, e);
@@ -27,7 +25,7 @@ export default class ItemItem extends Component {
     return (
       <div
         style={{
-          padding: this.state.selected ? 5 : 2,
+          padding: 2,
           backgroundColor: this.state.selected ? 'red' : 'white'
         }}
       >

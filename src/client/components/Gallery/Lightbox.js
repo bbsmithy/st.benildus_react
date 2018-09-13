@@ -56,10 +56,21 @@ export default class GalleryLightBox extends Component {
     return out;
   };
 
-  selectImage = imageObj => {
-    this.setState({
-      selectedImages: [imageObj, ...this.state.selectedImages]
-    });
+  onImageItemClicked = (obj, selected) => {
+    console.log('ITEM CLICKED');
+    if (this.props.editMode) {
+      selected ? this.selectedImage(obj) : this.unselectedImage(obj);
+    } else {
+      this.openLightbox(obj.index);
+    }
+  };
+
+  selectedImage = obj => {
+    this.props.onImageSelected(obj);
+  };
+
+  unselectedImage = obj => {
+    this.props.onImageUnselected(obj);
   };
 
   openLightbox(index) {
@@ -118,15 +129,12 @@ export default class GalleryLightBox extends Component {
           {imageArray.map((obj, y) => {
             let img = new Image();
             img.src = obj.src;
-            console.log(y);
             return (
               <ImageItem
                 src={obj.src}
                 object={obj}
                 key={i}
-                onClick={() => {
-                  this.props.editMode ? this.selectImage(obj) : this.openLightbox(obj.index);
-                }}
+                onClick={this.onImageItemClicked}
                 editMode={this.props.editMode}
               />
             );

@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import Navbar from "../components/Navbar/Navbar";
-import Page from "../components/Page/Page";
-import Footer from "../components/Footer/Footer";
-import Carousel from "../components/Carousel/Carousel";
-import VideoCarousel from "../components/Carousel/VideoCarousel";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import Navbar from '../components/Navbar/Navbar';
+import Page from '../components/Page/Page';
+import Footer from '../components/Footer/Footer';
+import Carousel from '../components/Carousel/Carousel';
+import VideoCarousel from '../components/Carousel/VideoCarousel';
+import { Link } from 'react-router-dom';
 
-import TwitterTimeline from "react-twitter-embedded-timeline";
-import Iframe from "react-iframe";
+import TwitterTimeline from 'react-twitter-embedded-timeline';
+import Iframe from 'react-iframe';
 
 class Home extends Component {
   render() {
     return (
       <div>
-        <Navbar active={"Home"} />
+        <Navbar active={'Home'} />
         {/* <div
           className={"shadow"}
           style={{ padding: 0, marginLeft: 55, marginRight: 55 }}
@@ -52,33 +52,24 @@ class Home extends Component {
               <div className="row">
                 <section class="promo box">
                   <div className="col-md-8">
-                    <h1 className="section-heading">
-                      Welcome to St.Benildus College
-                    </h1>
+                    <h1 className="section-heading">Welcome to St.Benildus College</h1>
                     <div className="row">
                       <div className="col-md-6">
                         <p style={{ fontSize: 14 }}>
-                          At St. Benildus College you will find a learning
-                          environment for your son that is second to none –
-                          students and teachers working together in an
-                          atmosphere of mutual respect, toward shared goals. The
-                          standards we set for ourselves are very high, both in
-                          the classroom and outside of it. We expect that our
-                          students will strive to reach their potential, and we
-                          will be there for them every step of the way.
+                          At St. Benildus College you will find a learning environment for your son that is second to
+                          none – students and teachers working together in an atmosphere of mutual respect, toward
+                          shared goals. The standards we set for ourselves are very high, both in the classroom and
+                          outside of it. We expect that our students will strive to reach their potential, and we will
+                          be there for them every step of the way.
                         </p>
                       </div>
                       <div className="col-md-6">
                         <p style={{ fontSize: 14 }}>
-                          The guiding spirit of our school is holistic and
-                          democratic. Every student is important, every voice
-                          will be heard. We operate out of a belief that
-                          fairness and honesty are the cornerstones of trust,
-                          and we draw strength and inspiration from our history
-                          and tradition as we nurture the citizens of tomorrow.
-                          We follow the guidance of Saint Benildus, who ‘did
-                          ordinary things extraordinarily well’. Thank you for
-                          visiting our website. Please stay a while, and get in
+                          The guiding spirit of our school is holistic and democratic. Every student is important, every
+                          voice will be heard. We operate out of a belief that fairness and honesty are the cornerstones
+                          of trust, and we draw strength and inspiration from our history and tradition as we nurture
+                          the citizens of tomorrow. We follow the guidance of Saint Benildus, who ‘did ordinary things
+                          extraordinarily well’. Thank you for visiting our website. Please stay a while, and get in
                           touch if you have any questions.
                         </p>
                       </div>
@@ -160,11 +151,10 @@ class Home extends Component {
                   <h1 class="section-heading text-highlight">
                     <span class="line">Twitter</span>
                   </h1>
-                  <div style={{ height: "700px", overflow: "scroll" }}>
-                    <TwitterTimeline
-                      widgetId="675940410338996224"
-                      chrome="noborders noheader"
-                    />
+                  <div style={{ height: '700px', overflow: 'scroll' }}>
+                    <a className="twitter-timeline" href="https://twitter.com/benildusnews">
+                      Tweets by benildusnews
+                    </a>
                   </div>
                   {/* <h1 class="section-heading text-highlight">
                     <span class="line">App Feed</span>

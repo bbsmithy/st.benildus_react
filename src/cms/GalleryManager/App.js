@@ -4,6 +4,8 @@ import fbICU from './FirebaseICU';
 import fire from '../../services/fire';
 import Paper from 'material-ui/Paper';
 import SelectField from 'material-ui/SelectField';
+import TextField from 'material-ui/TextField';
+import Button from 'material-ui/FlatButton';
 import MenuItem from 'material-ui/MenuItem';
 import Snackbar from 'material-ui/Snackbar';
 import Grid from 'react-bootstrap/lib/Grid';
@@ -11,9 +13,12 @@ import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
 import { Link } from 'react-router-dom';
 import GalleryLightBox from '../../client/components/Gallery/Lightbox';
+import Database from '../../services/database';
+import Storage from '../../services/storage';
 
 const NAV_TAB_UPLOAD_IMAGES = 0;
 const NAV_TAB_DELETE_IMAGES = 1;
+const NAV_TAB_CREATE_FOLDERS_IMAGES = 2;
 
 const FirebaseICU = new fbICU(fire.storage());
 
@@ -76,7 +81,8 @@ class App extends Component {
       imagesToRender: [],
       compressedImagesToRender: [],
       selectedTab: 0,
-      deleteFolder: 'around-our-school'
+      deleteFolder: 'around-our-school',
+      selectedImages: {}
     };
   }
 
@@ -103,11 +109,9 @@ class App extends Component {
     this.state.imagesToRender.forEach(image => {
       const { dataUrl, fileID, imgFileSize } = image;
       var imageToCompress = new Image();
-      console.log(image);
       imageToCompress.src = dataUrl;
       const imageDataUrl = FirebaseICU.compress(imageToCompress, 500, Math.round(imgFileSize / 1024));
       const newImageData = { imageDataUrl, fileID };
-      console.log(newImageData);
       newCompressedImages.unshift(newImageData);
     });
     this.setState({
@@ -200,25 +204,95 @@ class App extends Component {
     });
   };
 
+  _onImageSelected = obj => {
+    this.setState({
+      selectedImages: { ...this.state.selectedImages, [obj.index]: obj }
+    });
+  };
+
+  _onImageUnselected = obj => {
+    let selectedImages = { ...this.state.selectedImages };
+    delete selectedImages[obj.index];
+    this.setState({
+      selectedImages: selectedImages
+    });
+  };
+
+  _deleteImages = () => {
+    const keys = Object.keys(this.state.selectedImages).map(image => {
+      return this.state.selectedImages[image].key;
+    });
+
+    const srcUrls = Object.keys(this.state.selectedImages).map(image => {
+      return this.state.selectedImages[image].src;
+    });
+
+    const thumbUrls = Object.keys(this.state.selectedImages).map(image => {
+      return this.state.selectedImages[image].thumbnail;
+    });
+
+    Database.deleteGalleryImages(this.state.deleteFolder, keys)
+      .then(res => {
+        Storage.deleteImages([...srcUrls, ...thumbUrls]).then(() => {
+          console.log('SUCCESS');
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  _createFolder = () => {
+    Database.createFolder(this.state.createFolderName, 'Test').then(res => {
+      console.log('Sucess');
+    });
+  };
+
   _renderSelectedTab = () => {
     if (this.state.selectedTab === NAV_TAB_DELETE_IMAGES) {
       return (
         <div>
-          <h3>Delete Images</h3>
-          <hr />
           <Col md={9}>
-            <GalleryLightBox folder={this.state.deleteFolder} editMode={true} />
+            <GalleryLightBox
+              folder={this.state.deleteFolder}
+              editMode={true}
+              onImageSelected={this._onImageSelected}
+              onImageUnselected={this._onImageUnselected}
+            />
           </Col>
           <Col md={3}>
             <FolderPicker folder={this.state.deleteFolder} handleChange={this._handleDeleteFolderChange} />
+            {Object.keys(this.state.selectedImages).length > 0 && (
+              <div type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">
+                Delete
+              </div>
+            )}
+          </Col>
+        </div>
+      );
+    } else if (this.state.selectedTab === NAV_TAB_CREATE_FOLDERS_IMAGES) {
+      return (
+        <div>
+          <Col md={9}>
+            <h4>Folder Name: </h4>
+            <TextField
+              id="uncontrolled"
+              label="Uncontrolled"
+              fullWidth
+              margin="normal"
+              onChange={e => {
+                this.setState({ createFolderName: e.target.value });
+              }}
+            />
+            <label class="button" onClick={this._createFolder}>
+              Create Folder
+            </label>
           </Col>
         </div>
       );
     }
     return (
       <div>
-        <h3>Upload Images</h3>
-        <hr />
         <Col md={6}>
           <input
             type="file"
@@ -263,7 +337,7 @@ class App extends Component {
       <div>
         <header className="header">
           <div className="header-main container">
-            <div className="logo col-md-5">
+            <div className="logo col-md-6">
               <img id="logo" width="125px" src={require('../../assets/fullheader.png')} alt="Logo" />
             </div>
             <div className="col-md-5">
@@ -274,8 +348,13 @@ class App extends Component {
                   </Link>
                 </li>
                 <li style={{ display: 'inline-block' }}>
-                  <Link to={'/gallery'} style={{ color: 'white' }}>
+                  <Link to={'/gallery-manager'} style={{ color: 'white', marginRight: 10 }}>
                     Gallery
+                  </Link>
+                </li>
+                <li style={{ display: 'inline-block' }}>
+                  <Link to={'/gallery-manager'} style={{ color: 'white' }}>
+                    Archive
                   </Link>
                 </li>
               </ul>
@@ -310,9 +389,25 @@ class App extends Component {
                 >
                   Delete Images
                 </a>
+                <a
+                  onClick={() => {
+                    this.setState({
+                      selectedTab: NAV_TAB_CREATE_FOLDERS_IMAGES
+                    });
+                  }}
+                  class={
+                    this.state.selectedTab === NAV_TAB_CREATE_FOLDERS_IMAGES
+                      ? 'list-group-item active'
+                      : 'list-group-item'
+                  }
+                >
+                  Create Folders
+                </a>
               </div>
             </Col>
             <Col md={10}>
+              <h3>Gallery Manager</h3>
+              <hr />
               <Row style={{ marginTop: 10 }}>{this._renderSelectedTab()}</Row>
               <Row>
                 <Col xs={6} md={6}>
@@ -336,6 +431,35 @@ class App extends Component {
             }}
           />
         </Grid>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                  Are you sure you want to delete these images?
+                </h4>
+              </div>
+              <div class="modal-body">
+                {Object.keys(this.state.selectedImages).map(key => {
+                  return (
+                    <img style={{ display: 'inline-block' }} src={this.state.selectedImages[key].src} width="100%" />
+                  );
+                })}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">
+                  Cancel
+                </button>
+                <button type="button" class="btn btn-danger" onClick={this._deleteImages}>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -48,7 +48,7 @@ class GalleryFolder extends Component {
       <div>
         <Navbar active={'Gallery'} />
         <Page title={title} fullWidth current={'Gallery'}>
-          <LightBox folder={this.props.match.params.id} showNavigation={true} editMode={false} />
+          <LightBox folder={this.props.match.params.id} showNavigation={true} />
         </Page>
       </div>
     );

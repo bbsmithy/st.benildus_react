@@ -1,16 +1,20 @@
-import { auth } from './fire';
+import fire from './fire';
+
+export const auth = fire.auth();
 
 export const signIn = (email, password) => {
-  return auth.signInWithEmailAndPassword(email, password);
+  return fire.auth().signInWithEmailAndPassword(email, password);
 };
 
 export const getCurrentUser = () => {
-  auth.onAuthStateChanged(user => {
-    window.user = user; // user is undefined if no user signed in
-    if (user) {
-      console.log('USER IS LOGGED IN');
-    } else {
-      console.log('USER IS NOT LOGGED IN');
-    }
+  return new Promise((resolve, reject) => {
+    fire.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        resolve(user);
+      } else {
+        reject();
+        // No user is signed in.
+      }
+    });
   });
 };

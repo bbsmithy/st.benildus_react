@@ -11,14 +11,18 @@ import Snackbar from 'material-ui/Snackbar';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import GalleryLightBox from '../../client/components/Gallery/Lightbox';
 import Database from '../../services/database';
 import Storage from '../../services/storage';
+import { getCurrentUser, auth } from '../../services/auth';
 
 const NAV_TAB_UPLOAD_IMAGES = 0;
 const NAV_TAB_DELETE_IMAGES = 1;
 const NAV_TAB_CREATE_FOLDERS_IMAGES = 2;
+
+const USER_SIGNED_IN = 'USER_SIGNED_IN';
+const USER_NOT_FOUND = 'USER_NOT_FOUND';
 
 const FirebaseICU = new fbICU(fire.storage());
 
@@ -84,6 +88,20 @@ class App extends Component {
       deleteFolder: 'around-our-school',
       selectedImages: {}
     };
+  }
+  componentWillMount() {
+    getCurrentUser()
+      .then(user => {
+        console.log(user);
+        this.setState({
+          signedIn: USER_SIGNED_IN
+        });
+      })
+      .catch(() => {
+        this.setState({
+          signedIn: USER_NOT_FOUND
+        });
+      });
   }
 
   //Put files into array
@@ -333,135 +351,142 @@ class App extends Component {
   };
 
   render() {
-    return (
-      <div>
-        <header className="header">
-          <div className="header-main container">
-            <div className="logo col-md-6">
-              <img id="logo" width="125px" src={require('../../assets/fullheader.png')} alt="Logo" />
-            </div>
-            <div className="col-md-5">
-              <ul className="navbar-right" style={{ marginTop: 15 }}>
-                <li className="divider" style={{ display: 'inline-block', color: 'white' }}>
-                  <Link to={'/'} style={{ color: 'white', marginRight: 10 }}>
-                    Home
-                  </Link>
-                </li>
-                <li style={{ display: 'inline-block' }}>
-                  <Link to={'/gallery-manager'} style={{ color: 'white', marginRight: 10 }}>
-                    Gallery
-                  </Link>
-                </li>
-                <li style={{ display: 'inline-block' }}>
-                  <Link to={'/gallery-manager'} style={{ color: 'white' }}>
-                    Archive
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </header>
-        <Grid>
-          <Row>
-            <Col md={2} style={{ marginTop: 20 }}>
-              <div class="list-group">
-                <a
-                  onClick={() => {
-                    this.setState({
-                      selectedTab: NAV_TAB_UPLOAD_IMAGES
-                    });
-                  }}
-                  class={
-                    this.state.selectedTab === NAV_TAB_UPLOAD_IMAGES ? 'list-group-item active' : 'list-group-item'
-                  }
-                >
-                  Upload Images
-                </a>
-                <a
-                  onClick={() => {
-                    this.setState({
-                      selectedTab: NAV_TAB_DELETE_IMAGES
-                    });
-                  }}
-                  class={
-                    this.state.selectedTab === NAV_TAB_DELETE_IMAGES ? 'list-group-item active' : 'list-group-item'
-                  }
-                >
-                  Delete Images
-                </a>
-                <a
-                  onClick={() => {
-                    this.setState({
-                      selectedTab: NAV_TAB_CREATE_FOLDERS_IMAGES
-                    });
-                  }}
-                  class={
-                    this.state.selectedTab === NAV_TAB_CREATE_FOLDERS_IMAGES
-                      ? 'list-group-item active'
-                      : 'list-group-item'
-                  }
-                >
-                  Create Folders
-                </a>
+    if (this.state.signedIn === USER_SIGNED_IN) {
+      return (
+        <div>
+          <header className="header">
+            <div className="header-main container">
+              <div className="logo col-md-6">
+                <img id="logo" width="125px" src={require('../../assets/fullheader.png')} alt="Logo" />
               </div>
-            </Col>
-            <Col md={10}>
-              <h3>Gallery Manager</h3>
-              <hr />
-              <Row style={{ marginTop: 10 }}>{this._renderSelectedTab()}</Row>
-              <Row>
-                <Col xs={6} md={6}>
-                  <ImageList images={this.state.imagesToRender} />
-                </Col>
-                <Col xs={6} md={6}>
-                  <CompressedImageList images={this.state.compressedImagesToRender} />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+              <div className="col-md-5">
+                <ul className="navbar-right" style={{ marginTop: 15 }}>
+                  <li className="divider" style={{ display: 'inline-block', color: 'white' }}>
+                    <Link to={'/'} style={{ color: 'white', marginRight: 10 }}>
+                      Home
+                    </Link>
+                  </li>
+                  <li style={{ display: 'inline-block' }}>
+                    <Link to={'/gallery-manager'} style={{ color: 'white', marginRight: 10 }}>
+                      Gallery
+                    </Link>
+                  </li>
+                  <li style={{ display: 'inline-block' }}>
+                    <Link to={'/gallery-manager'} style={{ color: 'white' }}>
+                      Archive
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </header>
+          <Grid>
+            <Row>
+              <Col md={2} style={{ marginTop: 20 }}>
+                <div class="list-group">
+                  <a
+                    onClick={() => {
+                      this.setState({
+                        selectedTab: NAV_TAB_UPLOAD_IMAGES
+                      });
+                    }}
+                    class={
+                      this.state.selectedTab === NAV_TAB_UPLOAD_IMAGES ? 'list-group-item active' : 'list-group-item'
+                    }
+                  >
+                    Upload Images
+                  </a>
+                  <a
+                    onClick={() => {
+                      this.setState({
+                        selectedTab: NAV_TAB_DELETE_IMAGES
+                      });
+                    }}
+                    class={
+                      this.state.selectedTab === NAV_TAB_DELETE_IMAGES ? 'list-group-item active' : 'list-group-item'
+                    }
+                  >
+                    Delete Images
+                  </a>
+                  <a
+                    onClick={() => {
+                      this.setState({
+                        selectedTab: NAV_TAB_CREATE_FOLDERS_IMAGES
+                      });
+                    }}
+                    class={
+                      this.state.selectedTab === NAV_TAB_CREATE_FOLDERS_IMAGES
+                        ? 'list-group-item active'
+                        : 'list-group-item'
+                    }
+                  >
+                    Create Folders
+                  </a>
+                </div>
+              </Col>
+              <Col md={10}>
+                <h3>Gallery Manager</h3>
+                <hr />
+                <Row style={{ marginTop: 10 }}>{this._renderSelectedTab()}</Row>
+                <Row>
+                  <Col xs={6} md={6}>
+                    <ImageList images={this.state.imagesToRender} />
+                  </Col>
+                  <Col xs={6} md={6}>
+                    <CompressedImageList images={this.state.compressedImagesToRender} />
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
 
-          <Snackbar
-            open={this.state.uploadSuccess}
-            message="Upload(s) Sucessful"
-            autoHideDuration={4000}
-            onRequestClose={() => {
-              this.setState({
-                uploadSuccess: false
-              });
-            }}
-          />
-        </Grid>
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                  Are you sure you want to delete these images?
-                </h4>
-              </div>
-              <div class="modal-body">
-                {Object.keys(this.state.selectedImages).map(key => {
-                  return (
-                    <img style={{ display: 'inline-block' }} src={this.state.selectedImages[key].src} width="100%" />
-                  );
-                })}
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">
-                  Cancel
-                </button>
-                <button type="button" class="btn btn-danger" onClick={this._deleteImages}>
-                  Delete
-                </button>
+            <Snackbar
+              open={this.state.uploadSuccess}
+              message="Upload(s) Sucessful"
+              autoHideDuration={4000}
+              onRequestClose={() => {
+                this.setState({
+                  uploadSuccess: false
+                });
+              }}
+            />
+          </Grid>
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">
+                    Are you sure you want to delete these images?
+                  </h4>
+                </div>
+                <div class="modal-body">
+                  {Object.keys(this.state.selectedImages).map(key => {
+                    return (
+                      <img style={{ display: 'inline-block' }} src={this.state.selectedImages[key].src} width="100%" />
+                    );
+                  })}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cancel
+                  </button>
+                  <button type="button" class="btn btn-danger" onClick={this._deleteImages}>
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    } else if (this.state.signedIn === USER_NOT_FOUND) {
+      return <Redirect to="/admin" />;
+      // No user is signed in.
+    } else {
+      return <h2>Loading</h2>;
+    }
   }
 }
 

@@ -4,6 +4,7 @@ import Page from "./components/Page/Page";
 import Home from "./Pages/Home";
 import NoMatch from "./Pages/404";
 import { GalleryManager } from "../cms/GalleryManager";
+import ArchiveManager from "../cms/ArchiveManager";
 
 import "./App.css";
 
@@ -146,13 +147,16 @@ class App extends Component {
           component={StudyTips}
         />
 
+        {/**** CMS ****/}
+        <Route exact path="/gallery-manager" component={GalleryManager} />
+        <Route exact path="/archive-manager" component={ArchiveManager} />
+
         {/****Single Pages******/}
         <Route exact path="/run-for-life/" component={RunForLife} />
         <Route exact path="/gallery/" component={Gallery} />
         <Route exact path="/admin/" component={Admin} />
         <Route exact path="/gallery/:id" component={GalleryFolder} />
         <Route exact path="/contact" component={Contact} />
-        <Route exact path="/gallery-manager" component={GalleryManager} />
 
         <Route component={NoMatch} />
       </Switch>

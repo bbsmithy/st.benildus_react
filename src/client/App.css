@@ -21,6 +21,15 @@ body {
   max-width: 320px;
 }
 
+.folder {
+  background-color: "white";
+  border-top: "grey";
+}
+
+.folder:hover {
+  background-color: "#efefef";
+}
+
 body {
   font-size: 13px;
   -webkit-font-smoothing: antialiased;

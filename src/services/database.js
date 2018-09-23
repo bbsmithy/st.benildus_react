@@ -1,4 +1,4 @@
-import fire from './fire';
+import fire from "./fire";
 
 class Database {
   constructor() {
@@ -12,7 +12,7 @@ class Database {
         .ref(folder)
         .orderByKey()
         .limitToFirst(30)
-        .once('value')
+        .once("value")
         .then(images => {
           const imagesVal = images.val();
           const imageKeys = Object.keys(imagesVal);
@@ -23,7 +23,7 @@ class Database {
               ...imagesVal[i]
             };
           });
-          console.log('GALLERY IMAGES', imageObjects);
+          console.log("GALLERY IMAGES", imageObjects);
           resolve(imageObjects);
         })
         .catch(err => {
@@ -40,10 +40,25 @@ class Database {
     return Promise.all(imageNodes);
   };
 
+  createCoverImage = (url, folderPath) => {
+    return this.database.ref(`${folderPath}/coverImage`).update({
+      src: url
+    });
+  };
+
   createFolder = (folderPath, folderName) => {
     return this.database.ref(folderPath).set({
-      folderName: folderName
+      folderName: folderName,
+      folderPath: folderPath
     });
+  };
+
+  deleteFolder = folder => {
+    return this.database.ref(folder).remove();
+  };
+
+  getFolder = folderPath => {
+    return this.database.ref(folderPath).once("value");
   };
 }
 export default new Database();

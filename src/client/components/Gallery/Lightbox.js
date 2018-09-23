@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import Lightbox from 'react-images';
-import { Link } from 'react-router-dom';
-import Storage from '../../../services/storage';
-import Database from '../../../services/database';
-import { css, StyleSheet } from 'aphrodite/no-important';
-import CircularProgress from 'material-ui/CircularProgress';
-import { folders } from './folders';
-import ImageItem from './ImageItem';
+import React, { Component } from "react";
+import Lightbox from "react-images";
+import { Link } from "react-router-dom";
+import Storage from "../../../services/storage";
+import Database from "../../../services/database";
+import { css, StyleSheet } from "aphrodite/no-important";
+import CircularProgress from "material-ui/CircularProgress";
+import { folders } from "./folders";
+import ImageItem from "./ImageItem";
 
 export default class GalleryLightBox extends Component {
   constructor(props) {
@@ -57,7 +57,7 @@ export default class GalleryLightBox extends Component {
   };
 
   onImageItemClicked = (obj, selected) => {
-    console.log('ITEM CLICKED');
+    console.log("ITEM CLICKED");
     if (this.props.editMode) {
       selected ? this.selectedImage(obj) : this.unselectedImage(obj);
     } else {
@@ -121,7 +121,7 @@ export default class GalleryLightBox extends Component {
     const gallery = imgColumns.map((imageArray, i) => {
       return (
         <div
-          className={'col-md-4'}
+          className={"col-md-4"}
           style={{
             padding: 0
           }}
@@ -144,14 +144,19 @@ export default class GalleryLightBox extends Component {
     });
 
     return (
-      <div className={'row'}>
-        <div className={this.props.showNavigation ? 'col-md-9' : 'col-md-12'}>{gallery}</div>
+      <div className={"row"}>
+        <div className={this.props.showNavigation ? "col-md-9" : "col-md-12"}>
+          {gallery}
+        </div>
 
         {this.props.showNavigation && (
-          <div className={'col-md-3'}>
+          <div className={"col-md-3"}>
             <ul class="list-group">
               {folders.map(folder => {
-                const linkStyle = `/${this.props.folder}` === folder.id ? 'list-group-item active' : 'list-group-item';
+                const linkStyle =
+                  `/${this.props.folder}` === folder.id
+                    ? "list-group-item active"
+                    : "list-group-item";
                 return (
                   <a className={linkStyle} href={`/gallery${folder.id}`}>
                     {folder.title}
@@ -199,8 +204,8 @@ export default class GalleryLightBox extends Component {
   render = () => {
     if (this.state.isFetchingCoverImages) {
       return (
-        <div style={{ marginLeft: '30%' }}>
-          <CircularProgress color={'#003D7D'} size={80} thickness={5} />
+        <div style={{ marginLeft: "30%" }}>
+          <CircularProgress color={"#003D7D"} size={80} thickness={5} />
         </div>
       );
     }
@@ -220,24 +225,24 @@ const gutter = {
 const classes = StyleSheet.create({
   gallery: {
     marginRight: -gutter.small,
-    overflow: 'hidden',
+    overflow: "hidden",
 
-    '@media (min-width: 500px)': {
+    "@media (min-width: 500px)": {
       marginRight: -gutter.large
     }
   },
 
   // anchor
   thumbnail: {
-    boxSizing: 'border-box',
-    display: 'block',
-    float: 'left',
+    boxSizing: "border-box",
+    display: "block",
+    float: "left",
     lineHeight: 0,
     paddingRight: gutter.small,
     paddingBottom: gutter.small,
-    overflow: 'hidden',
+    overflow: "hidden",
 
-    '@media (min-width: 500px)': {
+    "@media (min-width: 500px)": {
       paddingRight: gutter.large,
       paddingBottom: gutter.large
     }
@@ -245,13 +250,13 @@ const classes = StyleSheet.create({
 
   // orientation
   landscape: {
-    width: '30%'
+    width: "30%"
   },
   square: {
     paddingBottom: 0,
-    width: '40%',
+    width: "40%",
 
-    '@media (min-width: 500px)': {
+    "@media (min-width: 500px)": {
       paddingBottom: 0
     }
   },
@@ -259,10 +264,10 @@ const classes = StyleSheet.create({
   // actual <img />
   source: {
     border: 0,
-    display: 'block',
-    overflow: 'hidden',
-    height: '200px',
-    maxWidth: '100%',
-    width: 'auto'
+    display: "block",
+    overflow: "hidden",
+    height: "200px",
+    maxWidth: "100%",
+    width: "auto"
   }
 });

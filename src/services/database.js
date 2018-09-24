@@ -11,7 +11,6 @@ class Database {
       this.database
         .ref(folder)
         .orderByKey()
-        .limitToFirst(30)
         .once("value")
         .then(images => {
           const imagesVal = images.val();
@@ -35,7 +34,7 @@ class Database {
   deleteGalleryImages = (folder, keys) => {
     const imageNodes = [];
     keys.forEach(key => {
-      imageNodes.push(this.database.ref(`${folder}/${key}`).remove());
+      imageNodes.push(this.database.ref(`${folder}/images/${key}`).remove());
     });
     return Promise.all(imageNodes);
   };
@@ -60,5 +59,7 @@ class Database {
   getFolder = folderPath => {
     return this.database.ref(folderPath).once("value");
   };
+
+
 }
 export default new Database();

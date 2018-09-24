@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import Lightbox from "react-images";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Storage from "../../../services/storage";
 import Database from "../../../services/database";
 import { css, StyleSheet } from "aphrodite/no-important";
 import CircularProgress from "material-ui/CircularProgress";
+import Grid from "react-bootstrap/lib/Grid";
+import Row from "react-bootstrap/lib/Row";
+import Col from "react-bootstrap/lib/Col";
 import { folders } from "./folders";
 import ImageItem from "./ImageItem";
+import FlatButton from "material-ui/FlatButton/FlatButton";
 
 export default class GalleryLightBox extends Component {
   constructor(props) {
@@ -15,15 +19,76 @@ export default class GalleryLightBox extends Component {
       lightboxIsOpen: false,
       currentImage: 0,
       isFetchingCoverImages: true,
-      selectedImages: []
+      selectedImages: [],
+      folders: []
     };
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.folder !== prevProps.folder) {
-      this.getImages(this.props.folder);
+    console.log(prevProps);
+    if (this.props.folder !== prevProps.folder || this.props.imageCount !== prevProps.imageCount) {
+      console.log("NEW FOLDER", this.props.folder)
+      this.getImagesAndFolders(this.props.folder);
     }
   }
+
+
+  componentWillMount() {
+    const { folder } = this.props;
+    this.getImagesAndFolders(folder);
+  }
+
+  getImagesAndFolders = folder => {
+    
+    Database.getFolder(folder).then((res)=>{
+        const folderValue = res.val();
+        console.log(folderValue)
+        if(folderValue){
+          this.setState({
+            folders: folderValue.folders || []
+          })
+          if(folderValue.images){
+            this.getImages(`${folder}/images`,false)
+          }
+          else{
+            this.setState({
+              downloadUrls: [],
+              isFetchingCoverImages: false
+            })
+          }
+          this.props.onFolderChange(folderValue.folderPath)
+        }
+    }).catch((err)=>{
+      this.setState({
+        isFetchingCoverImages: false,
+        folderNotFound: true
+      })
+    });
+      
+  };
+
+  getFolderCoverImages = async (folderValue) => {
+    let coverImagePromises = [];
+    Object.keys(folderValue.folders).forEach(folder => {
+      if (folderValue.folders[folder].coverImage) {
+        coverImagePromises.push(
+          Storage.getDownloadUrl(folderValue.folders[folder].coverImage.src)
+        );
+      }
+    });
+    return Promise.all(coverImagePromises)
+  }
+
+  getImages = (folder, stillFetching) => {
+    Database.requestGalleryImages(folder).then(images => {
+      console.log()
+      this.setState({
+        downloadUrls: images,
+        isFetchingCoverImages: stillFetching
+      });
+    });
+  };
+
 
   chunkify = (a, n, balanced) => {
     if (n < 2) return [a];
@@ -113,6 +178,39 @@ export default class GalleryLightBox extends Component {
       currentImage: index
     });
   };
+
+  renderFolders = () => {
+      return Object.keys(this.state.folders).map((key, i)=>{
+        return  (
+          <div className="button row" style={{margin: 10}} onClick={()=>{
+            this.getImagesAndFolders(`${this.state.folders[key].folderPath}`)
+          }}>
+            <div style={{paddingVertical: 20,}} className="col-md-2 col-sm-12">
+              <img
+                src={
+                  require('../../../assets/placeholder-image.png')
+                }
+                height={'100%'}
+                style={{alignSelf: 'center', width: '100%'}}
+              />
+            </div>
+            <div className="col-md-10 col-sm-12">
+            <div style={{padding: 10, marginTop: 20}}>
+                <a style={{ display: "inline-block" }}>
+                  <h4>{this.state.folders[key].folderName}</h4>
+                </a>
+                <span
+                  style={{ display: "inline-block" }}
+                  className="glyphicon glyphicon-chevron-right pull-right d-sm-none"
+                />
+            </div>
+                
+            </div>  
+          </div>
+        )
+      })
+  }
+
   renderGallery = () => {
     const { downloadUrls } = this.state;
     if (!downloadUrls) return;
@@ -170,49 +268,37 @@ export default class GalleryLightBox extends Component {
     );
   };
 
-  getImages = async folder => {
-    Database.requestGalleryImages(folder).then(images => {
-      this.setState({
-        isFetchingCoverImages: false,
-        downloadUrls: images
-      });
-    });
-  };
-
-  componentWillMount() {
-    const { folder } = this.props;
-    this.getImages(folder);
-  }
-
-  renderLigthBoxOrEditor = () => {
-    if (!this.props.editMode) {
-      return (
-        <Lightbox
-          currentImage={this.state.currentImage}
-          images={this.state.downloadUrls}
-          showThumbnails={true}
-          isOpen={this.state.lightboxIsOpen}
-          onClickPrev={this.gotoPrevious}
-          onClickNext={this.gotoNext}
-          onClose={this.closeLightbox}
-          onClickThumbnail={this.gotoIndex}
-        />
-      );
-    }
+  renderLigthBox = () => {
+    return (
+      <Lightbox
+        currentImage={this.state.currentImage}
+        images={this.state.downloadUrls}
+        showThumbnails={true}
+        isOpen={this.state.lightboxIsOpen}
+        onClickPrev={this.gotoPrevious}
+        onClickNext={this.gotoNext}
+        onClose={this.closeLightbox}
+        onClickThumbnail={this.gotoIndex}
+      />
+    );
   };
 
   render = () => {
-    if (this.state.isFetchingCoverImages) {
+    if (this.state.isFetchingCoverImages && !this.props.hideLoading) {
       return (
         <div style={{ marginLeft: "30%" }}>
           <CircularProgress color={"#003D7D"} size={80} thickness={5} />
         </div>
       );
     }
+    if(this.state.folderNotFound){
+      return <Redirect to="/gallery"/>
+    }
     return (
       <div>
-        {this.renderGallery()}
-        {this.renderLigthBoxOrEditor()}
+        {this.state.folders && this.props.useFolder && this.renderFolders()}
+        {this.state.downloadUrls && this.renderGallery()}
+         {this.state.downloadUrls &&  this.renderLigthBox()}
       </div>
     );
   };

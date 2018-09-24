@@ -199,6 +199,7 @@ export default class ImageCompressor extends Component {
   _handleUpload = () => {
     this.setState({ uploading: true });
     let uploads = [];
+    console.log("UPLOAD_FOLDER", this.state.uploadFolder)
     const imageUploadPath = this.state.compressedImagesToRender.forEach(
       image => {
         let uploadOp = FirebaseICU.upload(

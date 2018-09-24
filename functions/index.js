@@ -103,7 +103,7 @@ exports.recordImageInDB = functions.storage.object().onFinalize(object => {
       return admin
         .database()
         .ref(fileDir)
-        .push({ src: fileUrl, thumbnail: thumbFileUrl });
+        .push({ src: fileUrl, thumbnail: thumbFileUrl, storageLocationThumbnail: thumbFilePath, storageLocation: `${fileDir}/${fileName}` });
     })
     .then(() => console.log('Thumbnail URLs saved to database.'));
 

@@ -4,12 +4,21 @@ import Page from '../../components/Page/Page';
 import LightBox from '../../components/Gallery/Lightbox';
 
 class GalleryFolder extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      currentFolder: `folders/${this.props.match.params.id}`,
+      folderHistory: []
+    }
+  }
+
   _getTitle = () => {
     switch (this.props.match.params.id) {
       case 'around-our-school': {
         return 'Around Our School';
       }
-      case 'benildus-college-archive': {
+      case 'benildus-archive': {
         return 'St.Benildus Archive';
       }
       case 'extra-curricular': {
@@ -41,14 +50,25 @@ class GalleryFolder extends Component {
       }
     }
   };
+
+  _onBackPressedArchive = () => {
+    const previousFolder = this.state.currentFolder
+    console.log("PREVIOUS FODLER:", previousFolder)
+    this.setState({
+      currentFolder: previousFolder
+    })
+    
+  }
+
   render() {
     const title = this._getTitle();
-
     return (
       <div>
         <Navbar active={'Gallery'} />
-        <Page title={title} fullWidth current={'Gallery'}>
-          <LightBox folder={this.props.match.params.id} showNavigation={true} />
+        <Page title={title} fullWidth archive current={'Gallery'} onBackPressArchive={this._onBackPressedArchive}>
+          <LightBox folder={this.state.currentFolder} useFolder={true} onFolderChange={(folder)=>{
+            console.log("Changed to folder:", folder)
+          }} showNavigation={this.props.match.params.id !== 'benildus-archive'} />
         </Page>
       </div>
     );

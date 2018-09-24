@@ -7,7 +7,7 @@ export const folders = [
   {
     title: "St.Benildus Archive",
     cover: require("../../../assets/benildus-college-archive.jpg"),
-    id: "/benildus-college-archive"
+    id: "/benildus-archive"
   },
   {
     title: "Extra Curricluar",

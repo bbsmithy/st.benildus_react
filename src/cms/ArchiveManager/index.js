@@ -10,14 +10,17 @@ import Snackbar from "material-ui/Snackbar";
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import GalleryLightBox from "../../client/components/Gallery/Lightbox";
 import Database from "../../services/database";
 import Storage from "../../services/storage";
 import ManagerHeader from "../components/ManagerHeader";
 import "./index.css";
-
+import { getCurrentUser, auth } from '../../services/auth';
 import { ImageCompressor } from "../components/ImageCompressor";
+
+const USER_SIGNED_IN = 'USER_SIGNED_IN';
+const USER_NOT_FOUND = 'USER_NOT_FOUND';
 
 export default class ArchiveManager extends Component {
   constructor(props) {
@@ -25,22 +28,82 @@ export default class ArchiveManager extends Component {
     this.state = {
       createFolderName: "",
       creatingFolder: false,
-      folderPath: "/benildus-archive",
+      folderPath: "folders/benildus-archive",
       archiveLocation: [
-        { location: "/benildus-archive", name: "Archive Manager" }
+        { location: "folders/benildus-archive", name: "Archive Manager" }
       ],
       loadingFolders: true,
-      uploadImage: false
+      uploadImage: false,
+      selectedImages: {}
     };
   }
 
   componentWillMount() {
     this._getFolders();
+    getCurrentUser()
+      .then(user => {
+        console.log(user);
+        this.setState({
+          signedIn: USER_SIGNED_IN
+        });
+      })
+      .catch(() => {
+        this.setState({
+          signedIn: USER_NOT_FOUND
+        });
+      });
   }
 
+  _onImageSelected = obj => {
+    this.setState({
+      selectedImages: { ...this.state.selectedImages, [obj.index]: obj }
+    });
+  };
+
+  _onImageUnselected = obj => {
+    let selectedImages = { ...this.state.selectedImages };
+    delete selectedImages[obj.index];
+    this.setState({
+      selectedImages: selectedImages
+    });
+  };
+
+  _deleteImages = () => {
+
+    this.setState({
+      deletingImage: true
+    })
+
+    const keys = Object.keys(this.state.selectedImages).map(image => {
+      return this.state.selectedImages[image].key;
+    });
+
+    const srcUrls = Object.keys(this.state.selectedImages).map(image => {
+      return this.state.selectedImages[image].storageLocation;
+    });
+
+    const thumbUrls = Object.keys(this.state.selectedImages).map(image => {
+      return this.state.selectedImages[image].storageLocationThumbnail;
+    });
+
+    Database.deleteGalleryImages(this.state.folderPath, keys)
+      .then(res => {
+        Storage.deleteImages([...srcUrls, ...thumbUrls]).then(() => {
+          this.setState({
+            deletingImage: false,
+            selectedImages: {}
+          })
+          this._getFolders()
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   _createFolder = () => {
-    const folderPath = `${this.state
-      .folderPath}/folders/${this.state.createFolderName.toLowerCase()}`;
+    const folderPathName = this.state.createFolderName.toLowerCase().replace(/ /g,"_")
+    const folderPath = `${this.state.folderPath}/folders/${folderPathName}`;
     const createFolderName = this.state.createFolderName;
     this.setState({ creatingFolder: true });
     Database.createFolder(folderPath, createFolderName).then(() => {
@@ -50,28 +113,35 @@ export default class ArchiveManager extends Component {
   };
 
   _getFolders = folderPath => {
-    this.setState({
-      loadingFolders: true
-    });
     Database.getFolder(folderPath || this.state.folderPath).then(folder => {
       const folderValue = folder.val();
       const coverImagePromises = [];
-      Object.keys(folderValue.folders).forEach(folder => {
-        if (folderValue.folders[folder].coverImage) {
-          coverImagePromises.push(
-            Storage.getDownloadUrl(folderValue.folders[folder].coverImage.src)
-          );
-        }
-      });
-      Promise.all(coverImagePromises).then(coverImages => {
+      console.log("New Folder Value", folderValue)
+      if(folderValue){
+        // Object.keys(folderValue.folders).forEach(folder => {
+        //   if (folderValue.folders[folder].coverImage) {
+        //     coverImagePromises.push(
+        //       Storage.getDownloadUrl(folderValue.folders[folder].coverImage.src)
+        //     );
+        //   }
+        // });
+        // Promise.all(coverImagePromises).then(coverImages => {
+        //   console.log(coverImages)
+          this.setState({
+            folderStructure: folderValue.folders || [],
+            folderName: folderValue.folderName,
+            folderPath: folderValue.folderPath,
+            images: folderValue.images || [],
+            loadingFolders: false
+          });
+        // });
+      }else{
         this.setState({
-          coverImages: coverImages,
-          folderStructure: folderValue.folders,
-          folderName: folderValue.folderName,
-          folderPath: folderValue.folderPath,
+          noFolders: true,
           loadingFolders: false
-        });
-      });
+        })
+      }
+      
     });
   };
 
@@ -82,6 +152,36 @@ export default class ArchiveManager extends Component {
     });
   };
 
+  _renderImages = () => {
+      return (
+        <Row>
+          <Col md={10}>
+            <GalleryLightBox
+              folder={this.state.folderPath}
+              imageCount={this.state.images}
+              editMode={true}
+              onImageSelected={this._onImageSelected}
+              onImageUnselected={this._onImageUnselected}
+              useFolder={false}
+            />
+          </Col>
+          <Col md={2}>
+          {Object.keys(this.state.selectedImages).length > 0 && (
+            <div
+              type="button"
+              class="btn btn-danger btn-lg"
+              data-toggle="modal"
+              data-target="#deleteModal"
+            >
+              Delete
+            </div>
+          )}
+          </Col>
+        </Row>
+        
+      )
+  }
+
   _renderFolders = () => {
     return Object.keys(this.state.folderStructure).map((key, i) => {
       return (
@@ -91,11 +191,11 @@ export default class ArchiveManager extends Component {
               this.setState({
                 folderStructure: this.state.folderStructure[key].folders,
                 folderName: this.state.folderStructure[key].folderName,
-                folderPath: this.state.folderStructure[key].folderPath,
+                folderPath: `${this.state.folderStructure[key].folderPath}`,
                 archiveLocation: [
                   ...this.state.archiveLocation,
                   {
-                    location: this.state.folderStructure[key].folderPath,
+                    location: `/folders/${this.state.folderStructure[key].folderPath}`,
                     name: this.state.folderStructure[key].folderName
                   }
                 ]
@@ -106,7 +206,6 @@ export default class ArchiveManager extends Component {
           >
             <img
               src={
-                this.state.coverImages[i] ||
                 require("../../assets/placeholder-image.png")
               }
               height={100}
@@ -123,6 +222,7 @@ export default class ArchiveManager extends Component {
           <Col md={2}>
             <label
               className="button"
+              disabled={true}
               style={{
                 backgroundColor: "red",
                 width: "100%",
@@ -136,14 +236,15 @@ export default class ArchiveManager extends Component {
             </label>
             <label
               className="button"
+              disabled={true}
               style={{
                 backgroundColor: "blue",
                 width: "100%",
                 color: "white"
               }}
-              onClick={() => {
-                this._addCoverPhoto(this.state.folderStructure[key]);
-              }}
+              // onClick={() => {
+              //   this._addCoverPhoto(this.state.folderStructure[key]);
+              // }}
             >
               <span className="glyphicon glyphicon-camera" />
               {"   "}
@@ -156,6 +257,8 @@ export default class ArchiveManager extends Component {
   };
 
   render() {
+    if(this.state.signedIn === USER_SIGNED_IN){
+    
     if (this.state.addCoverImage) {
       return (
         <div>
@@ -188,7 +291,7 @@ export default class ArchiveManager extends Component {
                   console.log("Uplaod success");
                   Database.createCoverImage(
                     url,
-                    this.state.folderToCover.folderPath
+                    `${this.state.folderToCover.folderPath}`
                   )
                     .then(success => {
                       console.log(success);
@@ -222,7 +325,7 @@ export default class ArchiveManager extends Component {
                 </div>
                 <h2 style={{ display: "inline-block" }}>
                   Upload Images{": "}
-                  {this.state.folderStructure.folderName}
+                  {this.state.folderName}
                 </h2>
               </div>
             </Row>
@@ -271,9 +374,7 @@ export default class ArchiveManager extends Component {
           {!this.state.loadingFolders &&
             this.state.folderStructure &&
             this._renderFolders()}
-          {this.state.loadingFolders && (
-            <CircularProgress color={"#003D7D"} size={80} thickness={5} />
-          )}
+            {this._renderImages()}
           <hr />
           <Row style={{ marginBottom: 50 }}>
             <Col md={12}>
@@ -306,6 +407,60 @@ export default class ArchiveManager extends Component {
           </Row>
         </Grid>
         <div
+        class="modal fade"
+        id="deleteModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="myModalLabel"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button
+                type="button"
+                class="close"
+                data-dismiss="deleteModal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="myModalLabel">
+                Are you sure you want to delete these images?
+              </h4>
+            </div>
+            <div class="modal-body">
+              {Object.keys(this.state.selectedImages).map(key => {
+                return (
+                  <img
+                    style={{ display: "inline-block" }}
+                    src={this.state.selectedImages[key].src}
+                    width="100%"
+                  />
+                );
+              })}
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-default"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger"
+                disabled={this.state.deletingImage}
+                onClick={this._deleteImages}
+                data-dismiss="modal"
+              >
+                {this.state.deletingImage ? 'Deleting' : 'Delete'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
           class="modal fade"
           id="myModal"
           tabindex="-1"
@@ -362,5 +517,10 @@ export default class ArchiveManager extends Component {
         </div>
       </div>
     );
+  }else if(this.state.signedIn === USER_NOT_FOUND){
+    return <Redirect to="/" />;
+  }else{
+      return <h2>Loading</h2>;
   }
+}
 }

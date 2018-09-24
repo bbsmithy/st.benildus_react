@@ -9,7 +9,7 @@ import Snackbar from "material-ui/Snackbar";
 import Grid from "react-bootstrap/lib/Grid";
 import Row from "react-bootstrap/lib/Row";
 import Col from "react-bootstrap/lib/Col";
-import { Link } from "react-router-dom";
+import { Link, Redirect} from "react-router-dom";
 import GalleryLightBox from "../../client/components/Gallery/Lightbox";
 import Database from "../../services/database";
 import Storage from "../../services/storage";
@@ -31,24 +31,24 @@ const FolderPicker = props => {
       value={props.folder}
       onChange={props.handleChange}
     >
-      <MenuItem value={"around-our-school"} primaryText="Around Our School" />
+      <MenuItem value={"folders/around-our-school"} primaryText="Around Our School" />
       <MenuItem
-        value={"benildus-college-archive"}
+        value={"folders/benildus-college-archive"}
         primaryText="St.Benildus College Archive"
       />
-      <MenuItem value={"extra-curricular"} primaryText="Extra Curricular" />
-      <MenuItem value={"in-the-classroom"} primaryText="In the Classroom" />
+      <MenuItem value={"folders/extra-curricular"} primaryText="Extra Curricular" />
+      <MenuItem value={"ifolders/n-the-classroom"} primaryText="In the Classroom" />
       <MenuItem
-        value={"music-art-culture"}
+        value={"folders/music-art-culture"}
         primaryText="Music, Art & Culture"
       />
       <MenuItem
-        value={"outstanding-achievement"}
+        value={"folders/outstanding-achievement"}
         primaryText="Outstanding Achievements"
       />
-      <MenuItem value={"run-for-life"} primaryText="Run for Life" />
-      <MenuItem value={"sports"} primaryText="Sports" />
-      <MenuItem value={"transition-year"} primaryText="Transition Year" />
+      <MenuItem value={"folders/run-for-life"} primaryText="Run for Life" />
+      <MenuItem value={"folders/sports"} primaryText="Sports" />
+      <MenuItem value={"folders/transition-year"} primaryText="Transition Year" />
     </SelectField>
   );
 };
@@ -103,7 +103,7 @@ class App extends Component {
       imagesToRender: [],
       compressedImagesToRender: [],
       selectedTab: 0,
-      deleteFolder: "around-our-school",
+      deleteFolder: "folders/around-our-school",
       selectedImages: {}
     };
   }
@@ -347,10 +347,11 @@ class App extends Component {
         </div>
       );
     }
-    return <ImageCompressor />;
+    return <ImageCompressor uploadPath={`${this.state.deleteFolder}/images`}/>;
   };
 
   render() {
+    if(this.state.signedIn === USER_SIGNED_IN){
     return (
       <div>
         <ManagerHeader />
@@ -389,22 +390,6 @@ class App extends Component {
                   }
                 >
                   Delete Images
-                </a>
-                <a
-                  onClick={() => {
-                    this.setState({
-                      selectedTab: NAV_TAB_CREATE_FOLDERS_IMAGES
-                    });
-                  }}
-                  class={
-                    this.state.selectedTab === NAV_TAB_CREATE_FOLDERS_IMAGES ? (
-                      "list-group-item active"
-                    ) : (
-                      "list-group-item"
-                    )
-                  }
-                >
-                  Create Folders
                 </a>
               </div>
             </Col>
@@ -477,9 +462,10 @@ class App extends Component {
             </div>
           </div>
         </div>
+      </div>
       );
     } else if (this.state.signedIn === USER_NOT_FOUND) {
-      return <Redirect to="/admin" />;
+      return <Redirect to="/" />;
       // No user is signed in.
     } else {
       return <h2>Loading</h2>;

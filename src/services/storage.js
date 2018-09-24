@@ -24,7 +24,7 @@ class Storage {
     let deleteActions = [];
     console.log(urls);
     urls.forEach(url => {
-      deleteActions.push(this.storage.refFromURL(url).delete());
+      deleteActions.push(this.storage.ref(url).delete());
     });
     return Promise.all(deleteActions);
   };

@@ -15,47 +15,44 @@ export default class Sample extends Component {
     };
   }
 
-  componentWillMount(){
-    if(this.props.useDynamic) this._getGalleryFolders();
+  componentWillMount() {
+    if (this.props.useDynamic) this._getGalleryFolders();
   }
 
   _getGalleryFolders = () => {
     this.setState({
       loadingFolders: true
-    })
-    Database.getFolder('/folders').then((res)=>{
+    });
+    Database.getFolder('/folders').then(res => {
       const folderValue = res.val();
       const coverImagePromises = [];
       Object.keys(folderValue).forEach(folder => {
         if (folderValue[folder].coverImage) {
-          coverImagePromises.push(
-            Storage.getDownloadUrl(folderValue[folder].coverImage.src)
-          );
+          coverImagePromises.push(Storage.getDownloadUrl(folderValue[folder].coverImage.src));
         }
       });
-      Promise.all(coverImagePromises).then((coverImages)=>{
+      Promise.all(coverImagePromises).then(coverImages => {
         this.setState({
           folders: folderValue,
           coverImages: coverImages,
           loadingFolders: false
-        })
-      })
-     
-    })
-  }
+        });
+      });
+    });
+  };
 
   renderFolders() {
     if (!folders) return;
     let tempRowArray = [];
     let gridArray = [];
     for (var i = 0; i < folders.length; i += 3) {
-      const row = [folders[i], folders[i + 1], folders[i + 2]];
+      const row = [folders[i], folders[i + 1]];
       gridArray.push(row);
     }
     const gallery = gridArray.map(row => {
       const gridRow = row.map(folder => {
         return (
-          <div className="col-md-4 col-sm-4 col-xs-12">
+          <div className="col-md-6 col-sm-12 col-xs-12">
             <div class="album-cover">
               <a href={`gallery${folder.id}`}>
                 <img className="img-responsive" src={folder.cover} />
@@ -81,9 +78,9 @@ export default class Sample extends Component {
   }
 
   renderFoldersDynamically() {
-    if (this.state.loadingFolders){
-      return "loading"
-    }else{
+    if (this.state.loadingFolders) {
+      return 'loading';
+    } else {
       const gallery = Object.keys(this.state.folders).map((key, i) => {
         return (
           <div className="col-md-4 col-sm-4 col-xs-12">

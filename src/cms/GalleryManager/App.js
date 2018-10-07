@@ -1,20 +1,20 @@
-import React, { Component } from "react";
-import fire from "../../services/fire";
-import Paper from "material-ui/Paper";
-import SelectField from "material-ui/SelectField";
-import TextField from "material-ui/TextField";
-import Button from "material-ui/FlatButton";
-import MenuItem from "material-ui/MenuItem";
-import Snackbar from "material-ui/Snackbar";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
-import { Link, Redirect} from "react-router-dom";
-import GalleryLightBox from "../../client/components/Gallery/Lightbox";
-import Database from "../../services/database";
-import Storage from "../../services/storage";
-import ManagerHeader from "../components/ManagerHeader";
-import { ImageCompressor } from "../components/ImageCompressor";
+import React, { Component } from 'react';
+import fire from '../../services/fire';
+import Paper from 'material-ui/Paper';
+import SelectField from 'material-ui/SelectField';
+import TextField from 'material-ui/TextField';
+import Button from 'material-ui/FlatButton';
+import MenuItem from 'material-ui/MenuItem';
+import Snackbar from 'material-ui/Snackbar';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import { Link, Redirect } from 'react-router-dom';
+import GalleryLightBox from '../../client/components/Gallery/Lightbox';
+import Database from '../../services/database';
+import Storage from '../../services/storage';
+import ManagerHeader from '../components/ManagerHeader';
+import { ImageCompressor } from '../components/ImageCompressor';
 import { getCurrentUser, auth } from '../../services/auth';
 
 const NAV_TAB_UPLOAD_IMAGES = 0;
@@ -26,29 +26,15 @@ const USER_NOT_FOUND = 'USER_NOT_FOUND';
 
 const FolderPicker = props => {
   return (
-    <SelectField
-      hintText="Select Folder"
-      value={props.folder}
-      onChange={props.handleChange}
-    >
-      <MenuItem value={"folders/around-our-school"} primaryText="Around Our School" />
-      <MenuItem
-        value={"folders/benildus-college-archive"}
-        primaryText="St.Benildus College Archive"
-      />
-      <MenuItem value={"folders/extra-curricular"} primaryText="Extra Curricular" />
-      <MenuItem value={"ifolders/n-the-classroom"} primaryText="In the Classroom" />
-      <MenuItem
-        value={"folders/music-art-culture"}
-        primaryText="Music, Art & Culture"
-      />
-      <MenuItem
-        value={"folders/outstanding-achievement"}
-        primaryText="Outstanding Achievements"
-      />
-      <MenuItem value={"folders/run-for-life"} primaryText="Run for Life" />
-      <MenuItem value={"folders/sports"} primaryText="Sports" />
-      <MenuItem value={"folders/transition-year"} primaryText="Transition Year" />
+    <SelectField hintText="Select Folder" value={props.folder} onChange={props.handleChange}>
+      <MenuItem value={'folders/around-our-school'} primaryText="Around Our School" />
+      <MenuItem value={'folders/extra-curricular'} primaryText="Extra Curricular" />
+      <MenuItem value={'folders/in-the-classroom'} primaryText="In the Classroom" />
+      <MenuItem value={'folders/music-art-culture'} primaryText="Music, Art & Culture" />
+      <MenuItem value={'folders/outstanding-achievement'} primaryText="Outstanding Achievements" />
+      <MenuItem value={'folders/run-for-life'} primaryText="Run for Life" />
+      <MenuItem value={'folders/sports'} primaryText="Sports" />
+      <MenuItem value={'folders/transition-year'} primaryText="Transition Year" />
     </SelectField>
   );
 };
@@ -103,7 +89,7 @@ class App extends Component {
       imagesToRender: [],
       compressedImagesToRender: [],
       selectedTab: 0,
-      deleteFolder: "folders/around-our-school",
+      deleteFolder: 'folders/around-our-school',
       selectedImages: {}
     };
   }
@@ -282,7 +268,7 @@ class App extends Component {
     Database.deleteGalleryImages(this.state.deleteFolder, keys)
       .then(res => {
         Storage.deleteImages([...srcUrls, ...thumbUrls]).then(() => {
-          console.log("SUCCESS");
+          console.log('SUCCESS');
         });
       })
       .catch(err => {
@@ -291,8 +277,8 @@ class App extends Component {
   };
 
   _createFolder = () => {
-    Database.createFolder(this.state.createFolderName, "Test").then(res => {
-      console.log("Sucess");
+    Database.createFolder(this.state.createFolderName, 'Test').then(res => {
+      console.log('Sucess');
     });
   };
 
@@ -309,17 +295,9 @@ class App extends Component {
             />
           </Col>
           <Col md={3}>
-            <FolderPicker
-              folder={this.state.deleteFolder}
-              handleChange={this._handleDeleteFolderChange}
-            />
+            <FolderPicker folder={this.state.deleteFolder} handleChange={this._handleDeleteFolderChange} />
             {Object.keys(this.state.selectedImages).length > 0 && (
-              <div
-                type="button"
-                class="btn btn-danger btn-lg"
-                data-toggle="modal"
-                data-target="#myModal"
-              >
+              <div type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#myModal">
                 Delete
               </div>
             )}
@@ -347,57 +325,49 @@ class App extends Component {
         </div>
       );
     }
-    return <ImageCompressor uploadPath={`${this.state.deleteFolder}/images`}/>;
+    return <ImageCompressor uploadPath={`${this.state.deleteFolder}/images`} />;
   };
 
   render() {
-    if(this.state.signedIn === USER_SIGNED_IN){
-    return (
-      <div>
-        <ManagerHeader />
-        <Grid>
-          <Row>
-            <Col md={2} style={{ marginTop: 20 }}>
-              <div class="list-group">
-                <a
-                  onClick={() => {
-                    this.setState({
-                      selectedTab: NAV_TAB_UPLOAD_IMAGES
-                    });
-                  }}
-                  class={
-                    this.state.selectedTab === NAV_TAB_UPLOAD_IMAGES ? (
-                      "list-group-item active"
-                    ) : (
-                      "list-group-item"
-                    )
-                  }
-                >
-                  Upload Images
-                </a>
-                <a
-                  onClick={() => {
-                    this.setState({
-                      selectedTab: NAV_TAB_DELETE_IMAGES
-                    });
-                  }}
-                  class={
-                    this.state.selectedTab === NAV_TAB_DELETE_IMAGES ? (
-                      "list-group-item active"
-                    ) : (
-                      "list-group-item"
-                    )
-                  }
-                >
-                  Delete Images
-                </a>
-              </div>
-            </Col>
-            <Col md={10}>
-              <h3>Gallery Manager</h3>
-              <hr />
-              {this._renderSelectedTab()}
-              {/* <Row>
+    if (this.state.signedIn === USER_SIGNED_IN) {
+      return (
+        <div>
+          <ManagerHeader />
+          <Grid>
+            <Row>
+              <Col md={2} style={{ marginTop: 20 }}>
+                <div class="list-group">
+                  <a
+                    onClick={() => {
+                      this.setState({
+                        selectedTab: NAV_TAB_UPLOAD_IMAGES
+                      });
+                    }}
+                    class={
+                      this.state.selectedTab === NAV_TAB_UPLOAD_IMAGES ? 'list-group-item active' : 'list-group-item'
+                    }
+                  >
+                    Upload Images
+                  </a>
+                  <a
+                    onClick={() => {
+                      this.setState({
+                        selectedTab: NAV_TAB_DELETE_IMAGES
+                      });
+                    }}
+                    class={
+                      this.state.selectedTab === NAV_TAB_DELETE_IMAGES ? 'list-group-item active' : 'list-group-item'
+                    }
+                  >
+                    Delete Images
+                  </a>
+                </div>
+              </Col>
+              <Col md={10}>
+                <h3>Gallery Manager</h3>
+                <hr />
+                {this._renderSelectedTab()}
+                {/* <Row>
                 <Col xs={6} md={6}>
                   <ImageList images={this.state.imagesToRender} />
                 </Col>
@@ -407,62 +377,39 @@ class App extends Component {
                   />
                 </Col>
               </Row> */}
-            </Col>
-          </Row>
-        </Grid>
-        <div
-          class="modal fade"
-          id="myModal"
-          tabindex="-1"
-          role="dialog"
-          aria-labelledby="myModalLabel"
-        >
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button
-                  type="button"
-                  class="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                  Are you sure you want to delete these images?
-                </h4>
-              </div>
-              <div class="modal-body">
-                {Object.keys(this.state.selectedImages).map(key => {
-                  return (
-                    <img
-                      style={{ display: "inline-block" }}
-                      src={this.state.selectedImages[key].src}
-                      width="100%"
-                    />
-                  );
-                })}
-              </div>
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-default"
-                  data-dismiss="modal"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-danger"
-                  onClick={this._deleteImages}
-                >
-                  Delete
-                </button>
+              </Col>
+            </Row>
+          </Grid>
+          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h4 class="modal-title" id="myModalLabel">
+                    Are you sure you want to delete these images?
+                  </h4>
+                </div>
+                <div class="modal-body">
+                  {Object.keys(this.state.selectedImages).map(key => {
+                    return (
+                      <img style={{ display: 'inline-block' }} src={this.state.selectedImages[key].src} width="100%" />
+                    );
+                  })}
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cancel
+                  </button>
+                  <button type="button" class="btn btn-danger" onClick={this._deleteImages}>
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       );
     } else if (this.state.signedIn === USER_NOT_FOUND) {
       return <Redirect to="/" />;

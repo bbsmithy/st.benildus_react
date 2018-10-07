@@ -4,17 +4,16 @@ import Page from '../../components/Page/Page';
 import LightBox from '../../components/Gallery/Lightbox';
 
 class GalleryFolder extends Component {
-
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      currentFolder: `folders/${this.props.match.params.id}`,
-      folderHistory: []
-    }
+      currentFolder: `folders/${props.match.params.id}`,
+      title: this._getTitle(props.match.params.id)
+    };
   }
 
-  _getTitle = () => {
-    switch (this.props.match.params.id) {
+  _getTitle = id => {
+    switch (id) {
       case 'around-our-school': {
         return 'Around Our School';
       }
@@ -23,9 +22,6 @@ class GalleryFolder extends Component {
       }
       case 'extra-curricular': {
         return 'Extra Curricular';
-      }
-      case 'in-the-classroom': {
-        return 'In the Classroom';
       }
       case 'in-the-classroom': {
         return 'In the Classroom';
@@ -52,23 +48,29 @@ class GalleryFolder extends Component {
   };
 
   _onBackPressedArchive = () => {
-    const previousFolder = this.state.currentFolder
-    console.log("PREVIOUS FODLER:", previousFolder)
     this.setState({
-      currentFolder: previousFolder
-    })
-    
-  }
+      currentFolder: 'folders/benildus-archive'
+    });
+  };
+
+  _onFolderChanged = folder => {
+    this.setState({
+      currentFolder: folder.folderPath,
+      title: folder.folderName
+    });
+  };
 
   render() {
-    const title = this._getTitle();
     return (
       <div>
         <Navbar active={'Gallery'} />
-        <Page title={title} fullWidth archive current={'Gallery'} onBackPressArchive={this._onBackPressedArchive}>
-          <LightBox folder={this.state.currentFolder} useFolder={true} onFolderChange={(folder)=>{
-            console.log("Changed to folder:", folder)
-          }} showNavigation={this.props.match.params.id !== 'benildus-archive'} />
+        <Page title={this.state.title} fullWidth current={'Gallery'}>
+          <LightBox
+            folder={this.state.currentFolder}
+            useFolder={true}
+            showNavigation={this.props.match.params.id !== 'benildus-archive'}
+            onFolderChanged={this._onFolderChanged}
+          />
         </Page>
       </div>
     );

@@ -25,7 +25,6 @@ export default class GalleryLightBox extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    console.log(prevProps);
     if (this.props.folder !== prevProps.folder || this.props.imageCount !== prevProps.imageCount) {
       console.log("NEW FOLDER", this.props.folder)
       this.getImagesAndFolders(this.props.folder);
@@ -56,8 +55,8 @@ export default class GalleryLightBox extends Component {
               isFetchingCoverImages: false
             })
           }
-          this.props.onFolderChange(folderValue.folderPath)
         }
+        if(this.props.onFolderChanged) this.props.onFolderChanged(folderValue)
     }).catch((err)=>{
       this.setState({
         isFetchingCoverImages: false,

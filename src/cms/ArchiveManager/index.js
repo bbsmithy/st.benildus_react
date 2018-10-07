@@ -391,7 +391,7 @@ export default class ArchiveManager extends Component {
                   "Add Folder"
                 )}
               </label>
-              <div
+              {this.state.folderPath !== 'folders/benildus-archive' &&<div
                 className="button"
                 style={{ marginTop: 10, display: "inline-block" }}
                 data-toggle="modal"
@@ -402,7 +402,7 @@ export default class ArchiveManager extends Component {
                 }}
               >
                 <span className="glyphicon glyphicon-camera" /> Upload Image
-              </div>
+              </div>}
             </Col>
           </Row>
         </Grid>

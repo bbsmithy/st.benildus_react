@@ -87,6 +87,29 @@ class Home extends Component {
 
               <div className="row page-row">
                 <div className="col-md-9">
+                  <Link to="/archive">
+                    <div className="button row" style={{ marginBottom: 20, marginLeft: 3, marginRight: 3 }}>
+                      <div style={{ paddingVertical: 30 }} className="col-md-3 col-sm-12">
+                        <img
+                          src={require('../../assets/benildus-college-archive.jpg')}
+                          height={'100%'}
+                          style={{ alignSelf: 'center', width: '100%' }}
+                        />
+                      </div>
+                      <div className="col-md-9 col-sm-12">
+                        <div style={{ paddingTop: 25 }}>
+                          <h2 className="section-heading" style={{ display: 'inline-block' }}>
+                            St.Benildus College Archive
+                          </h2>
+                          <span
+                            style={{ display: 'inline-block', padding: 20, fontSize: 20 }}
+                            className="glyphicon glyphicon-chevron-right pull-right d-sm-none"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+
                   <div className="row page-row">
                     <div className="col-md-12">
                       {/* <section>

@@ -38,9 +38,9 @@ export default class Page extends Component {
           <div className="page-wrapper" style={{ minHeight: '700px' }}>
             {this.props.title && (
               <header className="page-heading clearfix">
-              {this.props.archive && <label className="button pull-left" onClick={()=>{
+              {this.props.archive && <label className="button pull-left"  style={{marginRight: 20}} onClick={()=>{
                 this.props.onBackPressArchive()
-              }}>Go Back</label>}
+              }}><i className="fa fa-home" /> Home</label>}
                 <h1 className="heading-title pull-left">{this.props.title}</h1>
                 <div className="breadcrumbs pull-right">
                   <ul className="breadcrumbs-list">

@@ -178,7 +178,7 @@ class Navbar extends Component {
                   active={this.props.active}
                   root={'/st-benildus-college-garden'}
                 />
-                <Tab title={'Alumni'} active={this.props.active} root={'/run-for-life'} />
+                <Tab title={'Alumni'} active={this.props.active} root={'/alumni'} />
               </ul>
             </div>
           </div>

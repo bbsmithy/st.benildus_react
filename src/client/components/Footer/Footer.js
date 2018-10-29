@@ -197,7 +197,7 @@ class Footer extends Component {
           <div className="container">
             <div className="row">
               <small className="copyright col-md-6 col-sm-12 col-xs-12">
-                Built by
+                Developed by
                 <a href="http://www.bsmithdev.com/about" target="_blank">
                   {' '}
                   Brian Smith{' '}

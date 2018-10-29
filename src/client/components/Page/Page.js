@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import TwitterTimeline from 'react-twitter-embedded-timeline';
 import { Link } from 'react-router-dom';
 import Footer from '../Footer/Footer';
+import AppFeed from '../AppFeed';
 
 export default class Page extends Component {
   renderPageContent = () => {
@@ -19,7 +20,8 @@ export default class Page extends Component {
         <div className="row page-row">
           <div className="col-md-9">{this.props.children}</div>
           <div className="col-md-3 col-sm-12">
-            <iframe src="https://uniqueschoolapp.ie/site/notifications/school_id/52" frameborder="0" width="100%" />
+            <AppFeed />
+
             <div style={{ height: '700px', overflow: 'scroll' }}>
               <a className="twitter-timeline" href="https://twitter.com/benildusnews">
                 Tweets by benildusnews
@@ -38,9 +40,17 @@ export default class Page extends Component {
           <div className="page-wrapper" style={{ minHeight: '700px' }}>
             {this.props.title && (
               <header className="page-heading clearfix">
-              {this.props.archive && <label className="button pull-left"  style={{marginRight: 20}} onClick={()=>{
-                this.props.onBackPressArchive()
-              }}><i className="fa fa-home" /> Home</label>}
+                {this.props.archive && (
+                  <label
+                    className="button pull-left"
+                    style={{ marginRight: 20 }}
+                    onClick={() => {
+                      this.props.onBackPressArchive();
+                    }}
+                  >
+                    <i className="fa fa-home" /> Home
+                  </label>
+                )}
                 <h1 className="heading-title pull-left">{this.props.title}</h1>
                 <div className="breadcrumbs pull-right">
                   <ul className="breadcrumbs-list">

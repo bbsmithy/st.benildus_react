@@ -51,6 +51,7 @@ import Archive from './Pages/Archive/Archive';
 import Contact from './Pages/Contact/Contact';
 import RasBenildus from './Pages/RasBenildus/RasBenildus';
 import CollegeGarden from './Pages/CollegeGarden/CollegeGarden';
+import Alumni from './Pages/Alumni/Alumni';
 
 import { Route, Link, Switch } from 'react-router-dom';
 
@@ -108,6 +109,7 @@ class App extends Component {
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/ras-benildus" component={RasBenildus} />
         <Route exact path="/st-benildus-college-garden" component={CollegeGarden} />
+        <Route exact path="/alumni" component={Alumni} />
 
         <Route component={NoMatch} />
       </Switch>

@@ -1,6 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { React_Bootstrap_Carousel } from "react-bootstrap-carousel";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { React_Bootstrap_Carousel } from 'react-bootstrap-carousel';
 
 class Carousel extends React.Component {
   constructor(props) {
@@ -76,29 +76,17 @@ class Carousel extends React.Component {
           className="carousel-fade"
         >
           <div>
-            <img
-              style={{ width: "100%" }}
-              src="http://www.stbenilduscollege.com/wp-content/uploads/2016/02/SB_Front_Slide01_WEAREHAPPY.jpg"
-            />
+            <img style={{ width: '100%' }} src={require('../../../assets/slide_1.jpg')} />
           </div>
           <div>
-            <img
-              style={{ width: "100%" }}
-              src="http://www.stbenilduscollege.com/wp-content/uploads/2015/03/SB_Front_Slide02_WEARECHAMPIONS.jpg"
-            />
+            <img style={{ width: '100%' }} src={require('../../../assets/slide_2.jpg')} />
           </div>
           <div>
-            <img
-              style={{ width: "100%" }}
-              src="http://www.stbenilduscollege.com/wp-content/uploads/2015/03/SB_YS_2016_01a.jpg"
-            />
+            <img style={{ width: '100%' }} src={require('../../../assets/slide_3.jpg')} />
           </div>
 
           <div>
-            <img
-              style={{ width: "100%" }}
-              src="http://www.stbenilduscollege.com/wp-content/uploads/2015/03/SB_PPFootballLeinsterA_03a.jpg"
-            />
+            <img style={{ width: '100%' }} src={require('../../../assets/slide_4.jpg')} />
           </div>
         </React_Bootstrap_Carousel>
       </div>

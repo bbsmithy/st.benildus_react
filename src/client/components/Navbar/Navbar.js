@@ -78,6 +78,9 @@ class Navbar extends Component {
                     <Link to={'/about'}>About Us</Link>
                   </li>
                   <li>
+                    <Link to={'/about/principals-welcome'}>Principals Welcome</Link>
+                  </li>
+                  <li>
                     <Link to={'/about/mission-statement'}>Mission Statement</Link>
                   </li>
                   <li>
@@ -88,6 +91,9 @@ class Navbar extends Component {
                   </li>
                 </Tab>
                 <Tab title={'Academia'} active={this.props.active}>
+                  <li>
+                    <Link to={'/academia/'}>Overview</Link>
+                  </li>
                   <li>
                     <Link to={'/academia/core'}>Core Subjects</Link>
                   </li>

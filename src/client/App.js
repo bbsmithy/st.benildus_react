@@ -14,6 +14,7 @@ import Administration from './Pages/About/Administration';
 import MissionStatement from './Pages/About/MissionStatement';
 import PrincipalsWelcome from './Pages/About/PrincipalsWelcome';
 
+import Overview from './Pages/Academia/Overview';
 import Business from './Pages/Academia/Business';
 import Core from './Pages/Academia/Core';
 import Humanities from './Pages/Academia/Humanities';
@@ -63,6 +64,7 @@ class App extends Component {
         <Route exact path="/about/mission-statement" component={MissionStatement} />
         <Route exact path="/about/principals-welcome" component={PrincipalsWelcome} />
         {/******Academia section************/}
+        <Route exact path="/academia/" component={Overview} />
         <Route exact path="/academia/business" component={Business} />
         <Route exact path="/academia/core" component={Core} />
         <Route exact path="/academia/humanities" component={Humanities} />

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Navbar from '../components/Navbar/Navbar';
 import Page from '../components/Page/Page';
 import Footer from '../components/Footer/Footer';
+import AppFeed from '../components/AppFeed';
 import Carousel from '../components/Carousel/Carousel';
 import VideoCarousel from '../components/Carousel/VideoCarousel';
 import { Link } from 'react-router-dom';
@@ -179,6 +180,7 @@ class Home extends Component {
                       Tweets by benildusnews
                     </a>
                   </div>
+                  <AppFeed />
                   {/* <h1 class="section-heading text-highlight">
                     <span class="line">App Feed</span>
                   </h1>

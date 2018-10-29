@@ -1,64 +1,48 @@
-import React, { Component } from "react";
-import Navbar from "../../components/Navbar/Navbar";
-import Page from "../../components/Page/Page";
+import React, { Component } from 'react';
+import Navbar from '../../components/Navbar/Navbar';
+import Page from '../../components/Page/Page';
 
 class ParentsAssoc extends Component {
   render() {
     return (
       <div>
-        <Navbar active={"Parents"} />
-        <Page title={"Parents Association"} current={"Parents Association"}>
+        <Navbar active={'Parents'} />
+        <Page title={'Parents Association'} current={'Parents Association'}>
           <p>
-            The College is fortunate and grateful to have an active and dynamic
-            Parent’s Association. The Association plays a vital role in
-            fostering a strong relationship between parents and the College, as
-            partners in the education of our students. The association is
-            particularly active in fundraising, sponsorship, information
+            The College is fortunate and grateful to have an active and dynamic Parent’s Association. The Association
+            plays a vital role in fostering a strong relationship between parents and the College, as partners in the
+            education of our students. The association is particularly active in fundraising, sponsorship, information
             provision and social events in the school community.
           </p>
 
           <p>What we do:</p>
           <ul>
             <li>
-              Annual general meeting for parents in September/October with a
-              guest speaker. This forum also provides an opportunity for
-              discussion, suggestions and recruitment of volunteers onto the
-              committee
+              Annual general meeting for parents in September/October with a guest speaker. This forum also provides an
+              opportunity for discussion, suggestions and recruitment of volunteers onto the committee
             </li>
+            <li>Two of our members represent parents on the school Board of Management</li>
             <li>
-              Two of our members represent parents on the school Board of
-              Management
-            </li>
-            <li>
-              Attend monthly meetings with the school Principal where he
-              delivers a report on school developments and to discuss
-              suggestions put forward by parents
+              Attend monthly meetings with the school Principal where he delivers a report on school developments and to
+              discuss suggestions put forward by parents
             </li>
             <li>Participate in first year parents’ meeting</li>
             <li>Provide support during the Transition Year Musical Week</li>
             <li>Provide support at the academic and sport’s awards nights</li>
             <li>Provide support at the annual graduation event</li>
             <li>
-              Provide funding for the sixth-year commemorative medals and chess
-              club competition travel. We also contribute funds towards the
-              development of the school garden
+              Provide funding for the sixth-year commemorative medals and chess club competition travel. We also
+              contribute funds towards the development of the school garden
             </li>
             <li>
-              Help organise various activities suggested by parents and invite
-              guest speakers to talk to parents / students throughout the school
-              year
+              Help organise various activities suggested by parents and invite guest speakers to talk to parents /
+              students throughout the school year
             </li>
-            <li>
-              Support the creative writing competition that is incorporated into
-              annual academic awards
-            </li>
-            <li>
-              Provide funding of miscellaneous items and equipment as required,
-              to enhance the school
-            </li>
+            <li>Support the creative writing competition that is incorporated into annual academic awards</li>
+            <li>Provide funding of miscellaneous items and equipment as required, to enhance the school</li>
           </ul>
           <br />
-          <table class="table">
+          {/*<table class="table">
             <thead>
               <tr>
                 <th scope="col">Committee Member</th>
@@ -168,7 +152,7 @@ class ParentsAssoc extends Component {
                 <td>3rd Year</td>
               </tr>
             </tbody>
-          </table>
+    </table>*/}
         </Page>
       </div>
     );

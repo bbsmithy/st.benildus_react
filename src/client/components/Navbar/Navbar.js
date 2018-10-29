@@ -139,7 +139,12 @@ class Navbar extends Component {
                     <Link to={'/parents/book-list-and-uniform'}>Book List and Uniform</Link>
                   </li>
                   <li>
-                    <Link to={'/parents/code-of-behaviour'}>Code Of Behaviour</Link>
+                    <a
+                      href="https://firebasestorage.googleapis.com/v0/b/benildus-college.appspot.com/o/pdfs%2FCodeOfBehaviour.pdf?alt=media&token=7e611614-7f99-4d5f-ab03-091d9a753b93"
+                      target="blank"
+                    >
+                      Code Of Behaviour
+                    </a>
                   </li>
                   <li>
                     <Link to={'/parents/disciplinary-procedure'}>Disciplinary Procedure</Link>
@@ -166,8 +171,14 @@ class Navbar extends Component {
                 <Tab title={'Run For Life'} active={this.props.active} root={'/run-for-life'} />
                 <Tab title={'Gallery'} root={'/gallery'} active={this.props.active} />
                 <Tab title={'Archive'} root={'/archive'} active={this.props.active} />
-
                 <Tab title={'Contact'} root={'/contact'} active={this.props.active} />
+                <Tab title={'Rás Benildus'} active={this.props.active} root={'/ras-benildus'} />
+                <Tab
+                  title={'St. Benildus College School Garden'}
+                  active={this.props.active}
+                  root={'/st-benildus-college-garden'}
+                />
+                <Tab title={'Alumni'} active={this.props.active} root={'/run-for-life'} />
               </ul>
             </div>
           </div>

@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import Lightbox from "react-images";
-import { Link, Redirect } from "react-router-dom";
-import Storage from "../../../services/storage";
-import Database from "../../../services/database";
-import { css, StyleSheet } from "aphrodite/no-important";
-import CircularProgress from "material-ui/CircularProgress";
-import Grid from "react-bootstrap/lib/Grid";
-import Row from "react-bootstrap/lib/Row";
-import Col from "react-bootstrap/lib/Col";
-import { folders } from "./folders";
-import ImageItem from "./ImageItem";
-import FlatButton from "material-ui/FlatButton/FlatButton";
+import React, { Component } from 'react';
+import Lightbox from 'react-images';
+import { Link, Redirect } from 'react-router-dom';
+import Storage from '../../../services/storage';
+import Database from '../../../services/database';
+import { css, StyleSheet } from 'aphrodite/no-important';
+import CircularProgress from 'material-ui/CircularProgress';
+import Grid from 'react-bootstrap/lib/Grid';
+import Row from 'react-bootstrap/lib/Row';
+import Col from 'react-bootstrap/lib/Col';
+import { folders } from './folders';
+import ImageItem from './ImageItem';
+import FlatButton from 'material-ui/FlatButton/FlatButton';
 
 export default class GalleryLightBox extends Component {
   constructor(props) {
@@ -26,11 +26,10 @@ export default class GalleryLightBox extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.folder !== prevProps.folder || this.props.imageCount !== prevProps.imageCount) {
-      console.log("NEW FOLDER", this.props.folder)
+      console.log('NEW FOLDER', this.props.folder);
       this.getImagesAndFolders(this.props.folder);
     }
   }
-
 
   componentWillMount() {
     const { folder } = this.props;
@@ -38,56 +37,52 @@ export default class GalleryLightBox extends Component {
   }
 
   getImagesAndFolders = folder => {
-    
-    Database.getFolder(folder).then((res)=>{
+    Database.getFolder(folder)
+      .then(res => {
         const folderValue = res.val();
-        console.log(folderValue)
-        if(folderValue){
+        console.log(folderValue);
+        if (folderValue) {
           this.setState({
             folders: folderValue.folders || []
-          })
-          if(folderValue.images){
-            this.getImages(`${folder}/images`,false)
-          }
-          else{
+          });
+          if (folderValue.images) {
+            this.getImages(`${folder}/images`, false);
+          } else {
             this.setState({
               downloadUrls: [],
               isFetchingCoverImages: false
-            })
+            });
           }
         }
-        if(this.props.onFolderChanged) this.props.onFolderChanged(folderValue)
-    }).catch((err)=>{
-      this.setState({
-        isFetchingCoverImages: false,
-        folderNotFound: true
+        if (this.props.onFolderChanged) this.props.onFolderChanged(folderValue);
       })
-    });
-      
+      .catch(err => {
+        this.setState({
+          isFetchingCoverImages: false,
+          folderNotFound: true
+        });
+      });
   };
 
-  getFolderCoverImages = async (folderValue) => {
+  getFolderCoverImages = async folderValue => {
     let coverImagePromises = [];
     Object.keys(folderValue.folders).forEach(folder => {
       if (folderValue.folders[folder].coverImage) {
-        coverImagePromises.push(
-          Storage.getDownloadUrl(folderValue.folders[folder].coverImage.src)
-        );
+        coverImagePromises.push(Storage.getDownloadUrl(folderValue.folders[folder].coverImage.src));
       }
     });
-    return Promise.all(coverImagePromises)
-  }
+    return Promise.all(coverImagePromises);
+  };
 
   getImages = (folder, stillFetching) => {
     Database.requestGalleryImages(folder).then(images => {
-      console.log()
+      console.log();
       this.setState({
         downloadUrls: images,
         isFetchingCoverImages: stillFetching
       });
     });
   };
-
 
   chunkify = (a, n, balanced) => {
     if (n < 2) return [a];
@@ -121,7 +116,7 @@ export default class GalleryLightBox extends Component {
   };
 
   onImageItemClicked = (obj, selected) => {
-    console.log("ITEM CLICKED");
+    console.log('ITEM CLICKED');
     if (this.props.editMode) {
       selected ? this.selectedImage(obj) : this.unselectedImage(obj);
     } else {
@@ -179,36 +174,37 @@ export default class GalleryLightBox extends Component {
   };
 
   renderFolders = () => {
-      return Object.keys(this.state.folders).map((key, i)=>{
-        return  (
-          <div className="button row" style={{margin: 10}} onClick={()=>{
-            this.getImagesAndFolders(`${this.state.folders[key].folderPath}`)
-          }}>
-            <div style={{paddingVertical: 20,}} className="col-md-2 col-sm-12">
-              <img
-                src={
-                  require('../../../assets/placeholder-image.png')
-                }
-                height={'100%'}
-                style={{alignSelf: 'center', width: '100%'}}
+    return Object.keys(this.state.folders).map((key, i) => {
+      return (
+        <div
+          className="button row"
+          style={{ margin: 10 }}
+          onClick={() => {
+            this.getImagesAndFolders(`${this.state.folders[key].folderPath}`);
+          }}
+        >
+          <div style={{ paddingVertical: 20 }} className="col-md-2 col-sm-12">
+            <img
+              src={require('../../../assets/placeholder-image.png')}
+              height={'100%'}
+              style={{ alignSelf: 'center', width: '100%' }}
+            />
+          </div>
+          <div className="col-md-10 col-sm-12">
+            <div style={{ padding: 10, marginTop: 20 }}>
+              <a style={{ display: 'inline-block' }}>
+                <h5>{this.state.folders[key].folderName}</h5>
+              </a>
+              <span
+                style={{ display: 'inline-block' }}
+                className="glyphicon glyphicon-chevron-right pull-right d-sm-none"
               />
             </div>
-            <div className="col-md-10 col-sm-12">
-            <div style={{padding: 10, marginTop: 20}}>
-                <a style={{ display: "inline-block" }}>
-                  <h4>{this.state.folders[key].folderName}</h4>
-                </a>
-                <span
-                  style={{ display: "inline-block" }}
-                  className="glyphicon glyphicon-chevron-right pull-right d-sm-none"
-                />
-            </div>
-                
-            </div>  
           </div>
-        )
-      })
-  }
+        </div>
+      );
+    });
+  };
 
   renderGallery = () => {
     const { downloadUrls } = this.state;
@@ -218,7 +214,7 @@ export default class GalleryLightBox extends Component {
     const gallery = imgColumns.map((imageArray, i) => {
       return (
         <div
-          className={"col-md-4"}
+          className={'col-md-4'}
           style={{
             padding: 0
           }}
@@ -241,19 +237,14 @@ export default class GalleryLightBox extends Component {
     });
 
     return (
-      <div className={"row"}>
-        <div className={this.props.showNavigation ? "col-md-9" : "col-md-12"}>
-          {gallery}
-        </div>
+      <div className={'row'}>
+        <div className={this.props.showNavigation ? 'col-md-9' : 'col-md-12'}>{gallery}</div>
 
         {this.props.showNavigation && (
-          <div className={"col-md-3"}>
+          <div className={'col-md-3'}>
             <ul class="list-group">
               {folders.map(folder => {
-                const linkStyle =
-                  `/${this.props.folder}` === folder.id
-                    ? "list-group-item active"
-                    : "list-group-item";
+                const linkStyle = `/${this.props.folder}` === folder.id ? 'list-group-item active' : 'list-group-item';
                 return (
                   <a className={linkStyle} href={`/gallery${folder.id}`}>
                     {folder.title}
@@ -285,19 +276,19 @@ export default class GalleryLightBox extends Component {
   render = () => {
     if (this.state.isFetchingCoverImages && !this.props.hideLoading) {
       return (
-        <div style={{ marginLeft: "30%" }}>
-          <CircularProgress color={"#003D7D"} size={80} thickness={5} />
+        <div style={{ marginLeft: '30%' }}>
+          <CircularProgress color={'#003D7D'} size={80} thickness={5} />
         </div>
       );
     }
-    if(this.state.folderNotFound){
-      return <Redirect to="/gallery"/>
+    if (this.state.folderNotFound) {
+      return <Redirect to="/gallery" />;
     }
     return (
       <div>
         {this.state.folders && this.props.useFolder && this.renderFolders()}
         {this.state.downloadUrls && this.renderGallery()}
-         {this.state.downloadUrls &&  this.renderLigthBox()}
+        {this.state.downloadUrls && this.renderLigthBox()}
       </div>
     );
   };
@@ -310,24 +301,24 @@ const gutter = {
 const classes = StyleSheet.create({
   gallery: {
     marginRight: -gutter.small,
-    overflow: "hidden",
+    overflow: 'hidden',
 
-    "@media (min-width: 500px)": {
+    '@media (min-width: 500px)': {
       marginRight: -gutter.large
     }
   },
 
   // anchor
   thumbnail: {
-    boxSizing: "border-box",
-    display: "block",
-    float: "left",
+    boxSizing: 'border-box',
+    display: 'block',
+    float: 'left',
     lineHeight: 0,
     paddingRight: gutter.small,
     paddingBottom: gutter.small,
-    overflow: "hidden",
+    overflow: 'hidden',
 
-    "@media (min-width: 500px)": {
+    '@media (min-width: 500px)': {
       paddingRight: gutter.large,
       paddingBottom: gutter.large
     }
@@ -335,13 +326,13 @@ const classes = StyleSheet.create({
 
   // orientation
   landscape: {
-    width: "30%"
+    width: '30%'
   },
   square: {
     paddingBottom: 0,
-    width: "40%",
+    width: '40%',
 
-    "@media (min-width: 500px)": {
+    '@media (min-width: 500px)': {
       paddingBottom: 0
     }
   },
@@ -349,10 +340,10 @@ const classes = StyleSheet.create({
   // actual <img />
   source: {
     border: 0,
-    display: "block",
-    overflow: "hidden",
-    height: "200px",
-    maxWidth: "100%",
-    width: "auto"
+    display: 'block',
+    overflow: 'hidden',
+    height: '200px',
+    maxWidth: '100%',
+    width: 'auto'
   }
 });

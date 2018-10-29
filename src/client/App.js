@@ -49,6 +49,8 @@ import Gallery from './Pages/Gallery/Gallery';
 import GalleryFolder from './Pages/Gallery/GalleryFolder';
 import Archive from './Pages/Archive/Archive';
 import Contact from './Pages/Contact/Contact';
+import RasBenildus from './Pages/RasBenildus/RasBenildus';
+import CollegeGarden from './Pages/CollegeGarden/CollegeGarden';
 
 import { Route, Link, Switch } from 'react-router-dom';
 
@@ -85,7 +87,6 @@ class App extends Component {
 
         {/******Parents*******/}
         <Route exact path="/parents/book-list-and-uniform" component={BookListAndUniform} />
-        <Route exact path="/parents/code-of-behaviour" component={CodeOfBehaviour} />
         <Route exact path="/parents/disciplinary-procedure" component={DisciplinaryProcedure} />
         <Route exact path="/parents/parents-association" component={ParentsAssoc} />
         <Route exact path="/parents/policy-procedure" component={PolicyProcedure} />
@@ -105,6 +106,8 @@ class App extends Component {
         <Route exact path="/admin/" component={Admin} />
         <Route exact path="/gallery/:id" component={GalleryFolder} />
         <Route exact path="/contact" component={Contact} />
+        <Route exact path="/ras-benildus" component={RasBenildus} />
+        <Route exact path="/st-benildus-college-garden" component={CollegeGarden} />
 
         <Route component={NoMatch} />
       </Switch>
